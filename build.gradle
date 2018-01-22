@@ -28,6 +28,7 @@ dependencies {
     compile 'org.hibernate:hibernate-core:5.2.12.Final'
     compile 'org.thymeleaf:thymeleaf:3.0.9.RELEASE'
     compile 'redis.clients:jedis:2.9.0'
+    compile 'org.cfg4j:cfg4j-core:4.4.1'
 
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
