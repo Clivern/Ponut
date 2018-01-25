@@ -13,15 +13,13 @@
  */
 package com.clivern.ponut;
 
-import static spark.Spark.*;
+import com.clivern.ponut.route.Web;
+import com.clivern.ponut.route.Api;
 
 public class App {
 
-    public String getGreeting() {
-        return "Hello world.";
-    }
-
     public static void main(String[] args) {
-        get("/", (req, res) -> new App().getGreeting());
+    	Web.call();
+    	Api.call();
     }
 }

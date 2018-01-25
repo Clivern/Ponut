@@ -11,16 +11,15 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.clivern.ponut.route;
+package com.clivern.ponut.controller.web;
 
-import static spark.Spark.*;
-import com.clivern.ponut.controller.web.*;
+import spark.Request;
+import spark.Response;
 
-public class Web {
+public class Login {
 
-	public static void call()
+	public static String renderLogin(Request request, Response response)
 	{
-		get("/", (request, response) -> Login.renderLogin(request, response));
+		return "Login.Page";
 	}
-
 }
