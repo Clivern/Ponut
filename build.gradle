@@ -31,6 +31,7 @@ dependencies {
     compile 'org.cfg4j:cfg4j-core:4.4.1'
     compile 'com.clivern:racter:1.0.2'
     compile 'com.clivern:fred:1.0.0'
+    compile 'info.picocli:picocli:2.2.1'
 
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
