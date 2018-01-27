@@ -39,12 +39,15 @@ public class Mapper implements Runnable {
      * List all Bots
      * $> JAR -l
      * $> JAR --list
+     * $> JAR -l -t slack
+     * $> JAR -l -n fred
      *
      * Get Bots Status
      * $> JAR -s
      * $> JAR status
      * $> JAR status -n fred
      * $> JAR status --name fred
+     * $> JAR status -t slack
      *
      * Delete a Bot
      * $> JAR -D fred
