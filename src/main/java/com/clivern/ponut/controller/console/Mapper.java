@@ -59,6 +59,9 @@ public class Mapper implements Runnable {
     @Option(names = { "-D", "delete" }, paramLabel="<bot>", description = "Delete an existing bot")
     private String delete;
 
+    @Option(names = { "-m", "migrate" }, paramLabel="<all||file>", description = "Run all or specific migration")
+    private String migrate;
+
     @Option(names = { "-s", "status" }, description = "Get bot(s) status")
     private Boolean status = false;
 
@@ -70,6 +73,9 @@ public class Mapper implements Runnable {
 
     @Option(names = {"-l", "--list"}, description = "Get a list of all bots")
     private Boolean list = false;
+
+    @Option(names = {"seed", "--seed"}, description = "Run database seeders")
+    private Boolean seed = false;
 
     @Option(names = {"-i", "--info"}, description = "Get more log output")
     private Boolean verbose = false;
