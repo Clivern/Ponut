@@ -17,6 +17,8 @@ services:
   java:
     container_name: ponut_java
     build: ./docker/java
+    ports:
+      - "4567:4567"
     links:
       - db
     environment:
@@ -24,4 +26,3 @@ services:
       MYSQL_DATABASE: ponut
       MYSQL_USER: root
       MYSQL_HOST: localhost
-    command: /var/local/entrypoint.sh
