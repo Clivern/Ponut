@@ -7,7 +7,7 @@ services:
     ports:
       - "3309:3309"
     volumes:
-      - .docker_data/mysql-data:/var/lib/mysql
+      - ./docker/mysql/data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: ponut
