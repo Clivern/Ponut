@@ -21,11 +21,39 @@ package com.clivern.ponut.controller.console;
 public class Create {
 
 	private boolean info = false;
+	private String type;
+	private String name;
 
 
-	public void setInfo(Boolean info)
+	public Create setName(String name)
+	{
+		this.name = name;
+
+		return this;
+	}
+
+	public Create setType(String type)
+	{
+		this.type = type;
+
+		return this;
+	}
+
+	public Create setInfo(Boolean info)
 	{
 		this.info = info;
+
+		return this;
+	}
+
+	public String getName()
+	{
+		return this.name;
+	}
+
+	public String getType()
+	{
+		return this.type;
 	}
 
 	public boolean getInfo()
@@ -34,6 +62,11 @@ public class Create {
 	}
 
     public void run() {
+    	System.out.printf("Create a New Bot \n > JAR create %s -t %s \n > JAR create %s --type %s \n > JAR create %s -t %s %s \n > JAR -c %s -t %s \n", this.name, this.type, this.name, this.type, this.name, this.type, (this.info) ? " -i" : "", this.name, this.type);
+    }
 
+    public static void help()
+    {
+    	System.out.println(" Create a New Bot \n > JAR create fred -t slack \n > JAR create fred --type messenger \n > JAR create fred -t slack -i \n > JAR -c fred -t slack");
     }
 }

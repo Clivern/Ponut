@@ -86,11 +86,22 @@ public class Mapper implements Runnable {
     @Option(names = { "-e", "exec" }, paramLabel="<CMD>" ,description = "Execute a custom command")
     private String execute;
 
+    @Option(names = { "-h", "help" }, paramLabel="<command>", description = "Get a helpful info about command")
+    private String help;
+
 
     public void run() {
 
         if( this.version ){
             new Version().run();
+        }
+
+        if( this.create != null ){
+            new Create().setName((this.create != null) ? this.create : "").setType((this.type != null) ? this.type : "").setInfo(this.verbose).run();
+        }
+
+        if( this.help != null ){
+            new Help().setCommand(this.help).run();
         }
     }
 
