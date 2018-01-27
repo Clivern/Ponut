@@ -61,12 +61,13 @@ public class Create {
 		return this.info;
 	}
 
-    public void run() {
-    	System.out.printf("Create a New Bot \n > JAR create %s -t %s \n > JAR create %s --type %s \n > JAR create %s -t %s %s \n > JAR -c %s -t %s \n", this.name, this.type, this.name, this.type, this.name, this.type, (this.info) ? " -i" : "", this.name, this.type);
+    public void run()
+    {
+
     }
 
     public static void help()
     {
-    	System.out.println(" Create a New Bot \n > JAR create fred -t slack \n > JAR create fred --type messenger \n > JAR create fred -t slack -i \n > JAR -c fred -t slack");
+    	System.out.println("Create a New Bot \n > JAR create fred -t slack \n > JAR create fred --type messenger \n > JAR create fred -t slack -i \n > JAR -c fred -t slack");
     }
 }
