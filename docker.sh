@@ -23,5 +23,3 @@ cp $FAT_JAR_PATH $JAVA_CONTAINER_BUILD
 docker-compose build
 docker-compose up -d
 docker ps
-docker start ponut_mysql
-docker start ponut_java
