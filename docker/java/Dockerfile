@@ -1,28 +1,10 @@
-#
-# Oracle Java 8 Dockerfile
-#
-# https://github.com/dockerfile/java
-# https://github.com/dockerfile/java/tree/master/oracle-java8
-#
+FROM openjdk:8-jre-alpine
 
-# Pull base image.
-FROM dockerfile/ubuntu
+MAINTAINER clivern.com
 
-# Install Java.
-RUN \
-  echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
-  add-apt-repository -y ppa:webupd8team/java && \
-  apt-get update && \
-  apt-get install -y oracle-java8-installer && \
-  rm -rf /var/lib/apt/lists/* && \
-  rm -rf /var/cache/oracle-jdk8-installer
+RUN mkdir -p /opt/apps/ponut
 
+COPY build/libs/ponut_fat-1.0.0.jar /opt/apps/ponut
+RUN cd /opt/apps/ponut && ls -ltr
 
-# Define working directory.
-WORKDIR /www
-
-# Define commonly used JAVA_HOME variable
-ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
-
-# Define default command.
-CMD ["bash"]
+ENTRYPOINT ["java", "-jar", "/opt/apps/ponut/ponut_fat-1.0.0.jar"]
