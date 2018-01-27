@@ -14,11 +14,11 @@
 package com.clivern.ponut.controller.console;
 
 /**
- * Seed Command
+ * Exec Command
  *
  * @since 1.0.0
  */
-public class Seed {
+public class Exec {
 
 	private boolean info = false;
 

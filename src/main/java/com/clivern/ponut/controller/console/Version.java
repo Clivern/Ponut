@@ -22,7 +22,13 @@ public class Version {
 
     private String currentVersion = "1.0.0";
 
-    public void run() {
+    public void run()
+    {
         System.out.printf("Ponut version %s\n", this.currentVersion);
+    }
+
+    public static void help()
+    {
+    	System.out.println("Help Here....");
     }
 }

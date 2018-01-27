@@ -39,5 +39,29 @@ public class Help {
     	if( this.command.equals("-c") || this.command.equals("create") || this.command.equals("create=<bot>") ){
     		Create.help();
     	}
+
+    	if( this.command.equals("-D") || this.command.equals("delete") || this.command.equals("delete=<bot>") ){
+    		Delete.help();
+    	}
+
+       	if( this.command.equals("-l") || this.command.equals("--list") ){
+    		List.help();
+    	}
+
+    	if( this.command.equals("-m") || this.command.equals("migrate=<all||file>") || this.command.equals("migrate") ){
+    		Migrate.help();
+    	}
+
+    	if( this.command.equals("seed") || this.command.equals("--seed") ){
+    		Seed.help();
+    	}
+
+       	if( this.command.equals("-s") || this.command.equals("status") ){
+    		Status.help();
+    	}
+
+    	if( this.command.equals("-v") || this.command.equals("--version") ){
+    		Version.help();
+    	}
     }
 }
