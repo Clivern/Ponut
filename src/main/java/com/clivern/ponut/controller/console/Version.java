@@ -11,20 +11,18 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.clivern.ponut;
+package com.clivern.ponut.controller.console;
 
-import com.clivern.ponut.route.Web;
-import com.clivern.ponut.route.Api;
-import com.clivern.ponut.controller.console.Mapper;
+/**
+ * Version Command
+ *
+ * @since 1.0.0
+ */
+public class Version {
 
-public class App {
+    private String currentVersion = "1.0.0";
 
-    public static void main(String[] args) {
-        if( args.length > 0 ){
-            Mapper.call(args);
-        }else{
-            Web.call();
-            Api.call();
-        }
+    public void run() {
+        System.out.printf("Ponut version %s\n", this.currentVersion);
     }
 }

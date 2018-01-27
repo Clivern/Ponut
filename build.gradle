@@ -32,7 +32,7 @@ dependencies {
     compile 'com.clivern:racter:1.0.2'
     compile 'com.clivern:fred:1.0.0'
     compile 'info.picocli:picocli:2.2.1'
-    compile 'io.airlift:airbase:79'
+    //compile 'io.airlift:airbase:0.8'
 
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
