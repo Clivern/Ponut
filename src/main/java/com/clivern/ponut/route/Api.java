@@ -14,14 +14,11 @@
 package com.clivern.ponut.route;
 
 import static spark.Spark.*;
-import com.clivern.ponut.controller.api.*;
 
 public class Api {
 
 	public static void call()
 	{
-		path("/api", () -> {
-			post("/auth", (request, response) -> Auth.authAction(request, response));
-		});
+		//~
 	}
 }

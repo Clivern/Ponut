@@ -11,15 +11,15 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.clivern.ponut.controller.api;
+package com.clivern.ponut.controller.web;
 
 import spark.Request;
 import spark.Response;
 
-public class Auth {
+public class Home {
 
-	public static String authAction(Request request, Response response)
+	public static String render(Request request, Response response)
 	{
-		return "auth.action";
+		return "#> Your Ponut is Ready For Hacking ᕙ(⇀‸↼‶)ᕗ";
 	}
 }

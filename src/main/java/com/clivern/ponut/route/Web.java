@@ -14,13 +14,16 @@
 package com.clivern.ponut.route;
 
 import static spark.Spark.*;
-import com.clivern.ponut.controller.web.*;
+import com.clivern.ponut.controller.web.Home;
 
 public class Web {
 
 	public static void call()
 	{
-		get("/", (request, response) -> Login.renderLogin(request, response));
-	}
+		get("/", (request, response) -> Home.render(request, response));
 
+		// Load Our Bots
+		new com.clivern.ponut.bot.boilerplate.slack.Routing().call();
+		new com.clivern.ponut.bot.boilerplate.messenger.Routing().call();
+	}
 }
