@@ -14,11 +14,11 @@
 package com.clivern.ponut.controller.console;
 
 /**
- * Exec Command
+ * Execute Command
  *
  * @since 1.0.0
  */
-public class Exec {
+public class Execute {
 
 	private boolean info = false;
 

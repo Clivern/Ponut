@@ -1,1 +1,38 @@
+version: '2'
+services:
+  data:
+    container_name: ponut_data
+    build: ./docker/data
+    volumes:
+      - .:/www
+    command: /var/local/entrypoint.sh
 
+  db:
+    container_name: ponut_mysql
+    build: ./docker/mysql
+    ports:
+      - "3309:3309"
+    volumes:
+      - .docker_data/mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: homestead
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+  java:
+    container_name: ponut_java
+    build: ./docker/java
+    volumes_from:
+      - data
+    links:
+      - db
+    environment:
+      CACHE_DIR: /www/var/cache
+      LOG_DIR: /www/var/logs
+      SESSION_DIR: /www/var/sessions
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: ponut
+      MYSQL_USER: root
+      MYSQL_HOST: localhost
+    command: /var/local/entrypoint.sh
