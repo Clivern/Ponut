@@ -11,30 +11,25 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.clivern.ponut;
+package com.clivern.ponut.model;
 
-import com.clivern.ponut.route.Web;
-import com.clivern.ponut.route.Api;
-import com.clivern.ponut.controller.console.Mapper;
+import io.ebean.Model;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
-import com.clivern.ponut.model.Option;
+@MappedSuperclass
+public abstract class BaseOption extends Model {
 
-public class App {
+  	@Id
+  	Long id;
 
-    public static void main(String[] args)
-    {
-        if( args.length > 0 ){
-            Mapper.call(args);
-        }else{
-        	new App().ebeanTest();
-            Web.call();
-            Api.call();
-        }
-    }
+  	public void setId(Long id)
+  	{
+    	this.id = id;
+  	}
 
-    public void ebeanTest()
-    {
-        Option option = new Option("Key1", "Value1", "On1");
-        option.save();
-    }
+    public Long getId()
+  	{
+    	return this.id;
+  	}
 }

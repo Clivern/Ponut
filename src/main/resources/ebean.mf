@@ -1,0 +1,3 @@
+entity-packages: com.clivern.ponut.model
+querybean-packages: none
+transactional-packages: com.clivern.ponut

@@ -13,6 +13,57 @@
  */
 package com.clivern.ponut.model;
 
-public class Option {
+import io.ebean.annotation.NotNull;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="options")
+public class Option extends BaseOption {
+
+  	@NotNull
+  	String opkey;
+
+  	@NotNull
+  	String opvalue;
+
+  	@NotNull
+  	String autoload;
+
+  	public Option(String opkey, String opvalue, String autoload)
+  	{
+  		this.opkey = opkey;
+  		this.opvalue = opvalue;
+  		this.autoload = autoload;
+  	}
+
+  	public void setKey(String opkey)
+  	{
+  		this.opkey = opkey;
+  	}
+
+  	public void setValue(String opvalue)
+  	{
+  		this.opvalue = opvalue;
+  	}
+
+  	public void setAutoload(String autoload)
+  	{
+  		this.autoload = autoload;
+  	}
+
+  	public String getKey()
+  	{
+  		return this.opkey;
+  	}
+
+  	public String getValue()
+  	{
+  		return this.opvalue;
+  	}
+
+  	public String getAutoload()
+  	{
+  		return this.autoload;
+  	}
 }

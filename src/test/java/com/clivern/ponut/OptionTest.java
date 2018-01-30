@@ -15,10 +15,12 @@ package com.clivern.ponut;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import com.clivern.ponut.model.Option;
 
-public class AppTest {
+public class OptionTest {
     @Test public void testAppHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull("app should have a greeting", classUnderTest.getGreeting());
+		Option option = new Option("Key", "Value", "On");
+		option.save();
+		assertNotNull(option.getId());
     }
 }
