@@ -13,57 +13,78 @@
  */
 package com.clivern.ponut.model;
 
+import io.ebean.Model;
+import javax.persistence.Id;
 import io.ebean.annotation.NotNull;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+/**
+ * Options Model
+ *
+ * @since 1.0.0
+ */
 @Entity
 @Table(name="options")
-public class Option extends BaseOption {
+public class Option extends Model {
 
-  	@NotNull
-  	String opkey;
+    @Id
+    Long id;
 
-  	@NotNull
-  	String opvalue;
+    @NotNull
+    String opkey;
 
-  	@NotNull
-  	String autoload;
+    @NotNull
+    String opvalue;
 
-  	public Option(String opkey, String opvalue, String autoload)
-  	{
-  		this.opkey = opkey;
-  		this.opvalue = opvalue;
-  		this.autoload = autoload;
-  	}
+    @NotNull
+    String autoload;
 
-  	public void setKey(String opkey)
-  	{
-  		this.opkey = opkey;
-  	}
 
-  	public void setValue(String opvalue)
-  	{
-  		this.opvalue = opvalue;
-  	}
+    public Option(String opkey, String opvalue, String autoload)
+    {
+        this.opkey = opkey;
+        this.opvalue = opvalue;
+        this.autoload = autoload;
+    }
 
-  	public void setAutoload(String autoload)
-  	{
-  		this.autoload = autoload;
-  	}
+    public void setId(Long id)
+    {
+      this.id = id;
+    }
 
-  	public String getKey()
-  	{
-  		return this.opkey;
-  	}
+    public void setKey(String opkey)
+    {
+        this.opkey = opkey;
+    }
 
-  	public String getValue()
-  	{
-  		return this.opvalue;
-  	}
+    public void setValue(String opvalue)
+    {
+        this.opvalue = opvalue;
+    }
 
-  	public String getAutoload()
-  	{
-  		return this.autoload;
-  	}
+    public void setAutoload(String autoload)
+    {
+        this.autoload = autoload;
+    }
+
+    public Long getId()
+    {
+      return this.id;
+    }
+
+    public String getKey()
+    {
+        return this.opkey;
+    }
+
+    public String getValue()
+    {
+        return this.opvalue;
+    }
+
+    public String getAutoload()
+    {
+        return this.autoload;
+    }
 }

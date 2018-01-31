@@ -13,6 +13,78 @@
  */
 package com.clivern.ponut.model;
 
-public class Migration {
+import io.ebean.Model;
+import javax.persistence.Id;
+import io.ebean.annotation.NotNull;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+/**
+ * Migrations Model
+ *
+ * @since 1.0.0
+ */
+@Entity
+@Table(name="migrations")
+public class Migration extends Model {
+
+    @Id
+    Long id;
+
+    @NotNull
+    String key;
+
+    @NotNull
+    String value;
+
+    @NotNull
+    String status;
+
+
+    public Migration(String key, String value, String status)
+    {
+        this.key = key;
+        this.value = value;
+        this.status = status;
+    }
+
+    public void setId(Long id)
+    {
+      this.id = id;
+    }
+
+    public void setKey(String key)
+    {
+        this.key = key;
+    }
+
+    public void setValue(String value)
+    {
+        this.value = value;
+    }
+
+    public void setStatus(String status)
+    {
+        this.status = status;
+    }
+
+    public Long getId()
+    {
+      return this.id;
+    }
+
+    public String getKey()
+    {
+        return this.key;
+    }
+
+    public String getValue()
+    {
+        return this.value;
+    }
+
+    public String getStatus()
+    {
+        return this.status;
+    }
 }
