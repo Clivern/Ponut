@@ -18,22 +18,22 @@ import java.util.Map;
 import com.clivern.ponut.exception.SeedNotFound;
 
 /**
- * Options Table Seeds
+ * Migrations Table Seeds
  *
  * @since 1.0.0
  */
-public class Option {
+public class Migration {
 
 	protected Map<String, String> seeds = new HashMap<String, String>();
 
-	protected String tableName = "options";
+	protected String tableName = "migrations";
 
 	/**
 	 * Set Create Queries
 	 */
 	public void up()
 	{
-		this.seeds.put("01_up_insert_into_options_table", String.format("INSERT INTO %s (key, value, autoload) VALUES ('app_name', 'Ponut', 'on');", this.tableName));
+		//#
 	}
 
 	/**
@@ -41,7 +41,7 @@ public class Option {
 	 */
 	public void down()
 	{
-		this.seeds.put("01_down_delete_from_options_table", String.format("DELETE FROM %s WHERE key='app_name';", this.tableName));
+		//#
 	}
 
 	/**

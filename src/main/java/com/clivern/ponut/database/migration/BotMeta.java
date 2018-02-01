@@ -18,29 +18,34 @@ import java.util.Map;
 import com.clivern.ponut.exception.MigrationNotFound;
 
 /**
- * Options Table Migrations
+ * Bot Meta Table Migrations
  *
  * @since 1.0.0
  */
-public class Option {
+public class BotMeta {
 
 	protected Map<String, String> migrations = new HashMap<String, String>();
 
-	protected String tableName = "options";
+	protected String tableName = "bots_meta";
+	protected String relationTable = "bots";
 
 	/**
 	 * Set Create Queries
 	 */
 	public void up()
 	{
-		this.migrations.put("01_up_create_options_table", String.format("CREATE TABLE IF NOT EXISTS `%s` (
+		this.migrations.put("01_up_create_bots_meta_table", String.format("CREATE TABLE IF NOT EXISTS `%s` (
 			`id` int NOT NULL AUTO_INCREMENT,
+			`botId` int NOT NULL,
 			`key` varchar(60) NOT NULL,
 			`value` text NOT NULL,
-			`autoload` varchar(5) NOT NULL,
+			`status` varchar(5) NOT NULL,
+  			`created` datetime NOT NULL,
+  			`updated` datetime NOT NULL,
 			PRIMARY KEY (`id`),
-			KEY `key` (`key`)
-		) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;", this.tableName));
+			KEY `key` (`key`),
+			FOREIGN KEY (`botId`) REFERENCES %s(`id`)
+		) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;", this.tableName, this.relationTable));
 	}
 
 	/**
@@ -48,7 +53,7 @@ public class Option {
 	 */
 	public void down()
 	{
-		this.migrations.put("01_down_drop_options_table", String.format("DROP TABLE IF EXISTS %s;", this.tableName));
+		this.migrations.put("01_down_drop_bots_meta_table", String.format("DROP TABLE IF EXISTS %s;", this.tableName));
 	}
 
 	/**

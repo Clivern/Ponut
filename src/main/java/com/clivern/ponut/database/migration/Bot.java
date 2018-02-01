@@ -18,28 +18,30 @@ import java.util.Map;
 import com.clivern.ponut.exception.MigrationNotFound;
 
 /**
- * Options Table Migrations
+ * Bots Table Migrations
  *
  * @since 1.0.0
  */
-public class Option {
+public class Bot {
 
 	protected Map<String, String> migrations = new HashMap<String, String>();
 
-	protected String tableName = "options";
+	protected String tableName = "bots";
 
 	/**
 	 * Set Create Queries
 	 */
 	public void up()
 	{
-		this.migrations.put("01_up_create_options_table", String.format("CREATE TABLE IF NOT EXISTS `%s` (
+		this.migrations.put("01_up_create_bots_table", String.format("CREATE TABLE IF NOT EXISTS `%s` (
 			`id` int NOT NULL AUTO_INCREMENT,
-			`key` varchar(60) NOT NULL,
-			`value` text NOT NULL,
-			`autoload` varchar(5) NOT NULL,
+			`name` varchar(50) NOT NULL,
+			`slug` varchar(80) NOT NULL,
+			`status` varchar(5) NOT NULL,
+  			`created` datetime NOT NULL,
+  			`updated` datetime NOT NULL,
 			PRIMARY KEY (`id`),
-			KEY `key` (`key`)
+			KEY `slug` (`slug`)
 		) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;", this.tableName));
 	}
 
@@ -48,7 +50,7 @@ public class Option {
 	 */
 	public void down()
 	{
-		this.migrations.put("01_down_drop_options_table", String.format("DROP TABLE IF EXISTS %s;", this.tableName));
+		this.migrations.put("01_down_drop_bots_table", String.format("DROP TABLE IF EXISTS %s;", this.tableName));
 	}
 
 	/**
