@@ -48,41 +48,81 @@ public class Migration extends Model {
         this.status = status;
     }
 
+    /**
+     * Set ID
+     *
+     * @param id
+     */
     public void setId(Long id)
     {
       this.id = id;
     }
 
+    /**
+     * Set Key
+     *
+     * @param key
+     */
     public void setKey(String key)
     {
         this.key = key;
     }
 
+    /**
+     * Set Value
+     *
+     * @param value
+     */
     public void setValue(String value)
     {
         this.value = value;
     }
 
+    /**
+     * Set Status
+     *
+     * @param status
+     */
     public void setStatus(String status)
     {
         this.status = status;
     }
 
+    /**
+     * Get ID
+     *
+     * @return Integer
+     */
     public Long getId()
     {
       return this.id;
     }
 
+    /**
+     * Get Key
+     *
+     * @return String
+     */
     public String getKey()
     {
         return this.key;
     }
 
+    /**
+     * Get Value
+     *
+     * @return String
+     */
     public String getValue()
     {
         return this.value;
     }
 
+    /**
+     * Get Status
+     *
+     * @return String
+     */
     public String getStatus()
     {
         return this.status;
