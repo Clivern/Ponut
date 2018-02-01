@@ -13,6 +13,19 @@
  */
 package com.clivern.ponut.model;
 
-public class Bot {
+import io.ebean.Model;
+import javax.persistence.Id;
+import io.ebean.annotation.NotNull;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+/**
+ * Bots Model
+ *
+ * @since 1.0.0
+ */
+@Entity
+@Table(name="bots")
+public class Bot extends Model {
 
 }
