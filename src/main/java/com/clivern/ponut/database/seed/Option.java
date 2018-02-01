@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.clivern.ponut.database.migration;
+package com.clivern.ponut.database.seed;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,19 +29,19 @@ public class Option {
 	protected String tableName = "Options";
 
 	/**
-	 * Set Create Query 01
+	 * Set Create Queries
 	 */
-	public void up01()
+	public void up()
 	{
-		this.seeds.put("01_insert_into_options_table", String.format("CREATE TABLE IF NOT EXISTS `%s` ()", this.tableName));
+		this.seeds.put("01_up_insert_into_options_table", String.format("INSERT INTO %s (key, value, autoload) VALUES ('app_name', 'Ponut', 'on');", this.tableName));
 	}
 
 	/**
-	 * Set Drop Query 01
+	 * Set Drop Queries
 	 */
-	public void down01()
+	public void down()
 	{
-		this.seeds.put("02_delete_from_options_table", String.format("DELETE FROM %s;", this.tableName));
+		this.seeds.put("01_down_delete_from_options_table", String.format("DELETE FROM %s WHERE key='app_name';", this.tableName));
 	}
 
 	/**
