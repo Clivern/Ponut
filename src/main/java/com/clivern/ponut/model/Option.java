@@ -32,57 +32,103 @@ public class Option extends Model {
     Long id;
 
     @NotNull
-    String opkey;
+    String key;
 
     @NotNull
-    String opvalue;
+    String value;
 
     @NotNull
     String autoload;
 
-
-    public Option(String opkey, String opvalue, String autoload)
+    /**
+     * Class Constructor
+     *
+     * @param  key
+     * @param  value
+     * @param  autoload
+     */
+    public Option(String key, String value, String autoload)
     {
-        this.opkey = opkey;
-        this.opvalue = opvalue;
+        this.key = key;
+        this.value = value;
         this.autoload = autoload;
     }
 
+    /**
+     * Set ID
+     *
+     * @param id
+     */
     public void setId(Long id)
     {
       this.id = id;
     }
 
-    public void setKey(String opkey)
+    /**
+     * Set Key
+     *
+     * @param key
+     */
+    public void setKey(String key)
     {
-        this.opkey = opkey;
+        this.key = key;
     }
 
-    public void setValue(String opvalue)
+    /**
+     * Set Value
+     *
+     * @param value
+     */
+    public void setValue(String value)
     {
-        this.opvalue = opvalue;
+        this.value = value;
     }
 
+    /**
+     * Set Autoload Value
+     *
+     * @param autoload
+     */
     public void setAutoload(String autoload)
     {
         this.autoload = autoload;
     }
 
+    /**
+     * Get ID
+     *
+     * @return Integer
+     */
     public Long getId()
     {
       return this.id;
     }
 
+    /**
+     * Get Key
+     *
+     * @return String
+     */
     public String getKey()
     {
-        return this.opkey;
+        return this.key;
     }
 
+    /**
+     * Get Value
+     *
+     * @return String
+     */
     public String getValue()
     {
-        return this.opvalue;
+        return this.value;
     }
 
+    /**
+     * Get Autoload Value
+     *
+     * @return String
+     */
     public String getAutoload()
     {
         return this.autoload;
