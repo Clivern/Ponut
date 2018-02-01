@@ -26,7 +26,7 @@ public class BotMeta {
 
 	protected Map<String, String> migrations = new HashMap<String, String>();
 
-	protected String tableName = "bots_meta";
+	protected String tableName = "botsMeta";
 	protected String relationTable = "bots";
 
 	/**
@@ -39,7 +39,6 @@ public class BotMeta {
 			`botId` int NOT NULL,
 			`key` varchar(60) NOT NULL,
 			`value` text NOT NULL,
-			`status` varchar(5) NOT NULL,
   			`created` datetime NOT NULL,
   			`updated` datetime NOT NULL,
 			PRIMARY KEY (`id`),

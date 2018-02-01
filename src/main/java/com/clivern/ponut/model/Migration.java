@@ -29,7 +29,7 @@ import javax.persistence.Table;
 public class Migration extends Model {
 
     @Id
-    Long id;
+    Integer id;
 
     @NotNull
     String key;
@@ -40,12 +40,28 @@ public class Migration extends Model {
     @NotNull
     String status;
 
+    @NotNull
+    String created;
 
-    public Migration(String key, String value, String status)
+    @NotNull
+    String updated;
+
+    /**
+     * Class Constructor
+     *
+     * @param  key
+     * @param  value
+     * @param  status
+     * @param  created
+     * @param  updated
+     */
+    public Migration(String key, String value, String status, String created, String updated)
     {
         this.key = key;
         this.value = value;
         this.status = status;
+        this.created = created;
+        this.updated = updated;
     }
 
     /**
@@ -53,7 +69,7 @@ public class Migration extends Model {
      *
      * @param id
      */
-    public void setId(Long id)
+    public void setId(Integer id)
     {
       this.id = id;
     }
@@ -89,11 +105,31 @@ public class Migration extends Model {
     }
 
     /**
+     * Set Created
+     *
+     * @param created
+     */
+    public void setCreated(String created)
+    {
+        this.created = created;
+    }
+
+    /**
+     * Set Updated
+     *
+     * @param updated
+     */
+    public void setUpdated(String updated)
+    {
+        this.updated = updated;
+    }
+
+    /**
      * Get ID
      *
      * @return Integer
      */
-    public Long getId()
+    public Integer getId()
     {
       return this.id;
     }
@@ -126,5 +162,25 @@ public class Migration extends Model {
     public String getStatus()
     {
         return this.status;
+    }
+
+    /**
+     * Get Created
+     *
+     * @return String
+     */
+    public String getCreated()
+    {
+        return this.created;
+    }
+
+    /**
+     * Get Updated
+     *
+     * @return String
+     */
+    public String getUpdated()
+    {
+        return this.updated;
     }
 }

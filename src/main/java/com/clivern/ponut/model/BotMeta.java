@@ -25,7 +25,162 @@ import javax.persistence.Table;
  * @since 1.0.0
  */
 @Entity
-@Table(name="bots_meta")
+@Table(name="botsMeta")
 public class BotMeta extends Model {
 
+    @Id
+    Integer id;
+
+    @NotNull
+    Integer botId;
+
+    @NotNull
+    String key;
+
+    @NotNull
+    String value;
+
+    @NotNull
+    String created;
+
+    @NotNull
+    String updated;
+
+    /**
+     * Class Constructor
+     *
+     * @param  botId
+     * @param  key
+     * @param  value
+     * @param  created
+     * @param  updated
+     */
+    public Migration(Integer botId, String key, String value, String created, String updated)
+    {
+    	this.botId = botId;
+        this.key = key;
+        this.value = value;
+        this.created = created;
+        this.updated = updated;
+    }
+
+    /**
+     * Set ID
+     *
+     * @param id
+     */
+    public void setId(Integer id)
+    {
+      this.id = id;
+    }
+
+    /**
+     * Set Bot ID
+     *
+     * @param botId
+     */
+    public void setBotId(Integer botId)
+    {
+      this.botId = botId;
+    }
+
+    /**
+     * Set Key
+     *
+     * @param key
+     */
+    public void setKey(String key)
+    {
+        this.key = key;
+    }
+
+    /**
+     * Set Value
+     *
+     * @param value
+     */
+    public void setValue(String value)
+    {
+        this.value = value;
+    }
+
+    /**
+     * Set Created
+     *
+     * @param created
+     */
+    public void setCreated(String created)
+    {
+        this.created = created;
+    }
+
+    /**
+     * Set Updated
+     *
+     * @param updated
+     */
+    public void setUpdated(String updated)
+    {
+        this.updated = updated;
+    }
+
+    /**
+     * Get ID
+     *
+     * @return Integer
+     */
+    public Integer getId()
+    {
+      return this.id;
+    }
+
+    /**
+     * Get Bot ID
+     *
+     * @return Integer
+     */
+    public Integer getBotId()
+    {
+      return this.botId;
+    }
+
+    /**
+     * Get Key
+     *
+     * @return String
+     */
+    public String getKey()
+    {
+        return this.key;
+    }
+
+    /**
+     * Get Value
+     *
+     * @return String
+     */
+    public String getValue()
+    {
+        return this.value;
+    }
+
+    /**
+     * Get Created
+     *
+     * @return String
+     */
+    public String getCreated()
+    {
+        return this.created;
+    }
+
+    /**
+     * Get Updated
+     *
+     * @return String
+     */
+    public String getUpdated()
+    {
+        return this.updated;
+    }
 }

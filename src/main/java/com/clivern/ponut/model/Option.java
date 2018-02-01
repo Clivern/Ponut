@@ -29,7 +29,7 @@ import javax.persistence.Table;
 public class Option extends Model {
 
     @Id
-    Long id;
+    Integer id;
 
     @NotNull
     String key;
@@ -59,7 +59,7 @@ public class Option extends Model {
      *
      * @param id
      */
-    public void setId(Long id)
+    public void setId(Integer id)
     {
       this.id = id;
     }
@@ -99,7 +99,7 @@ public class Option extends Model {
      *
      * @return Integer
      */
-    public Long getId()
+    public Integer getId()
     {
       return this.id;
     }

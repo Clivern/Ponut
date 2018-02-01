@@ -26,7 +26,7 @@ public class BotMeta {
 
 	protected Map<String, String> seeds = new HashMap<String, String>();
 
-	protected String tableName = "bots_meta";
+	protected String tableName = "botsMeta";
 
 	/**
 	 * Set Create Queries
