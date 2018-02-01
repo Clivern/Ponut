@@ -29,19 +29,19 @@ public class Option {
 	protected String tableName = "Options";
 
 	/**
-	 * Set Create Query 01
+	 * Set Create Queries
 	 */
-	public void up01()
+	public void up()
 	{
-		this.migrations.put("01_create_options_table", String.format("CREATE TABLE IF NOT EXISTS `%s` ()", this.tableName));
+		this.migrations.put("01_up_create_options_table", String.format("CREATE TABLE IF NOT EXISTS `%s` (id bigint auto_increment not null, key varchar(60) not null, value varchar(250) not null, autoload varchar(10) not null, constraint pk_options primary key (id));", this.tableName));
 	}
 
 	/**
-	 * Set Drop Query 01
+	 * Set Drop Queries
 	 */
-	public void down01()
+	public void down()
 	{
-		this.migrations.put("02_drop_options_table", String.format("DROP TABLE %s;", this.tableName));
+		this.migrations.put("01_down_drop_options_table", String.format("DROP TABLE IF EXISTS %s;", this.tableName));
 	}
 
 	/**
