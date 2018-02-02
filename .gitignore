@@ -19,3 +19,5 @@ gradle.properties
 .phpintel
 
 .DS_Store
+
+db-create-all.sql
