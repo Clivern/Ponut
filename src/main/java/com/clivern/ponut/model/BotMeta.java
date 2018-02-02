@@ -55,7 +55,7 @@ public class BotMeta extends Model {
      * @param  created
      * @param  updated
      */
-    public Migration(Integer botId, String key, String value, String created, String updated)
+    public BotMeta(Integer botId, String key, String value, String created, String updated)
     {
     	this.botId = botId;
         this.key = key;

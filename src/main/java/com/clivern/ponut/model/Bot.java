@@ -55,7 +55,7 @@ public class Bot extends Model {
      * @param  created
      * @param  updated
      */
-    public Migration(String name, String slug, String status, String created, String updated)
+    public Bot(String name, String slug, String status, String created, String updated)
     {
         this.name = name;
         this.slug = slug;
@@ -69,7 +69,7 @@ public class Bot extends Model {
      *
      * @param id
      */
-    public void setId(Long id)
+    public void setId(Integer id)
     {
       this.id = id;
     }
@@ -129,7 +129,7 @@ public class Bot extends Model {
      *
      * @return Integer
      */
-    public Long getId()
+    public Integer getId()
     {
       return this.id;
     }
