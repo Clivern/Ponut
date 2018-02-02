@@ -13,18 +13,14 @@
  */
 package com.clivern.ponut.database.migration;
 
-import java.util.HashMap;
-import java.util.Map;
-import com.clivern.ponut.exception.MigrationNotFound;
+import com.clivern.ponut.database.contract.Migration;
 
 /**
  * Bots Table Migrations
  *
  * @since 1.0.0
  */
-public class Bot {
-
-	protected Map<String, String> migrations = new HashMap<String, String>();
+public class BotTable extends Migration {
 
 	protected String tableName = "bots";
 
@@ -51,31 +47,5 @@ public class Bot {
 	public void down()
 	{
 		this.migrations.put("01_down_drop_bots_table", String.format("DROP TABLE IF EXISTS %s;", this.tableName));
-	}
-
-	/**
-	 * Get All Queries
-	 *
-	 * @return Map
-	 */
-	public Map<String, String> getMigrations()
-	{
-		return this.migrations;
-	}
-
-	/**
-	 * Get Specific Query
-	 *
-	 * @param  key
-	 * @return String
-	 * @throws MigrationNotFound
-	 */
-	public String getMigration(String key) throws MigrationNotFound
-	{
-        if( this.migrations.containsKey(key) ){
-            return this.migrations.get(key);
-        }
-
-        throw new MigrationNotFound(String.format("%s Migration Not Found!", key));
 	}
 }

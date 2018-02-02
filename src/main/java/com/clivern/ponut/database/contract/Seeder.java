@@ -11,38 +11,20 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.clivern.ponut.database.seed;
+package com.clivern.ponut.database.contract;
 
 import java.util.HashMap;
 import java.util.Map;
 import com.clivern.ponut.exception.SeedNotFound;
 
 /**
- * Bots Table Seeds
+ * Database Seeder Abstract Class
  *
  * @since 1.0.0
  */
-public class Bot {
+public abstract class Seeder {
 
 	protected Map<String, String> seeds = new HashMap<String, String>();
-
-	protected String tableName = "bots";
-
-	/**
-	 * Set Create Queries
-	 */
-	public void up()
-	{
-		//#
-	}
-
-	/**
-	 * Set Drop Queries
-	 */
-	public void down()
-	{
-		//#
-	}
 
 	/**
 	 * Get All Queries
@@ -69,4 +51,14 @@ public class Bot {
 
         throw new SeedNotFound(String.format("%s Seed Not Found!", key));
 	}
+
+	/**
+	 * Set Create Queries
+	 */
+	abstract public void up();
+
+	/**
+	 * Set Drop Queries
+	 */
+	abstract public void down();
 }

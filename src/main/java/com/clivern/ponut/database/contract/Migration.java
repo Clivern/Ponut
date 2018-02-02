@@ -11,45 +11,20 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.clivern.ponut.database.migration;
+package com.clivern.ponut.database.contract;
 
 import java.util.HashMap;
 import java.util.Map;
 import com.clivern.ponut.exception.MigrationNotFound;
 
 /**
- * Options Table Migrations
+ * Database Migration Abstract Class
  *
  * @since 1.0.0
  */
-public class Option {
+public abstract class Migration {
 
 	protected Map<String, String> migrations = new HashMap<String, String>();
-
-	protected String tableName = "options";
-
-	/**
-	 * Set Create Queries
-	 */
-	public void up()
-	{
-		this.migrations.put("01_up_create_options_table", String.format("CREATE TABLE IF NOT EXISTS `%s` (
-			`id` int NOT NULL AUTO_INCREMENT,
-			`key` varchar(60) NOT NULL,
-			`value` text NOT NULL,
-			`autoload` varchar(5) NOT NULL,
-			PRIMARY KEY (`id`),
-			KEY `key` (`key`)
-		) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;", this.tableName));
-	}
-
-	/**
-	 * Set Drop Queries
-	 */
-	public void down()
-	{
-		this.migrations.put("01_down_drop_options_table", String.format("DROP TABLE IF EXISTS %s;", this.tableName));
-	}
 
 	/**
 	 * Get All Queries
@@ -76,4 +51,14 @@ public class Option {
 
         throw new MigrationNotFound(String.format("%s Migration Not Found!", key));
 	}
+
+	/**
+	 * Set Create Queries
+	 */
+	abstract public void up();
+
+	/**
+	 * Set Drop Queries
+	 */
+	abstract public void down();
 }

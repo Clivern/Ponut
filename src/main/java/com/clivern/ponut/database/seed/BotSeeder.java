@@ -13,20 +13,16 @@
  */
 package com.clivern.ponut.database.seed;
 
-import java.util.HashMap;
-import java.util.Map;
-import com.clivern.ponut.exception.SeedNotFound;
+import com.clivern.ponut.database.contract.Seeder;
 
 /**
- * BotsMeta Table Seeds
+ * Bots Table Seeder
  *
  * @since 1.0.0
  */
-public class BotMeta {
+public class BotSeeder extends Seeder {
 
-	protected Map<String, String> seeds = new HashMap<String, String>();
-
-	protected String tableName = "botsMeta";
+	protected String tableName = "bots";
 
 	/**
 	 * Set Create Queries
@@ -42,31 +38,5 @@ public class BotMeta {
 	public void down()
 	{
 		//#
-	}
-
-	/**
-	 * Get All Queries
-	 *
-	 * @return Map
-	 */
-	public Map<String, String> getSeeds()
-	{
-		return this.seeds;
-	}
-
-	/**
-	 * Get Specific Query
-	 *
-	 * @param  key
-	 * @return String
-	 * @throws SeedNotFound
-	 */
-	public String getSeed(String key) throws SeedNotFound
-	{
-        if( this.seeds.containsKey(key) ){
-            return this.seeds.get(key);
-        }
-
-        throw new SeedNotFound(String.format("%s Seed Not Found!", key));
 	}
 }

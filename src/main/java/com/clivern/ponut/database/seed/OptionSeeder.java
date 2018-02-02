@@ -13,18 +13,14 @@
  */
 package com.clivern.ponut.database.seed;
 
-import java.util.HashMap;
-import java.util.Map;
-import com.clivern.ponut.exception.SeedNotFound;
+import com.clivern.ponut.database.contract.Seeder;
 
 /**
- * Options Table Seeds
+ * Options Table Seeder
  *
  * @since 1.0.0
  */
-public class Option {
-
-	protected Map<String, String> seeds = new HashMap<String, String>();
+public class OptionSeeder extends Seeder {
 
 	protected String tableName = "options";
 
@@ -42,31 +38,5 @@ public class Option {
 	public void down()
 	{
 		this.seeds.put("01_down_delete_from_options_table", String.format("DELETE FROM %s WHERE key='app_name';", this.tableName));
-	}
-
-	/**
-	 * Get All Queries
-	 *
-	 * @return Map
-	 */
-	public Map<String, String> getSeeds()
-	{
-		return this.seeds;
-	}
-
-	/**
-	 * Get Specific Query
-	 *
-	 * @param  key
-	 * @return String
-	 * @throws SeedNotFound
-	 */
-	public String getSeed(String key) throws SeedNotFound
-	{
-        if( this.seeds.containsKey(key) ){
-            return this.seeds.get(key);
-        }
-
-        throw new SeedNotFound(String.format("%s Seed Not Found!", key));
 	}
 }
