@@ -18,6 +18,7 @@ import javax.persistence.Id;
 import io.ebean.annotation.NotNull;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Column;
 
 /**
  * Options Model
@@ -26,18 +27,18 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="options")
-public class Option extends Model {
-
-    @Id
-    Integer id;
+public class Option extends Base {
 
     @NotNull
+    @Column(name="`key`")
     String key;
 
     @NotNull
+    @Column(name="`value`")
     String value;
 
     @NotNull
+    @Column(name="`autoload`")
     String autoload;
 
     /**
@@ -52,16 +53,6 @@ public class Option extends Model {
         this.key = key;
         this.value = value;
         this.autoload = autoload;
-    }
-
-    /**
-     * Set ID
-     *
-     * @param id
-     */
-    public void setId(Integer id)
-    {
-      this.id = id;
     }
 
     /**
@@ -92,16 +83,6 @@ public class Option extends Model {
     public void setAutoload(String autoload)
     {
         this.autoload = autoload;
-    }
-
-    /**
-     * Get ID
-     *
-     * @return Integer
-     */
-    public Integer getId()
-    {
-      return this.id;
     }
 
     /**

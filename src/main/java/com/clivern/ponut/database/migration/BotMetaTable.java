@@ -31,15 +31,15 @@ public class BotMetaTable extends Migration  {
     public void up()
     {
         this.migrations.put("01_up_create_bots_meta_table", String.format("CREATE TABLE IF NOT EXISTS %s ( \n" +
-            "id int NOT NULL AUTO_INCREMENT,\n" +
-            "botId int NOT NULL,\n" +
-            "key varchar(60) NOT NULL,\n" +
-            "value text NOT NULL,\n" +
-            "created datetime NOT NULL,\n" +
-            "updated datetime NOT NULL,\n" +
-            "PRIMARY KEY (id),\n" +
-            "KEY key (key),\n" +
-            "FOREIGN KEY (botId) REFERENCES %s(id)\n" +
+            "`id` int NOT NULL AUTO_INCREMENT,\n" +
+            "`botId` int NOT NULL,\n" +
+            "`key` varchar(60) NOT NULL,\n" +
+            "`value` text NOT NULL,\n" +
+            "`created` datetime NOT NULL,\n" +
+            "`updated` datetime NOT NULL,\n" +
+            "PRIMARY KEY (`id`),\n" +
+            "KEY `key` (`key`),\n" +
+            "FOREIGN KEY (`botId`) REFERENCES %s(`id`)\n" +
         ") ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;", this.tableName, this.relationTable));
     }
 

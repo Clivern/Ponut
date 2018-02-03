@@ -30,14 +30,14 @@ public class MigrationTable extends Migration  {
     public void up()
     {
         this.migrations.put("01_up_create_migrations_table", String.format("CREATE TABLE IF NOT EXISTS %s (\n" +
-            "id int NOT NULL AUTO_INCREMENT,\n" +
-            "key varchar(60) NOT NULL,\n" +
-            "value varchar(150) NOT NULL,\n" +
-            "status varchar(5) NOT NULL,\n" +
-            "created datetime NOT NULL,\n" +
-            "updated datetime NOT NULL,\n" +
-            "PRIMARY KEY (id),\n" +
-            "KEY key (key)\n" +
+            "`id` int NOT NULL AUTO_INCREMENT,\n" +
+            "`key` varchar(60) NOT NULL,\n" +
+            "`value` varchar(150) NOT NULL,\n" +
+            "`status` varchar(5) NOT NULL,\n" +
+            "`created` datetime NOT NULL,\n" +
+            "`updated` datetime NOT NULL,\n" +
+            "PRIMARY KEY (`id`),\n" +
+            "KEY `key` (`key`)\n" +
         ") ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;", this.tableName));
 
     }

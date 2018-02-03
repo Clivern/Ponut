@@ -24,6 +24,7 @@ import org.pmw.tinylog.writers.*;
 import com.typesafe.config.*;
 import com.clivern.ponut.module.service.utils.ConfigService;
 import com.clivern.ponut.module.service.utils.LoggerService;
+import com.clivern.ponut.module.service.database.DatabaseService;
 
 public class App {
 
@@ -34,7 +35,7 @@ public class App {
         }else{
 
             (new App()).testLogger();
-
+            new App().ebeanTest();
             Web.call();
             Api.call();
         }
@@ -42,13 +43,14 @@ public class App {
 
     public void testLogger()
     {
-        Config config = (new ConfigService()).load();
+        Config config = ConfigService.instance().load();
         new LoggerService(config).config();
         Logger.info(config.getString("database.username"));
     }
 
     public void ebeanTest()
     {
+        new DatabaseService(ConfigService.instance().load()).config();
         Option option = new Option("Key1", "Value1", "On1");
         option.save();
     }

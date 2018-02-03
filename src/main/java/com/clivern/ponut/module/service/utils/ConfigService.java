@@ -28,12 +28,36 @@ public class ConfigService implements ConfigContract {
 
     protected String configFile = "config/app.conf";
 
+    private static ConfigService instance = null;
+
+
+    protected ConfigService()
+    {
+        // Exists only to defeat instantiation.
+    }
+
+    /**
+     * Get Instance or A new one
+     *
+     * @return ConfigService
+     */
+    public static ConfigService instance()
+    {
+        if(instance == null) {
+            instance = new ConfigService();
+        }
+
+        return instance;
+    }
+
     /**
      * Load Configs
      */
     public Config load()
     {
-        this.config = ConfigFactory.load(ConfigFactory.parseFile(new File(this.configFile)));
+        if( this.config == null ){
+            this.config = ConfigFactory.load(ConfigFactory.parseFile(new File(this.configFile)));
+        }
 
         return this.config;
     }

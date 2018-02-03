@@ -30,14 +30,14 @@ public class BotTable extends Migration {
     public void up()
     {
         this.migrations.put("01_up_create_bots_table", String.format("CREATE TABLE IF NOT EXISTS %s (\n" +
-            "id int NOT NULL AUTO_INCREMENT,\n" +
-            "name varchar(50) NOT NULL,\n" +
-            "slug varchar(80) NOT NULL,\n" +
-            "status varchar(5) NOT NULL,\n" +
-            "created datetime NOT NULL,\n" +
-            "updated datetime NOT NULL,\n" +
-            "PRIMARY KEY (id),\n" +
-            "KEY slug (slug)\n" +
+            "`id` int NOT NULL AUTO_INCREMENT,\n" +
+            "`name` varchar(50) NOT NULL,\n" +
+            "`slug` varchar(80) NOT NULL,\n" +
+            "`status` varchar(5) NOT NULL,\n" +
+            "`created` datetime NOT NULL,\n" +
+            "`updated` datetime NOT NULL,\n" +
+            "PRIMARY KEY (`id`),\n" +
+            "KEY `slug` (`slug`)\n" +
         ") ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;", this.tableName));
     }
 
