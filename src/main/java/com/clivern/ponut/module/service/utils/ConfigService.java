@@ -1,4 +1,4 @@
-/*
+	/*
  * Copyright (C) 2018 Clivern <http://clivern.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -11,8 +11,10 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.clivern.ponut.module.contract.utils;
+package com.clivern.ponut.module.service.utils;
 
+import com.typesafe.config.*;
+import java.io.File;
 import com.clivern.ponut.module.contract.utils.ConfigContract;
 
 /**
@@ -22,4 +24,17 @@ import com.clivern.ponut.module.contract.utils.ConfigContract;
  */
 public class ConfigService implements ConfigContract {
 
+	protected Config config;
+
+	protected String configFile = "config/app.conf";
+
+	/**
+	 * Load Configs
+	 */
+	public Config load()
+	{
+		this.config = ConfigFactory.load(ConfigFactory.parseFile(new File(this.configFile)));
+
+		return this.config;
+	}
 }
