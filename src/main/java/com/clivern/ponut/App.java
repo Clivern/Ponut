@@ -26,6 +26,11 @@ import com.clivern.ponut.module.service.utils.ConfigService;
 import com.clivern.ponut.module.service.utils.LoggerService;
 import com.clivern.ponut.module.service.database.DatabaseService;
 
+import io.ebean.Ebean;
+import io.ebean.CallableSql;
+import io.ebean.RawSql;
+import io.ebean.RawSqlBuilder;
+
 public class App {
 
     public static void main(String[] args)
@@ -51,6 +56,15 @@ public class App {
     public void ebeanTest()
     {
         new DatabaseService(ConfigService.instance().load()).config();
+
+        String sql1 = "DROP TABLE IF EXISTS options;";
+        CallableSql cs1 = Ebean.createCallableSql(sql1);
+        Ebean.execute(cs1);
+
+        String sql2 = "CREATE TABLE IF NOT EXISTS options (`id` int NOT NULL AUTO_INCREMENT,`key` varchar(60) NOT NULL,`value` text NOT NULL,`autoload` varchar(5) NOT NULL,PRIMARY KEY (`id`),KEY `key` (`key`)) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;";
+        CallableSql cs2 = Ebean.createCallableSql(sql2);
+        Ebean.execute(cs2);
+
         Option option = new Option("Key1", "Value1", "On1");
         option.save();
     }

@@ -44,6 +44,6 @@ public class OptionTable extends Migration  {
      */
     public void down()
     {
-        this.migrations.put("01_down_drop_options_table", String.format("DROP TABLE IF EXISTS `%s`;", this.tableName));
+        this.migrations.put("01_down_drop_options_table", String.format("DROP TABLE IF EXISTS %s;", this.tableName));
     }
 }
