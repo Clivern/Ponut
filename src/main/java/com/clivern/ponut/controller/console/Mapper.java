@@ -25,7 +25,7 @@ import java.lang.String;
  */
 public class Mapper implements Runnable {
 
-	/**
+    /**
      * Create a New Bot
      * $> JAR create fred -t slack
      * $> JAR create fred --type messenger
@@ -52,7 +52,7 @@ public class Mapper implements Runnable {
      * Delete a Bot
      * $> JAR -D fred
      * $> JAR delete fred
-	 */
+     */
     @Option(names = { "-c", "create" }, paramLabel="<bot>", description = "Create a new bot")
     private String create;
 
@@ -105,8 +105,8 @@ public class Mapper implements Runnable {
         }
     }
 
-	public static void call(String[] args)
-	{
-		CommandLine.run(new Mapper(), System.out, args);
-	}
+    public static void call(String[] args)
+    {
+        CommandLine.run(new Mapper(), System.out, args);
+    }
 }

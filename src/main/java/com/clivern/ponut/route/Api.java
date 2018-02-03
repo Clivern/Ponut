@@ -17,8 +17,8 @@ import static spark.Spark.*;
 
 public class Api {
 
-	public static void call()
-	{
-		//~
-	}
+    public static void call()
+    {
+        //~
+    }
 }

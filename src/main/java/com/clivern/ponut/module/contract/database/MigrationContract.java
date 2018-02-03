@@ -23,41 +23,41 @@ import com.clivern.ponut.database.contract.Migration;
  */
 public interface MigrationContract {
 
-	/**
-	 * Set Migration
-	 *
-	 * @param  migration
-	 * @return Boolean
-	 */
-	abstract public Boolean setMigration(Migration migration);
+    /**
+     * Set Migration
+     *
+     * @param  migration
+     * @return Boolean
+     */
+    abstract public Boolean setMigration(Migration migration);
 
-	/**
-	 * Run Migrations
-	 *
-	 * @return Boolean
-	 */
-	abstract public Boolean runMigrations();
+    /**
+     * Run Migrations
+     *
+     * @return Boolean
+     */
+    abstract public Boolean runMigrations();
 
-	/**
-	 * Run Migration
-	 *
-	 * @param  key
-	 * @return Boolean
-	 */
-	abstract public Boolean runMigration(String key);
+    /**
+     * Run Migration
+     *
+     * @param  key
+     * @return Boolean
+     */
+    abstract public Boolean runMigration(String key);
 
-	/**
-	 * Get Migrations
-	 *
-	 * @return Map
-	 */
-	abstract public Map<String, String> getMigrations();
+    /**
+     * Get Migrations
+     *
+     * @return Map
+     */
+    abstract public Map<String, String> getMigrations();
 
-	/**
-	 * Get Migration
-	 *
-	 * @param  key
-	 * @return String
-	 */
-	abstract public String getMigration(String key);
+    /**
+     * Get Migration
+     *
+     * @param  key
+     * @return String
+     */
+    abstract public String getMigration(String key);
 }

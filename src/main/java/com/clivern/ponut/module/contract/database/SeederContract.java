@@ -23,41 +23,41 @@ import com.clivern.ponut.database.contract.Seeder;
  */
 public interface SeederContract {
 
-	/**
-	 * Set Seeder
-	 *
-	 * @param  seeder
-	 * @return Boolean
-	 */
-	abstract public Boolean setSeeder(Seeder seeder);
+    /**
+     * Set Seeder
+     *
+     * @param  seeder
+     * @return Boolean
+     */
+    abstract public Boolean setSeeder(Seeder seeder);
 
-	/**
-	 * Run Seeders
-	 *
-	 * @return Boolean
-	 */
-	abstract public Boolean runSeeders();
+    /**
+     * Run Seeders
+     *
+     * @return Boolean
+     */
+    abstract public Boolean runSeeders();
 
-	/**
-	 * Run Seeder
-	 *
-	 * @param  key
-	 * @return Boolean
-	 */
-	abstract public Boolean runSeeder(String key);
+    /**
+     * Run Seeder
+     *
+     * @param  key
+     * @return Boolean
+     */
+    abstract public Boolean runSeeder(String key);
 
-	/**
-	 * Get Seeders
-	 *
-	 * @return Map
-	 */
-	abstract public Map<String, String> getSeeders();
+    /**
+     * Get Seeders
+     *
+     * @return Map
+     */
+    abstract public Map<String, String> getSeeders();
 
-	/**
-	 * Get Seeder
-	 *
-	 * @param  key
-	 * @return String
-	 */
-	abstract public String getSeeder(String key);
+    /**
+     * Get Seeder
+     *
+     * @param  key
+     * @return String
+     */
+    abstract public String getSeeder(String key);
 }

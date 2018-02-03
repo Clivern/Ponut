@@ -18,12 +18,12 @@ import com.clivern.ponut.controller.web.Home;
 
 public class Web {
 
-	public static void call()
-	{
-		get("/", (request, response) -> Home.render(request, response));
+    public static void call()
+    {
+        get("/", (request, response) -> Home.render(request, response));
 
-		// Load Our Bots
-		new com.clivern.ponut.bot.boilerplate.slack.Routing().call();
-		new com.clivern.ponut.bot.boilerplate.messenger.Routing().call();
-	}
+        // Load Our Bots
+        new com.clivern.ponut.bot.boilerplate.slack.Routing().call();
+        new com.clivern.ponut.bot.boilerplate.messenger.Routing().call();
+    }
 }

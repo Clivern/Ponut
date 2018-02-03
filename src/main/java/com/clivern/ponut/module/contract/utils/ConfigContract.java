@@ -22,8 +22,8 @@ import com.typesafe.config.*;
  */
 public interface ConfigContract {
 
-	/**
-	 * Load Configs
-	 */
-	public Config load();
+    /**
+     * Load Configs
+     */
+    public Config load();
 }

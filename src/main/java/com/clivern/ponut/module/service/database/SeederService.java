@@ -25,61 +25,61 @@ import com.clivern.ponut.module.contract.database.SeederContract;
  */
 public class SeederService implements SeederContract {
 
-	/**
-	 * Set Seeder
-	 *
-	 * @param  seeder
-	 * @return Boolean
-	 */
-	public Boolean setSeeder(Seeder seeder)
-	{
-		//#
-		return false;
-	}
+    /**
+     * Set Seeder
+     *
+     * @param  seeder
+     * @return Boolean
+     */
+    public Boolean setSeeder(Seeder seeder)
+    {
+        //#
+        return false;
+    }
 
-	/**
-	 * Run Seeders
-	 *
-	 * @return Boolean
-	 */
-	public Boolean runSeeders()
-	{
-		//#
-		return false;
-	}
+    /**
+     * Run Seeders
+     *
+     * @return Boolean
+     */
+    public Boolean runSeeders()
+    {
+        //#
+        return false;
+    }
 
-	/**
-	 * Run Seeder
-	 *
-	 * @param  key
-	 * @return Boolean
-	 */
-	public Boolean runSeeder(String key)
-	{
-		//#
-		return false;
-	}
+    /**
+     * Run Seeder
+     *
+     * @param  key
+     * @return Boolean
+     */
+    public Boolean runSeeder(String key)
+    {
+        //#
+        return false;
+    }
 
-	/**
-	 * Get Seeders
-	 *
-	 * @return Map
-	 */
-	public Map<String, String> getSeeders()
-	{
-		//#
-		return new HashMap<String, String>();
-	}
+    /**
+     * Get Seeders
+     *
+     * @return Map
+     */
+    public Map<String, String> getSeeders()
+    {
+        //#
+        return new HashMap<String, String>();
+    }
 
-	/**
-	 * Get Seeder
-	 *
-	 * @param  key
-	 * @return String
-	 */
-	public String getSeeder(String key)
-	{
-		//#
-		return "";
-	}
+    /**
+     * Get Seeder
+     *
+     * @param  key
+     * @return String
+     */
+    public String getSeeder(String key)
+    {
+        //#
+        return "";
+    }
 }

@@ -25,61 +25,61 @@ import com.clivern.ponut.module.contract.database.MigrationContract;
  */
 public class MigrationService implements MigrationContract {
 
-	/**
-	 * Set Migration
-	 *
-	 * @param  migration
-	 * @return Boolean
-	 */
-	public Boolean setMigration(Migration migration)
-	{
-		//#
-		return false;
-	}
+    /**
+     * Set Migration
+     *
+     * @param  migration
+     * @return Boolean
+     */
+    public Boolean setMigration(Migration migration)
+    {
+        //#
+        return false;
+    }
 
-	/**
-	 * Run Migrations
-	 *
-	 * @return Boolean
-	 */
-	public Boolean runMigrations()
-	{
-		//#
-		return false;
-	}
+    /**
+     * Run Migrations
+     *
+     * @return Boolean
+     */
+    public Boolean runMigrations()
+    {
+        //#
+        return false;
+    }
 
-	/**
-	 * Run Migration
-	 *
-	 * @param  key
-	 * @return Boolean
-	 */
-	public Boolean runMigration(String key)
-	{
-		//#
-		return false;
-	}
+    /**
+     * Run Migration
+     *
+     * @param  key
+     * @return Boolean
+     */
+    public Boolean runMigration(String key)
+    {
+        //#
+        return false;
+    }
 
-	/**
-	 * Get Migrations
-	 *
-	 * @return Map
-	 */
-	public Map<String, String> getMigrations()
-	{
-		//#
-		return new HashMap<String, String>();
-	}
+    /**
+     * Get Migrations
+     *
+     * @return Map
+     */
+    public Map<String, String> getMigrations()
+    {
+        //#
+        return new HashMap<String, String>();
+    }
 
-	/**
-	 * Get Migration
-	 *
-	 * @param  key
-	 * @return String
-	 */
-	public String getMigration(String key)
-	{
-		//#
-		return "";
-	}
+    /**
+     * Get Migration
+     *
+     * @param  key
+     * @return String
+     */
+    public String getMigration(String key)
+    {
+        //#
+        return "";
+    }
 }

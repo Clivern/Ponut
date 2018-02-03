@@ -18,9 +18,9 @@ import com.clivern.ponut.bot.boilerplate.messenger.controller.*;
 
 public class Routing {
 
-	public void call()
-	{
-		get("/messenger", (request, response) -> Base.render(request, response));
-	}
+    public void call()
+    {
+        get("/messenger", (request, response) -> Base.render(request, response));
+    }
 
 }

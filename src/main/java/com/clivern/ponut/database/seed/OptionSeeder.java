@@ -22,21 +22,21 @@ import com.clivern.ponut.database.contract.Seeder;
  */
 public class OptionSeeder extends Seeder {
 
-	protected String tableName = "options";
+    protected String tableName = "options";
 
-	/**
-	 * Set Create Queries
-	 */
-	public void up()
-	{
-		this.seeds.put("01_up_insert_into_options_table", String.format("INSERT INTO %s (key, value, autoload) VALUES ('app_name', 'Ponut', 'on');", this.tableName));
-	}
+    /**
+     * Set Create Queries
+     */
+    public void up()
+    {
+        this.seeds.put("01_up_insert_into_options_table", String.format("INSERT INTO %s (key, value, autoload) VALUES ('app_name', 'Ponut', 'on');", this.tableName));
+    }
 
-	/**
-	 * Set Drop Queries
-	 */
-	public void down()
-	{
-		this.seeds.put("01_down_delete_from_options_table", String.format("DELETE FROM %s WHERE key='app_name';", this.tableName));
-	}
+    /**
+     * Set Drop Queries
+     */
+    public void down()
+    {
+        this.seeds.put("01_down_delete_from_options_table", String.format("DELETE FROM %s WHERE key='app_name';", this.tableName));
+    }
 }

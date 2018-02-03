@@ -31,55 +31,55 @@ import com.clivern.ponut.module.contract.utils.LoggerContract;
  */
 public class LoggerService implements LoggerContract {
 
-	protected Config config;
+    protected Config config;
 
-	protected String logLevel = "info"; // TRACE < DEBUG < INFO < WARNING < ERROR
+    protected String logLevel = "info"; // TRACE < DEBUG < INFO < WARNING < ERROR
 
-	protected String logFilePath = "storage/logs/";
+    protected String logFilePath = "storage/logs/";
 
-	protected String logFileFormat = "app"; // filename or current_date (shows date.log)
+    protected String logFileFormat = "app"; // filename or current_date (shows date.log)
 
-	protected String logType = "file"; //file or console
+    protected String logType = "file"; //file or console
 
-	protected String currentDateFormat = "yyyy-MM-dd";
+    protected String currentDateFormat = "yyyy-MM-dd";
 
-	protected Map<String, Level> logLevels = new HashMap<String, Level>();
+    protected Map<String, Level> logLevels = new HashMap<String, Level>();
 
 
-	/**
-	 * Class Constructor
-	 *
-	 * @param  config
-	 */
-	public LoggerService(Config config)
-	{
-		this.config = config;
-	}
+    /**
+     * Class Constructor
+     *
+     * @param  config
+     */
+    public LoggerService(Config config)
+    {
+        this.config = config;
+    }
 
-	/**
-	 * Config Logger
-	 */
-	public void config()
-	{
-		this.logLevel = this.config.getString("logging.level");
-		this.logFilePath = this.config.getString("logging.file_path");
-		this.logFileFormat = this.config.getString("logging.file_format");
-		this.logType = this.config.getString("logging.log_type");
-		this.currentDateFormat = this.config.getString("logging.current_date_format");
-	    this.logLevels.put("trace", Level.TRACE);
-	    this.logLevels.put("debug", Level.DEBUG);
-	    this.logLevels.put("info", Level.INFO);
-	    this.logLevels.put("warning", Level.WARNING);
-	    this.logLevels.put("error", Level.ERROR);
+    /**
+     * Config Logger
+     */
+    public void config()
+    {
+        this.logLevel = this.config.getString("logging.level");
+        this.logFilePath = this.config.getString("logging.file_path");
+        this.logFileFormat = this.config.getString("logging.file_format");
+        this.logType = this.config.getString("logging.log_type");
+        this.currentDateFormat = this.config.getString("logging.current_date_format");
+        this.logLevels.put("trace", Level.TRACE);
+        this.logLevels.put("debug", Level.DEBUG);
+        this.logLevels.put("info", Level.INFO);
+        this.logLevels.put("warning", Level.WARNING);
+        this.logLevels.put("error", Level.ERROR);
 
-		if( this.logType.equals("file") ){
-			DateFormat dateFormat = new SimpleDateFormat(this.currentDateFormat);
-			Date date = new Date();
-			String logFileName = (this.logFileFormat.equals("current_date")) ? dateFormat.format(date) + ".log" : this.logFileFormat + ".log";
-        	Configurator.defaultConfig()
-               	.writer(new FileWriter(this.logFilePath + logFileName))
-               	.level((this.logLevels.containsKey(this.logLevel)) ? this.logLevels.get(this.logLevel) : Level.INFO)
-               	.activate();
+        if( this.logType.equals("file") ){
+            DateFormat dateFormat = new SimpleDateFormat(this.currentDateFormat);
+            Date date = new Date();
+            String logFileName = (this.logFileFormat.equals("current_date")) ? dateFormat.format(date) + ".log" : this.logFileFormat + ".log";
+            Configurator.defaultConfig()
+                .writer(new FileWriter(this.logFilePath + logFileName))
+                .level((this.logLevels.containsKey(this.logLevel)) ? this.logLevels.get(this.logLevel) : Level.INFO)
+                .activate();
         }
-	}
+    }
 }

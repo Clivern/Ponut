@@ -24,17 +24,17 @@ import com.clivern.ponut.module.contract.utils.ConfigContract;
  */
 public class ConfigService implements ConfigContract {
 
-	protected Config config;
+    protected Config config;
 
-	protected String configFile = "config/app.conf";
+    protected String configFile = "config/app.conf";
 
-	/**
-	 * Load Configs
-	 */
-	public Config load()
-	{
-		this.config = ConfigFactory.load(ConfigFactory.parseFile(new File(this.configFile)));
+    /**
+     * Load Configs
+     */
+    public Config load()
+    {
+        this.config = ConfigFactory.load(ConfigFactory.parseFile(new File(this.configFile)));
 
-		return this.config;
-	}
+        return this.config;
+    }
 }

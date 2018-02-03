@@ -24,9 +24,9 @@ import com.clivern.ponut.module.contract.utils.ConfigContract;
  */
 public interface LoggerContract {
 
-	/**
-	 * Configure Logger
-	 */
-	public void config();
+    /**
+     * Configure Logger
+     */
+    public void config();
 
 }

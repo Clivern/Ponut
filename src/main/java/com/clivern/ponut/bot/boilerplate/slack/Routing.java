@@ -18,9 +18,9 @@ import com.clivern.ponut.bot.boilerplate.slack.controller.*;
 
 public class Routing {
 
-	public void call()
-	{
-		get("/slack", (request, response) -> Base.render(request, response));
-	}
+    public void call()
+    {
+        get("/slack", (request, response) -> Base.render(request, response));
+    }
 
 }

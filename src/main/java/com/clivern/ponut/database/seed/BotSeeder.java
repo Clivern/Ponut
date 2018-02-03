@@ -22,21 +22,21 @@ import com.clivern.ponut.database.contract.Seeder;
  */
 public class BotSeeder extends Seeder {
 
-	protected String tableName = "bots";
+    protected String tableName = "bots";
 
-	/**
-	 * Set Create Queries
-	 */
-	public void up()
-	{
-		//#
-	}
+    /**
+     * Set Create Queries
+     */
+    public void up()
+    {
+        //#
+    }
 
-	/**
-	 * Set Drop Queries
-	 */
-	public void down()
-	{
-		//#
-	}
+    /**
+     * Set Drop Queries
+     */
+    public void down()
+    {
+        //#
+    }
 }

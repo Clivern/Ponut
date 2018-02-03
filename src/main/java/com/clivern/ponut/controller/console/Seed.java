@@ -20,18 +20,18 @@ package com.clivern.ponut.controller.console;
  */
 public class Seed {
 
-	private boolean info = false;
+    private boolean info = false;
 
 
-	public void setInfo(Boolean info)
-	{
-		this.info = info;
-	}
+    public void setInfo(Boolean info)
+    {
+        this.info = info;
+    }
 
-	public boolean getInfo()
-	{
-		return this.info;
-	}
+    public boolean getInfo()
+    {
+        return this.info;
+    }
 
     public void run()
     {
@@ -40,6 +40,6 @@ public class Seed {
 
     public static void help()
     {
-    	System.out.println("Help Here....");
+        System.out.println("Help Here....");
     }
 }

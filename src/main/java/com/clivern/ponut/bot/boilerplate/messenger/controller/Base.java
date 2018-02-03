@@ -18,8 +18,8 @@ import spark.Response;
 
 public class Base {
 
-	public static String render(Request request, Response response)
-	{
-		return "Messenger";
-	}
+    public static String render(Request request, Response response)
+    {
+        return "Messenger";
+    }
 }

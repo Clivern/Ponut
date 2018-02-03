@@ -57,7 +57,7 @@ public class BotMeta extends Model {
      */
     public BotMeta(Integer botId, String key, String value, String created, String updated)
     {
-    	this.botId = botId;
+        this.botId = botId;
         this.key = key;
         this.value = value;
         this.created = created;

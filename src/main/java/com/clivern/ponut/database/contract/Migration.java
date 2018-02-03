@@ -24,41 +24,41 @@ import com.clivern.ponut.exception.MigrationNotFound;
  */
 public abstract class Migration {
 
-	protected Map<String, String> migrations = new HashMap<String, String>();
+    protected Map<String, String> migrations = new HashMap<String, String>();
 
-	/**
-	 * Get All Queries
-	 *
-	 * @return Map
-	 */
-	public Map<String, String> getMigrations()
-	{
-		return this.migrations;
-	}
+    /**
+     * Get All Queries
+     *
+     * @return Map
+     */
+    public Map<String, String> getMigrations()
+    {
+        return this.migrations;
+    }
 
-	/**
-	 * Get Specific Query
-	 *
-	 * @param  key
-	 * @return String
-	 * @throws MigrationNotFound
-	 */
-	public String getMigration(String key) throws MigrationNotFound
-	{
+    /**
+     * Get Specific Query
+     *
+     * @param  key
+     * @return String
+     * @throws MigrationNotFound
+     */
+    public String getMigration(String key) throws MigrationNotFound
+    {
         if( this.migrations.containsKey(key) ){
             return this.migrations.get(key);
         }
 
         throw new MigrationNotFound(String.format("%s Migration Not Found!", key));
-	}
+    }
 
-	/**
-	 * Set Create Queries
-	 */
-	abstract public void up();
+    /**
+     * Set Create Queries
+     */
+    abstract public void up();
 
-	/**
-	 * Set Drop Queries
-	 */
-	abstract public void down();
+    /**
+     * Set Drop Queries
+     */
+    abstract public void down();
 }

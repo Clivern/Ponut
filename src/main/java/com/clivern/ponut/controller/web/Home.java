@@ -18,8 +18,8 @@ import spark.Response;
 
 public class Home {
 
-	public static String render(Request request, Response response)
-	{
-		return "#> Your Ponut is Ready For Hacking ᕙ(⇀‸↼‶)ᕗ";
-	}
+    public static String render(Request request, Response response)
+    {
+        return "#> Your Ponut is Ready For Hacking ᕙ(⇀‸↼‶)ᕗ";
+    }
 }

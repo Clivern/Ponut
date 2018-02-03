@@ -22,21 +22,21 @@ import com.clivern.ponut.database.contract.Seeder;
  */
 public class MigrationSeeder extends Seeder {
 
-	protected String tableName = "migrations";
+    protected String tableName = "migrations";
 
-	/**
-	 * Set Create Queries
-	 */
-	public void up()
-	{
-		//#
-	}
+    /**
+     * Set Create Queries
+     */
+    public void up()
+    {
+        //#
+    }
 
-	/**
-	 * Set Drop Queries
-	 */
-	public void down()
-	{
-		//#
-	}
+    /**
+     * Set Drop Queries
+     */
+    public void down()
+    {
+        //#
+    }
 }

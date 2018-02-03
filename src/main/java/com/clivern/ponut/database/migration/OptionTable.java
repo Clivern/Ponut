@@ -22,28 +22,28 @@ import com.clivern.ponut.database.contract.Migration;
  */
 public class OptionTable extends Migration  {
 
-	protected String tableName = "options";
+    protected String tableName = "options";
 
-	/**
-	 * Set Create Queries
-	 */
-	public void up()
-	{
-		this.migrations.put("01_up_create_options_table", String.format("CREATE TABLE IF NOT EXISTS %s (\n" +
-			"id int NOT NULL AUTO_INCREMENT,\n" +
-			"key varchar(60) NOT NULL,\n" +
-			"value text NOT NULL,\n" +
-			"autoload varchar(5) NOT NULL,\n" +
-			"PRIMARY KEY (id),\n" +
-			"KEY key (key)\n" +
-		") ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;", this.tableName));
-	}
+    /**
+     * Set Create Queries
+     */
+    public void up()
+    {
+        this.migrations.put("01_up_create_options_table", String.format("CREATE TABLE IF NOT EXISTS %s (\n" +
+            "id int NOT NULL AUTO_INCREMENT,\n" +
+            "key varchar(60) NOT NULL,\n" +
+            "value text NOT NULL,\n" +
+            "autoload varchar(5) NOT NULL,\n" +
+            "PRIMARY KEY (id),\n" +
+            "KEY key (key)\n" +
+        ") ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;", this.tableName));
+    }
 
-	/**
-	 * Set Drop Queries
-	 */
-	public void down()
-	{
-		this.migrations.put("01_down_drop_options_table", String.format("DROP TABLE IF EXISTS %s;", this.tableName));
-	}
+    /**
+     * Set Drop Queries
+     */
+    public void down()
+    {
+        this.migrations.put("01_down_drop_options_table", String.format("DROP TABLE IF EXISTS %s;", this.tableName));
+    }
 }
