@@ -18,6 +18,7 @@ import javax.persistence.Id;
 import io.ebean.annotation.NotNull;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Column;
 
 /**
  * Bots Meta Model
@@ -26,24 +27,26 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="botsMeta")
-public class BotMeta extends Model {
-
-    @Id
-    Integer id;
+public class BotMeta extends Base {
 
     @NotNull
+    @Column(name="`botId`")
     Integer botId;
 
     @NotNull
+    @Column(name="`key`")
     String key;
 
     @NotNull
+    @Column(name="`value`")
     String value;
 
     @NotNull
+    @Column(name="`created`")
     String created;
 
     @NotNull
+    @Column(name="`updated`")
     String updated;
 
     /**
@@ -62,16 +65,6 @@ public class BotMeta extends Model {
         this.value = value;
         this.created = created;
         this.updated = updated;
-    }
-
-    /**
-     * Set ID
-     *
-     * @param id
-     */
-    public void setId(Integer id)
-    {
-      this.id = id;
     }
 
     /**
@@ -122,16 +115,6 @@ public class BotMeta extends Model {
     public void setUpdated(String updated)
     {
         this.updated = updated;
-    }
-
-    /**
-     * Get ID
-     *
-     * @return Integer
-     */
-    public Integer getId()
-    {
-      return this.id;
     }
 
     /**

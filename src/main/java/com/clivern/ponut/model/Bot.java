@@ -18,6 +18,7 @@ import javax.persistence.Id;
 import io.ebean.annotation.NotNull;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Column;
 
 /**
  * Bots Model
@@ -26,24 +27,34 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="bots")
-public class Bot extends Model {
-
-    @Id
-    Integer id;
+public class Bot extends Base {
 
     @NotNull
+    @Column(name="`name`")
     String name;
 
     @NotNull
+    @Column(name="`slug`")
     String slug;
 
     @NotNull
+    @Column(name="`status`")
     String status;
 
     @NotNull
+    @Column(name="`type`")
+    String type;
+
+    @NotNull
+    @Column(name="`isDefault`")
+    String isDefault;
+
+    @NotNull
+    @Column(name="`created`")
     String created;
 
     @NotNull
+    @Column(name="`updated`")
     String updated;
 
     /**
@@ -55,23 +66,15 @@ public class Bot extends Model {
      * @param  created
      * @param  updated
      */
-    public Bot(String name, String slug, String status, String created, String updated)
+    public Bot(String name, String slug, String status, String type, String isDefault, String created, String updated)
     {
         this.name = name;
         this.slug = slug;
         this.status = status;
+        this.type = type;
+        this.isDefault = isDefault;
         this.created = created;
         this.updated = updated;
-    }
-
-    /**
-     * Set ID
-     *
-     * @param id
-     */
-    public void setId(Integer id)
-    {
-      this.id = id;
     }
 
     /**
@@ -105,6 +108,26 @@ public class Bot extends Model {
     }
 
     /**
+     * Set Type
+     *
+     * @param type
+     */
+    public void setType(String type)
+    {
+        this.type = type;
+    }
+
+    /**
+     * Set Is Default
+     *
+     * @param isDefault
+     */
+    public void setIsDefault(String isDefault)
+    {
+        this.isDefault = isDefault;
+    }
+
+    /**
      * Set Created
      *
      * @param created
@@ -122,16 +145,6 @@ public class Bot extends Model {
     public void setUpdated(String updated)
     {
         this.updated = updated;
-    }
-
-    /**
-     * Get ID
-     *
-     * @return Integer
-     */
-    public Integer getId()
-    {
-      return this.id;
     }
 
     /**
@@ -162,6 +175,26 @@ public class Bot extends Model {
     public String getStatus()
     {
         return this.status;
+    }
+
+    /**
+     * Get Type
+     *
+     * @return String
+     */
+    public String getType()
+    {
+        return this.type;
+    }
+
+    /**
+     * Get Is Default
+     *
+     * @return String
+     */
+    public String getIsDefault()
+    {
+        return this.isDefault;
     }
 
     /**
