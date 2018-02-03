@@ -16,8 +16,14 @@ package com.clivern.ponut;
 import com.clivern.ponut.route.Web;
 import com.clivern.ponut.route.Api;
 import com.clivern.ponut.controller.console.Mapper;
-
 import com.clivern.ponut.model.Option;
+
+import org.pmw.tinylog.*;
+import org.pmw.tinylog.Logger;
+import org.pmw.tinylog.writers.*;
+import com.typesafe.config.*;
+import com.clivern.ponut.module.service.utils.ConfigService;
+import com.clivern.ponut.module.service.utils.LoggerService;
 
 public class App {
 
@@ -26,10 +32,19 @@ public class App {
         if( args.length > 0 ){
             Mapper.call(args);
         }else{
-        	new App().ebeanTest();
+
+            (new App()).testLogger();
+
             Web.call();
             Api.call();
         }
+    }
+
+    public void testLogger()
+    {
+        Config config = (new ConfigService()).load();
+        new LoggerService(config).config();
+        Logger.info(config.getString("database.username"));
     }
 
     public void ebeanTest()
