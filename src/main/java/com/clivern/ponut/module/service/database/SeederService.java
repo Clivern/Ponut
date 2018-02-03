@@ -25,6 +25,10 @@ import com.clivern.ponut.module.contract.database.SeederContract;
  */
 public class SeederService implements SeederContract {
 
+    protected Map<String, String> upSeeders = new HashMap<String, String>();
+
+    protected Map<String, String> downSeeders = new HashMap<String, String>();
+
     /**
      * Set Seeder
      *

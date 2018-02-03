@@ -24,6 +24,8 @@ public class MigrationSeeder extends Seeder {
 
     protected String tableName = "migrations";
 
+    protected Integer order = 1;
+
     /**
      * Set Create Queries
      */

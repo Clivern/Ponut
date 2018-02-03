@@ -24,6 +24,8 @@ public class BotTable extends Migration {
 
     protected String tableName = "bots";
 
+    protected Integer order = 3;
+
     /**
      * Set Create Queries
      */

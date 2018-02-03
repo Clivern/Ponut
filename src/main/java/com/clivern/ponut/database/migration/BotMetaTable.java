@@ -23,7 +23,10 @@ import com.clivern.ponut.database.contract.Migration;
 public class BotMetaTable extends Migration  {
 
     protected String tableName = "botsMeta";
+
     protected String relationTable = "bots";
+
+    protected Integer order = 4;
 
     /**
      * Set Create Queries

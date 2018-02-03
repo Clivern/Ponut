@@ -25,6 +25,10 @@ import com.clivern.ponut.module.contract.database.MigrationContract;
  */
 public class MigrationService implements MigrationContract {
 
+    protected Map<String, String> upMigrations = new HashMap<String, String>();
+
+    protected Map<String, String> downMigrations = new HashMap<String, String>();
+
     /**
      * Set Migration
      *

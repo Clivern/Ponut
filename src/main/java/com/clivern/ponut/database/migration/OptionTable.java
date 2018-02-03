@@ -24,6 +24,8 @@ public class OptionTable extends Migration  {
 
     protected String tableName = "options";
 
+    protected Integer order = 2;
+
     /**
      * Set Create Queries
      */

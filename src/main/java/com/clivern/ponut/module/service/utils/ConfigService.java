@@ -28,7 +28,7 @@ public class ConfigService implements ConfigContract {
 
     protected String configFile = "config/app.conf";
 
-    private static ConfigService instance = null;
+    private static ConfigService instance;
 
 
     protected ConfigService()
