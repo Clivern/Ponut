@@ -13,11 +13,20 @@
  */
 package com.clivern.ponut.module.contract.utils;
 
+import org.pmw.tinylog.*;
+import org.pmw.tinylog.writers.*;
+import com.clivern.ponut.module.contract.utils.ConfigContract;
+
 /**
  * Logger Service Interface
  *
  * @since 1.0.0
  */
 public interface LoggerContract {
+
+	/**
+	 * Configure Logger
+	 */
+	public void config();
 
 }

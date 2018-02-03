@@ -13,6 +13,8 @@
  */
 package com.clivern.ponut.module.contract.utils;
 
+import com.typesafe.config.*;
+
 /**
  * Config Service Interface
  *
@@ -20,4 +22,8 @@ package com.clivern.ponut.module.contract.utils;
  */
 public interface ConfigContract {
 
+	/**
+	 * Load Configs
+	 */
+	public Config load();
 }
