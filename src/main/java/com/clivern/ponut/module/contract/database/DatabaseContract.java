@@ -13,6 +13,8 @@
  */
 package com.clivern.ponut.module.contract.database;
 
+import io.ebean.CallableSql;
+
 /**
  * Database Service Interface
  *
@@ -24,4 +26,19 @@ public interface DatabaseContract {
     public Boolean connect();
     public Boolean healthCheck();
 
+    /**
+     * Execute Custom SQL Query
+     *
+     * @param  sql
+     * @return Boolean
+     */
+    public Boolean execute(String sql);
+
+    /**
+     * Execute Custom SQL Query
+     *
+     * @param  sql
+     * @return Boolean
+     */
+    public Boolean execute(CallableSql sql);
 }

@@ -14,6 +14,8 @@
 package com.clivern.ponut.module.service.database;
 
 import com.typesafe.config.*;
+import io.ebean.Ebean;
+import io.ebean.CallableSql;
 import io.ebean.EbeanServer;
 import io.ebean.EbeanServerFactory;
 import org.avaje.datasource.DataSourceConfig;
@@ -74,6 +76,31 @@ public class DatabaseService implements DatabaseContract {
      */
     public Boolean healthCheck()
     {
+        return true;
+    }
+
+    /**
+     * Execute Custom SQL Query
+     *
+     * @param  sql
+     * @return Boolean
+     */
+    public Boolean execute(String sql)
+    {
+        CallableSql callableSQL = Ebean.createCallableSql(sql);
+        Ebean.execute(callableSQL);
+        return true;
+    }
+
+    /**
+     * Execute Custom SQL Query
+     *
+     * @param  sql
+     * @return Boolean
+     */
+    public Boolean execute(CallableSql sql)
+    {
+        Ebean.execute(sql);
         return true;
     }
 }

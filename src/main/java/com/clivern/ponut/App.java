@@ -18,18 +18,14 @@ import com.clivern.ponut.route.Api;
 import com.clivern.ponut.controller.console.Mapper;
 import com.clivern.ponut.model.Option;
 
-import org.pmw.tinylog.*;
+
 import org.pmw.tinylog.Logger;
-import org.pmw.tinylog.writers.*;
 import com.typesafe.config.*;
 import com.clivern.ponut.module.service.utils.ConfigService;
 import com.clivern.ponut.module.service.utils.LoggerService;
 import com.clivern.ponut.module.service.database.DatabaseService;
-
-import io.ebean.Ebean;
-import io.ebean.CallableSql;
-import io.ebean.RawSql;
-import io.ebean.RawSqlBuilder;
+import com.clivern.ponut.module.service.database.MigrationService;
+import com.clivern.ponut.database.migration.OptionTable;
 
 public class App {
 
@@ -55,8 +51,16 @@ public class App {
 
     public void ebeanTest()
     {
-        new DatabaseService(ConfigService.instance().load()).config();
 
+        DatabaseService databaseService = new DatabaseService(ConfigService.instance().load());
+        databaseService.config();
+
+        MigrationService migrationService = new MigrationService(databaseService);
+        migrationService.setMigration(new OptionTable());
+        migrationService.runMigration("01_down_drop_options_table");
+        migrationService.runMigration("01_up_create_options_table");
+
+        /*
         String sql1 = "DROP TABLE IF EXISTS options;";
         CallableSql cs1 = Ebean.createCallableSql(sql1);
         Ebean.execute(cs1);
@@ -67,5 +71,6 @@ public class App {
 
         Option option = new Option("Key1", "Value1", "On1");
         option.save();
+        */
     }
 }

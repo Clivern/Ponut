@@ -11,12 +11,14 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.clivern.ponut.module.contract.database;
+package com.clivern.ponut.module.service.database;
 
 import java.util.HashMap;
 import java.util.Map;
 import com.clivern.ponut.database.contract.Migration;
 import com.clivern.ponut.module.contract.database.MigrationContract;
+import com.clivern.ponut.exception.MigrationNotFound;
+import com.clivern.ponut.module.contract.database.DatabaseContract;
 
 /**
  * Database Migrations Service
@@ -29,27 +31,63 @@ public class MigrationService implements MigrationContract {
 
     protected Map<String, String> downMigrations = new HashMap<String, String>();
 
+    DatabaseContract databaseContract;
+
+
+    /**
+     * Migration Service Constructor
+     *
+     * @param  databaseContract
+     */
+    public MigrationService(DatabaseContract databaseContract)
+    {
+        this.databaseContract = databaseContract;
+    }
+
     /**
      * Set Migration
      *
      * @param  migration
-     * @return Boolean
      */
-    public Boolean setMigration(Migration migration)
+    public void setMigration(Migration migration)
     {
-        //#
-        return false;
+        migration.up();
+        migration.down();
+
+        HashMap<String, String> migrations = (HashMap<String, String>) migration.getMigrations();
+
+        for (Map.Entry<String, String> entry : migrations.entrySet()) {
+            String key = entry.getKey();
+            String value = entry.getValue();
+            if( key.contains("_up_") ){
+                this.upMigrations.put(key, value);
+            }else{
+                this.downMigrations.put(key, value);
+            }
+        }
     }
 
     /**
      * Run Migrations
      *
+     * @param direction
      * @return Boolean
      */
-    public Boolean runMigrations()
+    public Boolean runMigrations(String direction)
     {
-        //#
-        return false;
+        Boolean status = true;
+
+        if( direction.equals("up") ){
+            for (Map.Entry<String, String> entry : this.upMigrations.entrySet()){
+                status &= this.runMigration(entry.getKey());
+            }
+        }else if(direction.equals("down")){
+            for (Map.Entry<String, String> entry : this.downMigrations.entrySet()){
+                status &= this.runMigration(entry.getKey());
+            }
+        }
+
+        return status;
     }
 
     /**
@@ -60,19 +98,30 @@ public class MigrationService implements MigrationContract {
      */
     public Boolean runMigration(String key)
     {
-        //#
+        if( this.upMigrations.containsKey(key) ){
+            return this.databaseContract.execute(this.upMigrations.get(key));
+        }else if( this.downMigrations.containsKey(key) ){
+            return this.databaseContract.execute(this.downMigrations.get(key));
+        }
+
         return false;
     }
 
     /**
      * Get Migrations
      *
+     * @param direction
      * @return Map
      */
-    public Map<String, String> getMigrations()
+    public Map<String, String> getMigrations(String direction)
     {
-        //#
-        return new HashMap<String, String>();
+        if( direction.equals("up") ){
+            return this.upMigrations;
+        }else if(direction.equals("down")){
+            return this.downMigrations;
+        }else{
+            return this.upMigrations;
+        }
     }
 
     /**
@@ -80,10 +129,16 @@ public class MigrationService implements MigrationContract {
      *
      * @param  key
      * @return String
+     * @throws MigrationNotFound
      */
-    public String getMigration(String key)
+    public String getMigration(String key) throws MigrationNotFound
     {
-        //#
-        return "";
+        if( this.upMigrations.containsKey(key) ){
+            return this.upMigrations.get(key);
+        }else if( this.downMigrations.containsKey(key) ){
+            return this.downMigrations.get(key);
+        }
+
+        throw new MigrationNotFound(String.format("%s Migration Not Found!", key));
     }
 }

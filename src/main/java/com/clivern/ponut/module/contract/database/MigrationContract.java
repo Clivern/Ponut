@@ -15,6 +15,7 @@ package com.clivern.ponut.module.contract.database;
 
 import java.util.Map;
 import com.clivern.ponut.database.contract.Migration;
+import com.clivern.ponut.exception.MigrationNotFound;
 
 /**
  * Database Migrations Service Interface
@@ -23,20 +24,20 @@ import com.clivern.ponut.database.contract.Migration;
  */
 public interface MigrationContract {
 
-    /**
+   /**
      * Set Migration
      *
      * @param  migration
-     * @return Boolean
      */
-    abstract public Boolean setMigration(Migration migration);
+    public void setMigration(Migration migration);
 
     /**
      * Run Migrations
      *
+     * @param direction
      * @return Boolean
      */
-    abstract public Boolean runMigrations();
+    public Boolean runMigrations(String direction);
 
     /**
      * Run Migration
@@ -44,20 +45,23 @@ public interface MigrationContract {
      * @param  key
      * @return Boolean
      */
-    abstract public Boolean runMigration(String key);
+    public Boolean runMigration(String key);
 
     /**
      * Get Migrations
      *
+     * @param direction
      * @return Map
      */
-    abstract public Map<String, String> getMigrations();
+    public Map<String, String> getMigrations(String direction);
 
     /**
      * Get Migration
      *
      * @param  key
      * @return String
+     * @throws MigrationNotFound
      */
-    abstract public String getMigration(String key);
+    public String getMigration(String key) throws MigrationNotFound;
+
 }
