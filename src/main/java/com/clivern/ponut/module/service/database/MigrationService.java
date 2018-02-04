@@ -15,6 +15,8 @@ package com.clivern.ponut.module.service.database;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Comparator;
+import java.util.TreeMap;
 import com.clivern.ponut.database.contract.Migration;
 import com.clivern.ponut.module.contract.database.MigrationContract;
 import com.clivern.ponut.exception.MigrationNotFound;
@@ -77,6 +79,9 @@ public class MigrationService implements MigrationContract {
     {
         Boolean status = true;
 
+        this.upMigrations = this.sortMigrations(this.upMigrations);
+        this.downMigrations = this.sortMigrations(this.downMigrations);
+
         if( direction.equals("up") ){
             for (Map.Entry<String, String> entry : this.upMigrations.entrySet()){
                 status &= this.runMigration(entry.getKey());
@@ -115,6 +120,10 @@ public class MigrationService implements MigrationContract {
      */
     public Map<String, String> getMigrations(String direction)
     {
+
+        this.upMigrations = this.sortMigrations(this.upMigrations);
+        this.downMigrations = this.sortMigrations(this.downMigrations);
+
         if( direction.equals("up") ){
             return this.upMigrations;
         }else if(direction.equals("down")){
@@ -140,5 +149,29 @@ public class MigrationService implements MigrationContract {
         }
 
         throw new MigrationNotFound(String.format("%s Migration Not Found!", key));
+    }
+
+    /**
+     * Sort Migrations
+     *
+     * @param  migrations
+     * @return Map
+     */
+    private Map<String, String> sortMigrations(Map<String, String> migrations)
+    {
+        Map<String, String> treeMap = new TreeMap<String, String>(new Comparator<String>() {
+            @Override
+            public int compare(String item1, String item2) {
+                String[] itemArr1 = item1.split("-");
+                String[] itemArr2 = item2.split("-");
+
+                Integer itemInt1 = Integer.parseInt(itemArr1[0]);
+                Integer itemInt2 = Integer.parseInt(itemArr2[0]);
+
+                return itemInt1.compareTo(itemInt2);
+            }
+        });
+        treeMap.putAll(migrations);
+        return treeMap;
     }
 }
