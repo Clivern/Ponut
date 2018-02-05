@@ -27,7 +27,7 @@ import javax.persistence.Column;
  */
 @Entity
 @Table(name="bots")
-public class Bot extends Base {
+public class BotModel extends BaseModel {
 
     @NotNull
     @Column(name="`name`")
@@ -66,7 +66,7 @@ public class Bot extends Base {
      * @param  created
      * @param  updated
      */
-    public Bot(String name, String slug, String status, String type, String isDefault, String created, String updated)
+    public BotModel(String name, String slug, String status, String type, String isDefault, String created, String updated)
     {
         this.name = name;
         this.slug = slug;

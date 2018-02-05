@@ -24,18 +24,14 @@ public class MigrationTable extends Migration  {
 
     protected String tableName = "migrations";
 
-    protected Integer order = 1;
-
     /**
      * Set Create Queries
      */
     public void up()
     {
-        this.migrations.put("01_up_create_migrations_table", String.format("CREATE TABLE IF NOT EXISTS %s (\n" +
+        this.migrations.put("01-up_create_migrations_table", String.format("CREATE TABLE IF NOT EXISTS %s (\n" +
             "`id` int NOT NULL AUTO_INCREMENT,\n" +
             "`key` varchar(60) NOT NULL,\n" +
-            "`value` varchar(150) NOT NULL,\n" +
-            "`status` varchar(5) NOT NULL,\n" +
             "`created` datetime NOT NULL,\n" +
             "`updated` datetime NOT NULL,\n" +
             "PRIMARY KEY (`id`),\n" +
@@ -49,6 +45,6 @@ public class MigrationTable extends Migration  {
      */
     public void down()
     {
-        this.migrations.put("01_down_drop_migrations_table", String.format("DROP TABLE IF EXISTS %s;", this.tableName));
+        this.migrations.put("04-down_create_migrations_table", String.format("DROP TABLE IF EXISTS %s;", this.tableName));
     }
 }

@@ -26,14 +26,12 @@ public class BotMetaTable extends Migration  {
 
     protected String relationTable = "bots";
 
-    protected Integer order = 4;
-
     /**
      * Set Create Queries
      */
     public void up()
     {
-        this.migrations.put("01_up_create_bots_meta_table", String.format("CREATE TABLE IF NOT EXISTS %s ( \n" +
+        this.migrations.put("04-up_create_bots_meta_table", String.format("CREATE TABLE IF NOT EXISTS %s ( \n" +
             "`id` int NOT NULL AUTO_INCREMENT,\n" +
             "`botId` int NOT NULL,\n" +
             "`key` varchar(60) NOT NULL,\n" +
@@ -51,6 +49,6 @@ public class BotMetaTable extends Migration  {
      */
     public void down()
     {
-        this.migrations.put("01_down_drop_bots_meta_table", String.format("DROP TABLE IF EXISTS %s;", this.tableName));
+        this.migrations.put("02-down_create_bots_meta_table", String.format("DROP TABLE IF EXISTS %s;", this.tableName));
     }
 }

@@ -24,14 +24,12 @@ public class OptionTable extends Migration  {
 
     protected String tableName = "options";
 
-    protected Integer order = 2;
-
     /**
      * Set Create Queries
      */
     public void up()
     {
-        this.migrations.put("01-up_create_options_table", String.format("CREATE TABLE IF NOT EXISTS %s (\n" +
+        this.migrations.put("02-up_create_options_table", String.format("CREATE TABLE IF NOT EXISTS %s (\n" +
             "`id` int NOT NULL AUTO_INCREMENT,\n" +
             "`key` varchar(60) NOT NULL,\n" +
             "`value` text NOT NULL,\n" +

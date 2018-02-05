@@ -21,17 +21,13 @@ import javax.persistence.Table;
 import javax.persistence.Column;
 
 /**
- * Bots Meta Model
+ * Options Model
  *
  * @since 1.0.0
  */
 @Entity
-@Table(name="botsMeta")
-public class BotMeta extends Base {
-
-    @NotNull
-    @Column(name="`botId`")
-    Integer botId;
+@Table(name="options")
+public class OptionModel extends BaseModel {
 
     @NotNull
     @Column(name="`key`")
@@ -42,39 +38,21 @@ public class BotMeta extends Base {
     String value;
 
     @NotNull
-    @Column(name="`created`")
-    String created;
-
-    @NotNull
-    @Column(name="`updated`")
-    String updated;
+    @Column(name="`autoload`")
+    String autoload;
 
     /**
      * Class Constructor
      *
-     * @param  botId
      * @param  key
      * @param  value
-     * @param  created
-     * @param  updated
+     * @param  autoload
      */
-    public BotMeta(Integer botId, String key, String value, String created, String updated)
+    public OptionModel(String key, String value, String autoload)
     {
-        this.botId = botId;
         this.key = key;
         this.value = value;
-        this.created = created;
-        this.updated = updated;
-    }
-
-    /**
-     * Set Bot ID
-     *
-     * @param botId
-     */
-    public void setBotId(Integer botId)
-    {
-      this.botId = botId;
+        this.autoload = autoload;
     }
 
     /**
@@ -98,33 +76,13 @@ public class BotMeta extends Base {
     }
 
     /**
-     * Set Created
+     * Set Autoload Value
      *
-     * @param created
+     * @param autoload
      */
-    public void setCreated(String created)
+    public void setAutoload(String autoload)
     {
-        this.created = created;
-    }
-
-    /**
-     * Set Updated
-     *
-     * @param updated
-     */
-    public void setUpdated(String updated)
-    {
-        this.updated = updated;
-    }
-
-    /**
-     * Get Bot ID
-     *
-     * @return Integer
-     */
-    public Integer getBotId()
-    {
-      return this.botId;
+        this.autoload = autoload;
     }
 
     /**
@@ -148,22 +106,12 @@ public class BotMeta extends Base {
     }
 
     /**
-     * Get Created
+     * Get Autoload Value
      *
      * @return String
      */
-    public String getCreated()
+    public String getAutoload()
     {
-        return this.created;
-    }
-
-    /**
-     * Get Updated
-     *
-     * @return String
-     */
-    public String getUpdated()
-    {
-        return this.updated;
+        return this.autoload;
     }
 }

@@ -23,7 +23,7 @@ import javax.persistence.MappedSuperclass;
  * @since 1.0.0
  */
 @MappedSuperclass
-public class Base extends Model {
+public class BaseModel extends Model {
 
     @Id
     Integer id;

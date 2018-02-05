@@ -17,10 +17,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Comparator;
 import java.util.TreeMap;
+import io.ebean.Ebean;
 import com.clivern.ponut.database.contract.Migration;
 import com.clivern.ponut.module.contract.database.MigrationContract;
 import com.clivern.ponut.exception.MigrationNotFound;
 import com.clivern.ponut.module.contract.database.DatabaseContract;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import com.clivern.ponut.model.MigrationModel;
 
 /**
  * Database Migrations Service
@@ -33,8 +38,7 @@ public class MigrationService implements MigrationContract {
 
     protected Map<String, String> downMigrations = new HashMap<String, String>();
 
-    DatabaseContract databaseContract;
-
+    protected DatabaseContract databaseContract;
 
     /**
      * Migration Service Constructor
@@ -61,7 +65,7 @@ public class MigrationService implements MigrationContract {
         for (Map.Entry<String, String> entry : migrations.entrySet()) {
             String key = entry.getKey();
             String value = entry.getValue();
-            if( key.contains("_up_") ){
+            if( key.contains("up_") ){
                 this.upMigrations.put(key, value);
             }else{
                 this.downMigrations.put(key, value);
@@ -84,11 +88,11 @@ public class MigrationService implements MigrationContract {
 
         if( direction.equals("up") ){
             for (Map.Entry<String, String> entry : this.upMigrations.entrySet()){
-                status &= this.runMigration(entry.getKey());
+                status &= this.runMigration(entry.getKey(), "up");
             }
         }else if(direction.equals("down")){
             for (Map.Entry<String, String> entry : this.downMigrations.entrySet()){
-                status &= this.runMigration(entry.getKey());
+                status &= this.runMigration(entry.getKey(), "down");
             }
         }
 
@@ -99,14 +103,43 @@ public class MigrationService implements MigrationContract {
      * Run Migration
      *
      * @param  key
+     * @param  direction
      * @return Boolean
      */
-    public Boolean runMigration(String key)
+    public Boolean runMigration(String key, String direction)
     {
-        if( this.upMigrations.containsKey(key) ){
+        this.databaseContract.execute(this.upMigrations.get("01-up_create_migrations_table"));
+
+        Date todaysDate = new Date();
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        if( this.upMigrations.containsKey(key) && direction.equals("up") ){
+            // Check if Already run before
+            String[] keyArry = key.split("-");
+            String upKey = keyArry[1];
+
+            MigrationModel migration = Ebean.find(MigrationModel.class).select("key").where().eq("key", upKey).findOne();
+            if( migration != null ){
+                return true;
+            }
+            MigrationModel migrationRun = new MigrationModel(upKey, df.format(todaysDate), df.format(todaysDate));
+            migrationRun.save();
+
             return this.databaseContract.execute(this.upMigrations.get(key));
-        }else if( this.downMigrations.containsKey(key) ){
-            return this.databaseContract.execute(this.downMigrations.get(key));
+
+        }else if( this.downMigrations.containsKey(key) && direction.equals("up") ){
+
+            // Check if Related up run before
+            String[] keyArry = key.split("-");
+            String upKey = keyArry[1].replace("down_", "up_");
+
+            MigrationModel migration = Ebean.find(MigrationModel.class).select("key").where().eq("key", upKey).findOne();
+            if( migration != null ){
+                Ebean.delete(migration);
+                return this.databaseContract.execute(this.downMigrations.get(key));
+            }
+
+            return true;
         }
 
         return false;

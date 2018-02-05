@@ -27,19 +27,11 @@ import javax.persistence.Column;
  */
 @Entity
 @Table(name="migrations")
-public class Migration extends Base {
+public class MigrationModel extends BaseModel {
 
     @NotNull
     @Column(name="`key`")
     String key;
-
-    @NotNull
-    @Column(name="`value`")
-    String value;
-
-    @NotNull
-    @Column(name="`status`")
-    String status;
 
     @NotNull
     @Column(name="`created`")
@@ -53,16 +45,12 @@ public class Migration extends Base {
      * Class Constructor
      *
      * @param  key
-     * @param  value
-     * @param  status
      * @param  created
      * @param  updated
      */
-    public Migration(String key, String value, String status, String created, String updated)
+    public MigrationModel(String key, String created, String updated)
     {
         this.key = key;
-        this.value = value;
-        this.status = status;
         this.created = created;
         this.updated = updated;
     }
@@ -75,26 +63,6 @@ public class Migration extends Base {
     public void setKey(String key)
     {
         this.key = key;
-    }
-
-    /**
-     * Set Value
-     *
-     * @param value
-     */
-    public void setValue(String value)
-    {
-        this.value = value;
-    }
-
-    /**
-     * Set Status
-     *
-     * @param status
-     */
-    public void setStatus(String status)
-    {
-        this.status = status;
     }
 
     /**
@@ -125,26 +93,6 @@ public class Migration extends Base {
     public String getKey()
     {
         return this.key;
-    }
-
-    /**
-     * Get Value
-     *
-     * @return String
-     */
-    public String getValue()
-    {
-        return this.value;
-    }
-
-    /**
-     * Get Status
-     *
-     * @return String
-     */
-    public String getStatus()
-    {
-        return this.status;
     }
 
     /**

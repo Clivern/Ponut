@@ -21,13 +21,17 @@ import javax.persistence.Table;
 import javax.persistence.Column;
 
 /**
- * Options Model
+ * Bots Meta Model
  *
  * @since 1.0.0
  */
 @Entity
-@Table(name="options")
-public class Option extends Base {
+@Table(name="botsMeta")
+public class BotMetaModel extends BaseModel {
+
+    @NotNull
+    @Column(name="`botId`")
+    Integer botId;
 
     @NotNull
     @Column(name="`key`")
@@ -38,21 +42,39 @@ public class Option extends Base {
     String value;
 
     @NotNull
-    @Column(name="`autoload`")
-    String autoload;
+    @Column(name="`created`")
+    String created;
+
+    @NotNull
+    @Column(name="`updated`")
+    String updated;
 
     /**
      * Class Constructor
      *
+     * @param  botId
      * @param  key
      * @param  value
-     * @param  autoload
+     * @param  created
+     * @param  updated
      */
-    public Option(String key, String value, String autoload)
+    public BotMetaModel(Integer botId, String key, String value, String created, String updated)
     {
+        this.botId = botId;
         this.key = key;
         this.value = value;
-        this.autoload = autoload;
+        this.created = created;
+        this.updated = updated;
+    }
+
+    /**
+     * Set Bot ID
+     *
+     * @param botId
+     */
+    public void setBotId(Integer botId)
+    {
+      this.botId = botId;
     }
 
     /**
@@ -76,13 +98,33 @@ public class Option extends Base {
     }
 
     /**
-     * Set Autoload Value
+     * Set Created
      *
-     * @param autoload
+     * @param created
      */
-    public void setAutoload(String autoload)
+    public void setCreated(String created)
     {
-        this.autoload = autoload;
+        this.created = created;
+    }
+
+    /**
+     * Set Updated
+     *
+     * @param updated
+     */
+    public void setUpdated(String updated)
+    {
+        this.updated = updated;
+    }
+
+    /**
+     * Get Bot ID
+     *
+     * @return Integer
+     */
+    public Integer getBotId()
+    {
+      return this.botId;
     }
 
     /**
@@ -106,12 +148,22 @@ public class Option extends Base {
     }
 
     /**
-     * Get Autoload Value
+     * Get Created
      *
      * @return String
      */
-    public String getAutoload()
+    public String getCreated()
     {
-        return this.autoload;
+        return this.created;
+    }
+
+    /**
+     * Get Updated
+     *
+     * @return String
+     */
+    public String getUpdated()
+    {
+        return this.updated;
     }
 }

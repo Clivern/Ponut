@@ -16,16 +16,22 @@ package com.clivern.ponut;
 import com.clivern.ponut.route.Web;
 import com.clivern.ponut.route.Api;
 import com.clivern.ponut.controller.console.Mapper;
-import com.clivern.ponut.model.Option;
 
 
+import io.ebean.Ebean;
 import org.pmw.tinylog.Logger;
 import com.typesafe.config.*;
 import com.clivern.ponut.module.service.utils.ConfigService;
 import com.clivern.ponut.module.service.utils.LoggerService;
 import com.clivern.ponut.module.service.database.DatabaseService;
 import com.clivern.ponut.module.service.database.MigrationService;
+
+
 import com.clivern.ponut.database.migration.OptionTable;
+import com.clivern.ponut.database.migration.BotTable;
+import com.clivern.ponut.database.migration.BotMetaTable;
+import com.clivern.ponut.database.migration.MigrationTable;
+
 
 public class App {
 
@@ -57,8 +63,28 @@ public class App {
 
         MigrationService migrationService = new MigrationService(databaseService);
         migrationService.setMigration(new OptionTable());
-        migrationService.runMigration("01_down_drop_options_table");
-        migrationService.runMigration("01_up_create_options_table");
+        migrationService.setMigration(new BotMetaTable());
+        migrationService.setMigration(new BotTable());
+        migrationService.setMigration(new MigrationTable());
+
+        migrationService.runMigrations("down");
+        migrationService.runMigrations("up");
+
+
+
+
+        // Save Option
+        // Option option = new Option("Key1", "Value1", "On1");
+        // option.save();
+
+        // // Find Option
+        // Option option = Ebean.find(Option.class).select("key").where().eq("key","Key1").findOne();
+        // Logger.info((option != null) ? option.getValue() : "NotSet");
+
+        // // Delete Option
+        // if( option != null ){
+        //     Ebean.delete(option);
+        // }
 
         /*
         String sql1 = "DROP TABLE IF EXISTS options;";

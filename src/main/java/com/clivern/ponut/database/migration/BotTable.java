@@ -24,14 +24,12 @@ public class BotTable extends Migration {
 
     protected String tableName = "bots";
 
-    protected Integer order = 3;
-
     /**
      * Set Create Queries
      */
     public void up()
     {
-        this.migrations.put("01_up_create_bots_table", String.format("CREATE TABLE IF NOT EXISTS %s (\n" +
+        this.migrations.put("03-up_create_bots_table", String.format("CREATE TABLE IF NOT EXISTS %s (\n" +
             "`id` int NOT NULL AUTO_INCREMENT,\n" +
             "`name` varchar(50) NOT NULL,\n" +
             "`slug` varchar(80) NOT NULL,\n" +
@@ -50,6 +48,6 @@ public class BotTable extends Migration {
      */
     public void down()
     {
-        this.migrations.put("01_down_drop_bots_table", String.format("DROP TABLE IF EXISTS %s;", this.tableName));
+        this.migrations.put("03-down_create_bots_table", String.format("DROP TABLE IF EXISTS %s;", this.tableName));
     }
 }

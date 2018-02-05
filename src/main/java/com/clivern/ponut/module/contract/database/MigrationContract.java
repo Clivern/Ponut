@@ -45,7 +45,7 @@ public interface MigrationContract {
      * @param  key
      * @return Boolean
      */
-    public Boolean runMigration(String key);
+    public Boolean runMigration(String key, String direction);
 
     /**
      * Get Migrations
