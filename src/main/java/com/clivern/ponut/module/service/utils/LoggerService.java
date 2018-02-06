@@ -15,13 +15,13 @@ package com.clivern.ponut.module.service.utils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import org.pmw.tinylog.*;
 import org.pmw.tinylog.Logger;
 import org.pmw.tinylog.writers.*;
 import com.typesafe.config.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import com.clivern.ponut.module.contract.utils.LoggerContract;
 
 /**
@@ -39,7 +39,7 @@ public class LoggerService implements LoggerContract {
 
     protected String logFileFormat = "app"; // filename or current_date (shows date.log)
 
-    protected String logType = "file"; //file or console
+    protected String logType = "file"; //file or console or both
 
     protected String currentDateFormat = "yyyy-MM-dd";
 
@@ -73,6 +73,7 @@ public class LoggerService implements LoggerContract {
         this.logLevels.put("error", Level.ERROR);
 
         if( this.logType.equals("file") ){
+
             DateFormat dateFormat = new SimpleDateFormat(this.currentDateFormat);
             Date date = new Date();
             String logFileName = (this.logFileFormat.equals("current_date")) ? dateFormat.format(date) + ".log" : this.logFileFormat + ".log";
@@ -80,6 +81,25 @@ public class LoggerService implements LoggerContract {
                 .writer(new FileWriter(this.logFilePath + logFileName))
                 .level((this.logLevels.containsKey(this.logLevel)) ? this.logLevels.get(this.logLevel) : Level.INFO)
                 .activate();
+
+        }else if( this.logType.equals("both") ){
+
+            DateFormat dateFormat = new SimpleDateFormat(this.currentDateFormat);
+            Date date = new Date();
+            String logFileName = (this.logFileFormat.equals("current_date")) ? dateFormat.format(date) + ".log" : this.logFileFormat + ".log";
+            Configurator.defaultConfig()
+                .writer(new ConsoleWriter())
+                .addWriter(new FileWriter(this.logFilePath + logFileName))
+                .level((this.logLevels.containsKey(this.logLevel)) ? this.logLevels.get(this.logLevel) : Level.INFO)
+                .activate();
+
+        }else{
+
+            Configurator.defaultConfig()
+                .writer(new ConsoleWriter())
+                .level((this.logLevels.containsKey(this.logLevel)) ? this.logLevels.get(this.logLevel) : Level.INFO)
+                .activate();
+
         }
     }
 }
