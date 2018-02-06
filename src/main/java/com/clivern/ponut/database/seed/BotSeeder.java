@@ -24,8 +24,6 @@ public class BotSeeder extends Seeder {
 
     protected String tableName = "bots";
 
-    protected Integer order = 3;
-
     /**
      * Set Create Queries
      */

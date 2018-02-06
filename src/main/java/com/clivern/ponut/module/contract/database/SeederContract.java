@@ -15,6 +15,7 @@ package com.clivern.ponut.module.contract.database;
 
 import java.util.Map;
 import com.clivern.ponut.database.contract.Seeder;
+import com.clivern.ponut.exception.SeedNotFound;
 
 /**
  * Database Seeders Service Interface
@@ -23,35 +24,37 @@ import com.clivern.ponut.database.contract.Seeder;
  */
 public interface SeederContract {
 
-    /**
+   /**
      * Set Seeder
      *
      * @param  seeder
-     * @return Boolean
      */
-    abstract public Boolean setSeeder(Seeder seeder);
+    public void setSeeder(Seeder seeder);
 
     /**
      * Run Seeders
      *
+     * @param direction
      * @return Boolean
      */
-    abstract public Boolean runSeeders();
+    public Boolean runSeeders(String direction);
 
     /**
      * Run Seeder
      *
      * @param  key
+     * @param direction
      * @return Boolean
      */
-    abstract public Boolean runSeeder(String key);
+    public Boolean runSeeder(String key, String direction);
 
     /**
      * Get Seeders
      *
+     * @param direction
      * @return Map
      */
-    abstract public Map<String, String> getSeeders();
+    public Map<String, String> getSeeders(String direction);
 
     /**
      * Get Seeder
@@ -59,5 +62,5 @@ public interface SeederContract {
      * @param  key
      * @return String
      */
-    abstract public String getSeeder(String key);
+    public String getSeeder(String key) throws SeedNotFound;
 }

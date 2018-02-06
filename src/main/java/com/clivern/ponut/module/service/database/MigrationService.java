@@ -26,6 +26,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import com.clivern.ponut.model.MigrationModel;
+import org.pmw.tinylog.Logger;
 
 /**
  * Database Migrations Service
@@ -108,6 +109,8 @@ public class MigrationService implements MigrationContract {
      */
     public Boolean runMigration(String key, String direction)
     {
+        Logger.info(direction + " --> " + key);
+
         this.databaseContract.execute(this.upMigrations.get("01-up_create_migrations_table"));
 
         Date todaysDate = new Date();
@@ -127,7 +130,7 @@ public class MigrationService implements MigrationContract {
 
             return this.databaseContract.execute(this.upMigrations.get(key));
 
-        }else if( this.downMigrations.containsKey(key) && direction.equals("up") ){
+        }else if( this.downMigrations.containsKey(key) && direction.equals("down") ){
 
             // Check if Related up run before
             String[] keyArry = key.split("-");

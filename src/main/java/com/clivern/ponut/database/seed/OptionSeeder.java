@@ -24,14 +24,12 @@ public class OptionSeeder extends Seeder {
 
     protected String tableName = "options";
 
-    protected Integer order = 2;
-
     /**
      * Set Create Queries
      */
     public void up()
     {
-        this.seeds.put("01_up_insert_into_options_table", String.format("INSERT INTO %s (key, value, autoload) VALUES ('app_name', 'Ponut', 'on');", this.tableName));
+        this.seeds.put("01-up_insert_into_options_table", String.format("INSERT INTO %s (`key`, `value`, `autoload`) VALUES ('app_name', 'Ponut', 'on');", this.tableName));
     }
 
     /**
@@ -39,6 +37,6 @@ public class OptionSeeder extends Seeder {
      */
     public void down()
     {
-        this.seeds.put("01_down_delete_from_options_table", String.format("DELETE FROM %s WHERE key='app_name';", this.tableName));
+        this.seeds.put("01-down_insert_into_options_table", String.format("DELETE FROM %s WHERE `key` =  'app_name';", this.tableName));
     }
 }

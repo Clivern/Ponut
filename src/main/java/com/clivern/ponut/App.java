@@ -26,11 +26,15 @@ import com.clivern.ponut.module.service.utils.LoggerService;
 import com.clivern.ponut.module.service.database.DatabaseService;
 import com.clivern.ponut.module.service.database.MigrationService;
 
+import com.clivern.ponut.module.service.database.SeederService;
+
 
 import com.clivern.ponut.database.migration.OptionTable;
 import com.clivern.ponut.database.migration.BotTable;
 import com.clivern.ponut.database.migration.BotMetaTable;
 import com.clivern.ponut.database.migration.MigrationTable;
+
+import com.clivern.ponut.database.seed.OptionSeeder;
 
 
 public class App {
@@ -70,6 +74,14 @@ public class App {
         migrationService.runMigrations("down");
         migrationService.runMigrations("up");
 
+
+        SeederService seederService = new SeederService(databaseService);
+        seederService.setSeeder(new OptionSeeder());
+        seederService.runSeeders("up");
+        seederService.runSeeders("down");
+        seederService.runSeeder("01-up_insert_into_options_table", "up");
+        seederService.runSeeder("01-down_insert_into_options_table", "down");
+        seederService.runSeeder("01-up_insert_into_options_table", "up");
 
 
 
