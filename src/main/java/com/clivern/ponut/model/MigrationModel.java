@@ -25,8 +25,9 @@ import javax.persistence.Column;
  *
  * @since 1.0.0
  */
-@Entity
+
 @Table(name="migrations")
+@Entity
 public class MigrationModel extends BaseModel {
 
     @NotNull

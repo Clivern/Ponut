@@ -13,6 +13,10 @@
  */
 package com.clivern.ponut.controller.console;
 
+import com.clivern.ponut.module.service.database.SeederService;
+import com.clivern.ponut.module.service.database.DatabaseService;
+import com.clivern.ponut.database.seed.*;
+
 /**
  * Seed Command
  *
@@ -20,24 +24,65 @@ package com.clivern.ponut.controller.console;
  */
 public class Seed {
 
-    private boolean info = false;
+    private String data;
 
-
-    public void setInfo(Boolean info)
+    /**
+     * Class Constructor
+     *
+     * @param  data
+     */
+    public Seed(String data)
     {
-        this.info = info;
+        this.data = data;
     }
 
-    public boolean getInfo()
-    {
-        return this.info;
-    }
-
+    /**
+     * Run Seed Command According To Data Parameter
+     */
     public void run()
     {
+        if( this.data.equals("up") ){
 
+            SeederService seederService = new SeederService(DatabaseService.instance());
+            seederService.setSeeder(new OptionSeeder());
+            seederService.setSeeder(new MigrationSeeder());
+            seederService.setSeeder(new BotSeeder());
+            seederService.setSeeder(new BotMetaSeeder());
+            seederService.runSeeders("up");
+
+        }else if( this.data.equals("down") ){
+
+            SeederService seederService = new SeederService(DatabaseService.instance());
+            seederService.setSeeder(new OptionSeeder());
+            seederService.setSeeder(new MigrationSeeder());
+            seederService.setSeeder(new BotSeeder());
+            seederService.setSeeder(new BotMetaSeeder());
+            seederService.runSeeders("down");
+
+        }else if( this.data.contains("up") ){
+
+            SeederService seederService = new SeederService(DatabaseService.instance());
+            seederService.setSeeder(new OptionSeeder());
+            seederService.setSeeder(new MigrationSeeder());
+            seederService.setSeeder(new BotSeeder());
+            seederService.setSeeder(new BotMetaSeeder());
+            seederService.runSeeder(this.data, "up");
+
+        }else if( this.data.contains("down") ){
+
+            SeederService seederService = new SeederService(DatabaseService.instance());
+            seederService.setSeeder(new OptionSeeder());
+            seederService.setSeeder(new MigrationSeeder());
+            seederService.setSeeder(new BotSeeder());
+            seederService.setSeeder(new BotMetaSeeder());
+            seederService.runSeeder(this.data, "down");
+
+        }
     }
 
+    /**
+     * Command Help Info
+     */
     public static void help()
     {
         System.out.println("Help Here....");

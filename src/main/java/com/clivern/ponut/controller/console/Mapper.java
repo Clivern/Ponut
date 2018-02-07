@@ -59,8 +59,11 @@ public class Mapper implements Runnable {
     @Option(names = { "-D", "delete" }, paramLabel="<bot>", description = "Delete an existing bot")
     private String delete;
 
-    @Option(names = { "-m", "migrate" }, paramLabel="<all||file>", description = "Run all or specific migration")
+    @Option(names = { "-m", "migrate" }, paramLabel="<up|down||file>", description = "Run all or specific migration")
     private String migrate;
+
+    @Option(names = {"seed", "--seed"}, paramLabel="<up|down||file>", description = "Run database seeders")
+    private String seed;
 
     @Option(names = { "-s", "status" }, description = "Get bot(s) status")
     private Boolean status = false;
@@ -74,9 +77,6 @@ public class Mapper implements Runnable {
     @Option(names = {"-l", "--list"}, description = "Get a list of all bots")
     private Boolean list = false;
 
-    @Option(names = {"seed", "--seed"}, description = "Run database seeders")
-    private Boolean seed = false;
-
     @Option(names = {"-i", "--info"}, description = "Get more log output")
     private Boolean verbose = false;
 
@@ -89,8 +89,20 @@ public class Mapper implements Runnable {
     @Option(names = { "-h", "help" }, paramLabel="<command>", description = "Get a helpful info about command")
     private String help;
 
-
+    /**
+     * Run Commands
+     */
     public void run() {
+
+        //Migrate Command
+        if( this.migrate != null ){
+            new Migrate(this.migrate).run();
+        }
+
+        //Seed Command
+        if( this.seed != null ){
+            new Seed(this.seed).run();
+        }
 
         if( this.version ){
             new Version().run();
@@ -105,6 +117,11 @@ public class Mapper implements Runnable {
         }
     }
 
+    /**
+     * Call Command
+     *
+     * @param args
+     */
     public static void call(String[] args)
     {
         CommandLine.run(new Mapper(), System.out, args);

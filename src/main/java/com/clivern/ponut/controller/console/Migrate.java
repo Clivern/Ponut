@@ -13,6 +13,10 @@
  */
 package com.clivern.ponut.controller.console;
 
+import com.clivern.ponut.module.service.database.MigrationService;
+import com.clivern.ponut.module.service.database.DatabaseService;
+import com.clivern.ponut.database.migration.*;
+
 /**
  * Migrate Command
  *
@@ -20,24 +24,65 @@ package com.clivern.ponut.controller.console;
  */
 public class Migrate {
 
-    private boolean info = false;
+    private String data;
 
-
-    public void setInfo(Boolean info)
+    /**
+     * Class Constructor
+     *
+     * @param  data
+     */
+    public Migrate(String data)
     {
-        this.info = info;
+        this.data = data;
     }
 
-    public boolean getInfo()
-    {
-        return this.info;
-    }
-
+    /**
+     * Run Migrate Command According To Data Parameter
+     */
     public void run()
     {
+        if( this.data.equals("up") ){
 
+            MigrationService migrationService = new MigrationService(DatabaseService.instance());
+            migrationService.setMigration(new OptionTable());
+            migrationService.setMigration(new BotMetaTable());
+            migrationService.setMigration(new BotTable());
+            migrationService.setMigration(new MigrationTable());
+            migrationService.runMigrations("up");
+
+        }else if( this.data.equals("down") ){
+
+            MigrationService migrationService = new MigrationService(DatabaseService.instance());
+            migrationService.setMigration(new OptionTable());
+            migrationService.setMigration(new BotMetaTable());
+            migrationService.setMigration(new BotTable());
+            migrationService.setMigration(new MigrationTable());
+            migrationService.runMigrations("down");
+
+        }else if( this.data.contains("up") ){
+
+            MigrationService migrationService = new MigrationService(DatabaseService.instance());
+            migrationService.setMigration(new OptionTable());
+            migrationService.setMigration(new BotMetaTable());
+            migrationService.setMigration(new BotTable());
+            migrationService.setMigration(new MigrationTable());
+            migrationService.runMigration(this.data, "up");
+
+        }else if( this.data.contains("down") ){
+
+            MigrationService migrationService = new MigrationService(DatabaseService.instance());
+            migrationService.setMigration(new OptionTable());
+            migrationService.setMigration(new BotMetaTable());
+            migrationService.setMigration(new BotTable());
+            migrationService.setMigration(new MigrationTable());
+            migrationService.runMigration(this.data, "down");
+
+        }
     }
 
+    /**
+     * Command Help Info
+     */
     public static void help()
     {
         System.out.println("Help Here....");

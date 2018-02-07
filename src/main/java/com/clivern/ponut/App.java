@@ -41,11 +41,10 @@ public class App {
 
     public static void main(String[] args)
     {
+        new App().config();
         if( args.length > 0 ){
             Mapper.call(args);
         }else{
-            new App().config();
-            new App().ebeanTest();
             Web.call();
             Api.call();
         }
@@ -59,28 +58,5 @@ public class App {
         Config config = ConfigService.instance().load();
         new LoggerService(config).config();
         DatabaseService.instance().config(config);
-    }
-
-    /**
-     * Migrations and Seeds Test
-     */
-    public void ebeanTest()
-    {
-        MigrationService migrationService = new MigrationService(DatabaseService.instance());
-        migrationService.setMigration(new OptionTable());
-        migrationService.setMigration(new BotMetaTable());
-        migrationService.setMigration(new BotTable());
-        migrationService.setMigration(new MigrationTable());
-        migrationService.runMigrations("down");
-        migrationService.runMigrations("up");
-
-
-        SeederService seederService = new SeederService(DatabaseService.instance());
-        seederService.setSeeder(new OptionSeeder());
-        seederService.runSeeders("up");
-        seederService.runSeeders("down");
-        seederService.runSeeder("01-up_insert_into_options_table", "up");
-        seederService.runSeeder("01-down_insert_into_options_table", "down");
-        seederService.runSeeder("01-up_insert_into_options_table", "up");
     }
 }
