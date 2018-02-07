@@ -14,6 +14,7 @@
 package com.clivern.ponut.module.contract.database;
 
 import io.ebean.CallableSql;
+import com.typesafe.config.*;
 
 /**
  * Database Service Interface
@@ -22,7 +23,7 @@ import io.ebean.CallableSql;
  */
 public interface DatabaseContract {
 
-    public void config();
+    public void config(Config config);
     public Boolean connect();
     public Boolean healthCheck();
 

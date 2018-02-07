@@ -44,71 +44,43 @@ public class App {
         if( args.length > 0 ){
             Mapper.call(args);
         }else{
-
-            (new App()).testLogger();
+            new App().config();
             new App().ebeanTest();
             Web.call();
             Api.call();
         }
     }
 
-    public void testLogger()
+    /**
+     * Config All Services
+     */
+    public void config()
     {
         Config config = ConfigService.instance().load();
         new LoggerService(config).config();
-        Logger.info(config.getString("database.username"));
+        DatabaseService.instance().config(config);
     }
 
+    /**
+     * Migrations and Seeds Test
+     */
     public void ebeanTest()
     {
-
-        DatabaseService databaseService = new DatabaseService(ConfigService.instance().load());
-        databaseService.config();
-
-        MigrationService migrationService = new MigrationService(databaseService);
+        MigrationService migrationService = new MigrationService(DatabaseService.instance());
         migrationService.setMigration(new OptionTable());
         migrationService.setMigration(new BotMetaTable());
         migrationService.setMigration(new BotTable());
         migrationService.setMigration(new MigrationTable());
-
         migrationService.runMigrations("down");
         migrationService.runMigrations("up");
 
 
-        SeederService seederService = new SeederService(databaseService);
+        SeederService seederService = new SeederService(DatabaseService.instance());
         seederService.setSeeder(new OptionSeeder());
         seederService.runSeeders("up");
         seederService.runSeeders("down");
         seederService.runSeeder("01-up_insert_into_options_table", "up");
         seederService.runSeeder("01-down_insert_into_options_table", "down");
         seederService.runSeeder("01-up_insert_into_options_table", "up");
-
-
-
-        // Save Option
-        // Option option = new Option("Key1", "Value1", "On1");
-        // option.save();
-
-        // // Find Option
-        // Option option = Ebean.find(Option.class).select("key").where().eq("key","Key1").findOne();
-        // Logger.info((option != null) ? option.getValue() : "NotSet");
-
-        // // Delete Option
-        // if( option != null ){
-        //     Ebean.delete(option);
-        // }
-
-        /*
-        String sql1 = "DROP TABLE IF EXISTS options;";
-        CallableSql cs1 = Ebean.createCallableSql(sql1);
-        Ebean.execute(cs1);
-
-        String sql2 = "CREATE TABLE IF NOT EXISTS options (`id` int NOT NULL AUTO_INCREMENT,`key` varchar(60) NOT NULL,`value` text NOT NULL,`autoload` varchar(5) NOT NULL,PRIMARY KEY (`id`),KEY `key` (`key`)) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;";
-        CallableSql cs2 = Ebean.createCallableSql(sql2);
-        Ebean.execute(cs2);
-
-        Option option = new Option("Key1", "Value1", "On1");
-        option.save();
-        */
     }
 }

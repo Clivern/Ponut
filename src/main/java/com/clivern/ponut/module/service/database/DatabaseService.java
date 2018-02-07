@@ -31,21 +31,36 @@ public class DatabaseService implements DatabaseContract {
 
     protected Config config;
 
-    /**
-     * Class Constructor
-     *
-     * @param  config
-     */
-    public DatabaseService(Config config)
+    private static DatabaseService instance;
+
+
+    protected DatabaseService()
     {
-        this.config = config;
+        // Exists only to defeat instantiation.
+    }
+
+    /**
+     * Get Instance or A new one
+     *
+     * @return DatabaseService
+     */
+    public static DatabaseService instance()
+    {
+        if(instance == null) {
+            instance = new DatabaseService();
+        }
+
+        return instance;
     }
 
     /**
      * Configure The Database
+     *
+     * @param config
      */
-    public void config()
+    public void config(Config config)
     {
+        this.config = config;
         ServerConfig serverConfig = new ServerConfig();
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
         dataSourceConfig.setDriver(this.config.getString("database.driver"));
