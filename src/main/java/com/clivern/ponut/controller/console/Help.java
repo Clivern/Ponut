@@ -22,18 +22,19 @@ public class Help {
 
     private String command;
 
-    public Help setCommand(String command)
+    /**
+     * Class Constructor
+     *
+     * @param  command
+     */
+    public Help(String command)
     {
         this.command = command;
-
-        return this;
     }
 
-    public String getCommand()
-    {
-        return this.command;
-    }
-
+    /**
+     * Run Command
+     */
     public void run()
     {
         if( this.command.equals("-c") || this.command.equals("create") || this.command.equals("create=<bot>") ){

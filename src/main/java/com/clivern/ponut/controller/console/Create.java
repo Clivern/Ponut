@@ -66,6 +66,9 @@ public class Create {
 
     }
 
+    /**
+     * Get Command Help Info
+     */
     public static void help()
     {
         System.out.println("Create a New Bot \n > JAR create fred -t slack \n > JAR create fred --type messenger \n > JAR create fred -t slack -i \n > JAR -c fred -t slack");

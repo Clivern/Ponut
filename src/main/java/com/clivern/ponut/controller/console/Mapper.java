@@ -16,7 +16,6 @@ package com.clivern.ponut.controller.console;
 import picocli.CommandLine;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
-import java.lang.String;
 
 /**
  * Map commands printed in the command line to the appropriate console controller
@@ -25,34 +24,6 @@ import java.lang.String;
  */
 public class Mapper implements Runnable {
 
-    /**
-     * Create a New Bot
-     * $> JAR create fred -t slack
-     * $> JAR create fred --type messenger
-     * $> JAR create fred -t slack -i
-     * $> JAR -c fred -t slack
-     *
-     * Get Version Info
-     * $> JAR -v
-     * $> JAR --version
-     *
-     * List all Bots
-     * $> JAR -l
-     * $> JAR --list
-     * $> JAR -l -t slack
-     * $> JAR -l -n fred
-     *
-     * Get Bots Status
-     * $> JAR -s
-     * $> JAR status
-     * $> JAR status -n fred
-     * $> JAR status --name fred
-     * $> JAR status -t slack
-     *
-     * Delete a Bot
-     * $> JAR -D fred
-     * $> JAR delete fred
-     */
     @Option(names = { "-c", "create" }, paramLabel="<bot>", description = "Create a new bot")
     private String create;
 
@@ -89,11 +60,12 @@ public class Mapper implements Runnable {
     @Option(names = { "-h", "help" }, paramLabel="<command>", description = "Get a helpful info about command")
     private String help;
 
+
     /**
      * Run Commands
      */
-    public void run() {
-
+    public void run()
+    {
         //Migrate Command
         if( this.migrate != null ){
             new Migrate(this.migrate).run();
@@ -104,16 +76,14 @@ public class Mapper implements Runnable {
             new Seed(this.seed).run();
         }
 
+        //Version Command
         if( this.version ){
             new Version().run();
         }
 
-        if( this.create != null ){
-            new Create().setName((this.create != null) ? this.create : "").setType((this.type != null) ? this.type : "").setInfo(this.verbose).run();
-        }
-
+        //Help Command
         if( this.help != null ){
-            new Help().setCommand(this.help).run();
+            new Help(this.help).run();
         }
     }
 
