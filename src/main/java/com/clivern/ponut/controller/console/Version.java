@@ -13,6 +13,8 @@
  */
 package com.clivern.ponut.controller.console;
 
+import com.clivern.ponut.module.service.utils.ColorsService;
+
 /**
  * Version Command
  *
@@ -22,11 +24,17 @@ public class Version {
 
     private String currentVersion = "1.0.0";
 
+    /**
+     * Run Version Command
+     */
     public void run()
     {
-        System.out.printf("Ponut version %s\n", this.currentVersion);
+        System.out.printf("\n" + ColorsService.ANSI_GREEN + "Ponut version %s" + ColorsService.ANSI_GREEN + "\n", this.currentVersion);
     }
 
+    /**
+     * Get Command Help Info
+     */
     public static void help()
     {
         System.out.println("Help Here....");
