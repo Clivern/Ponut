@@ -15,8 +15,16 @@ package com.clivern.ponut.route;
 
 import static spark.Spark.*;
 
+/**
+ * API Routes Class
+ *
+ * @since 1.0.0
+ */
 public class Api {
 
+    /**
+     * Define API Routes
+     */
     public static void call()
     {
         //~

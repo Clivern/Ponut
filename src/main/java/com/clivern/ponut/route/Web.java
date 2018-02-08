@@ -16,8 +16,16 @@ package com.clivern.ponut.route;
 import static spark.Spark.*;
 import com.clivern.ponut.controller.web.Home;
 
+/**
+ * Web Routes Class
+ *
+ * @since 1.0.0
+ */
 public class Web {
 
+    /**
+     * Define Web Routes
+     */
     public static void call()
     {
         get("/", (request, response) -> Home.render(request, response));

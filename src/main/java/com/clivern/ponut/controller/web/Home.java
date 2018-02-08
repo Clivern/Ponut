@@ -16,8 +16,20 @@ package com.clivern.ponut.controller.web;
 import spark.Request;
 import spark.Response;
 
+/**
+ * Home Controller
+ *
+ * @since 1.0.0
+ */
 public class Home {
 
+    /**
+     * Render Home Page
+     *
+     * @param  request
+     * @param  response
+     * @return String
+     */
     public static String render(Request request, Response response)
     {
         return "#> Your Ponut is Ready For Hacking ᕙ(⇀‸↼‶)ᕗ";

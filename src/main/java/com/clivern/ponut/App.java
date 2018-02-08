@@ -13,32 +13,27 @@
  */
 package com.clivern.ponut;
 
+import org.pmw.tinylog.Logger;
+import com.typesafe.config.Config;
 import com.clivern.ponut.route.Web;
 import com.clivern.ponut.route.Api;
 import com.clivern.ponut.controller.console.Mapper;
-
-
-import io.ebean.Ebean;
-import org.pmw.tinylog.Logger;
-import com.typesafe.config.*;
 import com.clivern.ponut.module.service.utils.ConfigService;
 import com.clivern.ponut.module.service.utils.LoggerService;
 import com.clivern.ponut.module.service.database.DatabaseService;
-import com.clivern.ponut.module.service.database.MigrationService;
 
-import com.clivern.ponut.module.service.database.SeederService;
-
-
-import com.clivern.ponut.database.migration.OptionTable;
-import com.clivern.ponut.database.migration.BotTable;
-import com.clivern.ponut.database.migration.BotMetaTable;
-import com.clivern.ponut.database.migration.MigrationTable;
-
-import com.clivern.ponut.database.seed.OptionSeeder;
-
-
+/**
+ * App Class
+ *
+ * @since 1.0.0
+ */
 public class App {
 
+    /**
+     * Main Method
+     *
+     * @param args
+     */
     public static void main(String[] args)
     {
         new App().config();
