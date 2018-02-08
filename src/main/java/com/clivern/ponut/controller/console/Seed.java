@@ -13,9 +13,10 @@
  */
 package com.clivern.ponut.controller.console;
 
+import com.clivern.ponut.database.seed.*;
+import com.clivern.ponut.module.service.utils.ColorsService;
 import com.clivern.ponut.module.service.database.SeederService;
 import com.clivern.ponut.module.service.database.DatabaseService;
-import com.clivern.ponut.database.seed.*;
 
 /**
  * Seed Command
@@ -43,45 +44,113 @@ public class Seed {
     {
         if( this.data.equals("up") ){
 
+
+            System.out.println("\n" + ColorsService.ANSI_PURPLE + "Start Registering Seeds.." + ColorsService.ANSI_PURPLE);
             SeederService seederService = new SeederService(DatabaseService.instance());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register Option Seeds" + ColorsService.ANSI_PURPLE);
             seederService.setSeeder(new OptionSeeder());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register Migration Seeds" + ColorsService.ANSI_PURPLE);
             seederService.setSeeder(new MigrationSeeder());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register Bot Seeds" + ColorsService.ANSI_PURPLE);
             seederService.setSeeder(new BotSeeder());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register BotMeta Seeds" + ColorsService.ANSI_PURPLE);
             seederService.setSeeder(new BotMetaSeeder());
-            seederService.runSeeders("up");
+
+            System.out.println(ColorsService.ANSI_PURPLE + "Start Running Up Seeds.." + ColorsService.ANSI_PURPLE);
+            Boolean status = seederService.runSeeders("up");
+
+            if( status ){
+                System.out.println("\n" + ColorsService.ANSI_GREEN + "Up Seeds Completed Successfully!" + ColorsService.ANSI_GREEN);
+            }else{
+                System.out.println("\n" + ColorsService.ANSI_RED + "Something Goes Wrong While Running Up Seeds! Check The Logs For Further Informations." + ColorsService.ANSI_RED);
+            }
 
         }else if( this.data.equals("down") ){
 
+            System.out.println("\n" + ColorsService.ANSI_PURPLE + "Start Registering Seeds.." + ColorsService.ANSI_PURPLE);
             SeederService seederService = new SeederService(DatabaseService.instance());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register Option Seeds" + ColorsService.ANSI_PURPLE);
             seederService.setSeeder(new OptionSeeder());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register Migration Seeds" + ColorsService.ANSI_PURPLE);
             seederService.setSeeder(new MigrationSeeder());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register Bot Seeds" + ColorsService.ANSI_PURPLE);
             seederService.setSeeder(new BotSeeder());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register BotMeta Seeds" + ColorsService.ANSI_PURPLE);
             seederService.setSeeder(new BotMetaSeeder());
-            seederService.runSeeders("down");
+
+            System.out.println(ColorsService.ANSI_PURPLE + "Start Running Down Seeds.." + ColorsService.ANSI_PURPLE);
+            Boolean status = seederService.runSeeders("down");
+
+            if( status ){
+                System.out.println("\n" + ColorsService.ANSI_GREEN + "Down Seeds Completed Successfully!" + ColorsService.ANSI_GREEN);
+            }else{
+                System.out.println("\n" + ColorsService.ANSI_RED + "Something Goes Wrong While Running Down Seeds! Check The Logs For Further Informations." + ColorsService.ANSI_RED);
+            }
 
         }else if( this.data.contains("up") ){
 
+            System.out.println("\n" + ColorsService.ANSI_PURPLE + "Start Registering Seeds.." + ColorsService.ANSI_PURPLE);
             SeederService seederService = new SeederService(DatabaseService.instance());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register Option Seeds" + ColorsService.ANSI_PURPLE);
             seederService.setSeeder(new OptionSeeder());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register Migration Seeds" + ColorsService.ANSI_PURPLE);
             seederService.setSeeder(new MigrationSeeder());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register Bot Seeds" + ColorsService.ANSI_PURPLE);
             seederService.setSeeder(new BotSeeder());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register BotMeta Seeds" + ColorsService.ANSI_PURPLE);
             seederService.setSeeder(new BotMetaSeeder());
-            seederService.runSeeder(this.data, "up");
+
+            System.out.println(ColorsService.ANSI_PURPLE + "Start Running " + this.data + " Seed.." + ColorsService.ANSI_PURPLE);
+            Boolean status = seederService.runSeeder(this.data, "up");
+
+            if( status ){
+                System.out.println("\n" + ColorsService.ANSI_GREEN + this.data + " Seed Completed Successfully!" + ColorsService.ANSI_GREEN);
+            }else{
+                System.out.println("\n" + ColorsService.ANSI_RED + "Something Goes Wrong While Running " + this.data + " Seed! Check The Logs For Further Informations." + ColorsService.ANSI_RED);
+            }
 
         }else if( this.data.contains("down") ){
 
+            System.out.println("\n" + ColorsService.ANSI_PURPLE + "Start Registering Seeds.." + ColorsService.ANSI_PURPLE);
             SeederService seederService = new SeederService(DatabaseService.instance());
-            seederService.setSeeder(new OptionSeeder());
-            seederService.setSeeder(new MigrationSeeder());
-            seederService.setSeeder(new BotSeeder());
-            seederService.setSeeder(new BotMetaSeeder());
-            seederService.runSeeder(this.data, "down");
 
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register Option Seeds" + ColorsService.ANSI_PURPLE);
+            seederService.setSeeder(new OptionSeeder());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register Migration Seeds" + ColorsService.ANSI_PURPLE);
+            seederService.setSeeder(new MigrationSeeder());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register Bot Seeds" + ColorsService.ANSI_PURPLE);
+            seederService.setSeeder(new BotSeeder());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register BotMeta Seeds" + ColorsService.ANSI_PURPLE);
+            seederService.setSeeder(new BotMetaSeeder());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "Start Running " + this.data + " Seed.." + ColorsService.ANSI_PURPLE);
+            Boolean status = seederService.runSeeder(this.data, "down");
+
+            if( status ){
+                System.out.println("\n" + ColorsService.ANSI_GREEN + this.data + " Seed Completed Successfully!" + ColorsService.ANSI_GREEN);
+            }else{
+                System.out.println("\n" + ColorsService.ANSI_RED + "Something Goes Wrong While Running " + this.data + " Seed! Check The Logs For Further Informations." + ColorsService.ANSI_RED);
+            }
         }
     }
 
     /**
-     * Command Help Info
+     * Get Command Help Info
      */
     public static void help()
     {
