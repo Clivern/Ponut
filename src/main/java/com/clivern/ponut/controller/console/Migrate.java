@@ -13,9 +13,10 @@
  */
 package com.clivern.ponut.controller.console;
 
+import com.clivern.ponut.database.migration.*;
+import com.clivern.ponut.module.service.utils.ColorsService;
 import com.clivern.ponut.module.service.database.MigrationService;
 import com.clivern.ponut.module.service.database.DatabaseService;
-import com.clivern.ponut.database.migration.*;
 
 /**
  * Migrate Command
@@ -25,6 +26,7 @@ import com.clivern.ponut.database.migration.*;
 public class Migrate {
 
     private String data;
+
 
     /**
      * Class Constructor
@@ -43,45 +45,112 @@ public class Migrate {
     {
         if( this.data.equals("up") ){
 
+            System.out.println("\n" + ColorsService.ANSI_PURPLE + "Start Registering Migrations.." + ColorsService.ANSI_PURPLE);
             MigrationService migrationService = new MigrationService(DatabaseService.instance());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register OptionTable Migrations" + ColorsService.ANSI_PURPLE);
             migrationService.setMigration(new OptionTable());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register BotMetaTable Migrations" + ColorsService.ANSI_PURPLE);
             migrationService.setMigration(new BotMetaTable());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register BotTable Migrations" + ColorsService.ANSI_PURPLE);
             migrationService.setMigration(new BotTable());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register MigrationTable Migrations" + ColorsService.ANSI_PURPLE);
             migrationService.setMigration(new MigrationTable());
-            migrationService.runMigrations("up");
+
+            System.out.println(ColorsService.ANSI_PURPLE + "Start Running Up Migrations.." + ColorsService.ANSI_PURPLE);
+            Boolean status = migrationService.runMigrations("up");
+
+            if( status ){
+                System.out.println("\n" + ColorsService.ANSI_GREEN + "Up Migrations Completed Successfully!" + ColorsService.ANSI_GREEN);
+            }else{
+                System.out.println("\n" + ColorsService.ANSI_RED + "Something Goes Wrong While Running Up Migrations! Check The Logs For Further Informations." + ColorsService.ANSI_RED);
+            }
 
         }else if( this.data.equals("down") ){
 
+            System.out.println("\n" + ColorsService.ANSI_PURPLE + "Start Registering Migrations.." + ColorsService.ANSI_PURPLE);
             MigrationService migrationService = new MigrationService(DatabaseService.instance());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register OptionTable Migrations" + ColorsService.ANSI_PURPLE);
             migrationService.setMigration(new OptionTable());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register BotMetaTable Migrations" + ColorsService.ANSI_PURPLE);
             migrationService.setMigration(new BotMetaTable());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register BotTable Migrations" + ColorsService.ANSI_PURPLE);
             migrationService.setMigration(new BotTable());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register MigrationTable Migrations" + ColorsService.ANSI_PURPLE);
             migrationService.setMigration(new MigrationTable());
-            migrationService.runMigrations("down");
+
+            System.out.println(ColorsService.ANSI_PURPLE + "Start Running Down Migrations.." + ColorsService.ANSI_PURPLE);
+            Boolean status = migrationService.runMigrations("down");
+
+            if( status ){
+                System.out.println("\n" + ColorsService.ANSI_GREEN + "Down Migrations Completed Successfully!" + ColorsService.ANSI_GREEN);
+            }else{
+                System.out.println("\n" + ColorsService.ANSI_RED + "Something Goes Wrong While Running Down Migrations! Check The Logs For Further Informations." + ColorsService.ANSI_RED);
+            }
 
         }else if( this.data.contains("up") ){
 
+            System.out.println("\n" + ColorsService.ANSI_PURPLE + "Start Registering Migrations.." + ColorsService.ANSI_PURPLE);
             MigrationService migrationService = new MigrationService(DatabaseService.instance());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register OptionTable Migrations" + ColorsService.ANSI_PURPLE);
             migrationService.setMigration(new OptionTable());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register BotMetaTable Migrations" + ColorsService.ANSI_PURPLE);
             migrationService.setMigration(new BotMetaTable());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register BotTable Migrations" + ColorsService.ANSI_PURPLE);
             migrationService.setMigration(new BotTable());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register MigrationTable Migrations" + ColorsService.ANSI_PURPLE);
             migrationService.setMigration(new MigrationTable());
-            migrationService.runMigration(this.data, "up");
+
+            System.out.println(ColorsService.ANSI_PURPLE + "Start Running " + this.data + " Migration.." + ColorsService.ANSI_PURPLE);
+            Boolean status = migrationService.runMigration(this.data, "up");
+
+            if( status ){
+                System.out.println("\n" + ColorsService.ANSI_GREEN + this.data + " Migration Completed Successfully!" + ColorsService.ANSI_GREEN);
+            }else{
+                System.out.println("\n" + ColorsService.ANSI_RED + "Something Goes Wrong While Running " + this.data + " Migration! Check The Logs For Further Informations." + ColorsService.ANSI_RED);
+            }
 
         }else if( this.data.contains("down") ){
 
+            System.out.println("\n" + ColorsService.ANSI_PURPLE + "Start Registering Migrations.." + ColorsService.ANSI_PURPLE);
             MigrationService migrationService = new MigrationService(DatabaseService.instance());
-            migrationService.setMigration(new OptionTable());
-            migrationService.setMigration(new BotMetaTable());
-            migrationService.setMigration(new BotTable());
-            migrationService.setMigration(new MigrationTable());
-            migrationService.runMigration(this.data, "down");
 
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register OptionTable Migrations" + ColorsService.ANSI_PURPLE);
+            migrationService.setMigration(new OptionTable());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register BotMetaTable Migrations" + ColorsService.ANSI_PURPLE);
+            migrationService.setMigration(new BotMetaTable());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register BotTable Migrations" + ColorsService.ANSI_PURPLE);
+            migrationService.setMigration(new BotTable());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "|- Register MigrationTable Migrations" + ColorsService.ANSI_PURPLE);
+            migrationService.setMigration(new MigrationTable());
+
+            System.out.println(ColorsService.ANSI_PURPLE + "Start Running " + this.data + " Migration.." + ColorsService.ANSI_PURPLE);
+            Boolean status = migrationService.runMigration(this.data, "down");
+
+            if( status ){
+                System.out.println("\n" + ColorsService.ANSI_GREEN + this.data + " Migration Completed Successfully!" + ColorsService.ANSI_GREEN);
+            }else{
+                System.out.println("\n" + ColorsService.ANSI_RED + "Something Goes Wrong While Running " + this.data + " Migration! Check The Logs For Further Informations." + ColorsService.ANSI_RED);
+            }
         }
     }
 
     /**
-     * Command Help Info
+     * Get Command Help Info
      */
     public static void help()
     {
