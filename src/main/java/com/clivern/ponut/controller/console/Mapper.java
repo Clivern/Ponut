@@ -13,6 +13,7 @@
  */
 package com.clivern.ponut.controller.console;
 
+import picocli.CommandLine.Command;
 import picocli.CommandLine;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
@@ -22,6 +23,33 @@ import picocli.CommandLine.Parameters;
  *
  * @since 1.0.0
  */
+@Command(
+    name = "Ponut",
+    sortOptions = false,
+    header = {
+        "@|green  _____   ____  _   _ _    _ _______|@",
+        "@|green |  __ \\ / __ \\| \\ | | |  | |__   __||@",
+        "@|green | |__) | |  | |  \\| | |  | |  | ||@",
+        "@|green |  ___/| |  | | . ` | |  | |  | ||@",
+        "@|green | |    | |__| | |\\  | |__| |  | ||@",
+        "@|green |_|     \\____/|_| \\_|\\____/   |_||@",
+        ""
+    },
+    description = {
+        "",
+        "Demonstrates ponut commands and usage help."
+    },
+    optionListHeading = "@|bold %nCommands|@:%n",
+    footer = {
+        "",
+        "@|cyan If you would like to contribute or report an issue|@",
+        "@|cyan go to github: https://github.com/clivern/ponut|@",
+        "",
+        "@|cyan If you like the project star it on github and follow me on twitter (@clivernco)!|@",
+        "@|cyan This project is created and maintained by Clivern (http://clivern.com)|@",
+        ""
+    }
+)
 public class Mapper implements Runnable {
 
     @Option(names = { "-c", "create" }, paramLabel="<bot>", description = "Create a new bot")
