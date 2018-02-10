@@ -23,9 +23,12 @@ import com.typesafe.config.*;
  */
 public interface DatabaseContract {
 
+    /**
+     * Config Database Connection
+     *
+     * @param config
+     */
     public void config(Config config);
-    public Boolean connect();
-    public Boolean healthCheck();
 
     /**
      * Execute Custom SQL Query
@@ -42,4 +45,11 @@ public interface DatabaseContract {
      * @return Boolean
      */
     public Boolean execute(CallableSql sql);
+
+    /**
+     * Check if DB Connected
+     *
+     * @return Boolean
+     */
+    public Boolean isConnected();
 }

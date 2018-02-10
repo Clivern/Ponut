@@ -79,8 +79,11 @@ public class SeederService implements SeederContract {
      */
     public Boolean runSeeders(String direction)
     {
-        Boolean status = true;
+        if( !this.databaseContract.isConnected() ){
+            return false;
+        }
 
+        Boolean status = true;
         this.upSeeders = this.sortSeeders(this.upSeeders);
         this.downSeeders = this.sortSeeders(this.downSeeders);
 
@@ -106,7 +109,9 @@ public class SeederService implements SeederContract {
      */
     public Boolean runSeeder(String key, String direction)
     {
-        Logger.info(direction + " --> " + key);
+        if( !this.databaseContract.isConnected() ){
+            return false;
+        }
 
         if( this.upSeeders.containsKey(key) && direction.equals("up") ){
 

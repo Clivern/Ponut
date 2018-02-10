@@ -82,8 +82,11 @@ public class MigrationService implements MigrationContract {
      */
     public Boolean runMigrations(String direction)
     {
-        Boolean status = true;
+        if( !this.databaseContract.isConnected() ){
+            return false;
+        }
 
+        Boolean status = true;
         this.upMigrations = this.sortMigrations(this.upMigrations);
         this.downMigrations = this.sortMigrations(this.downMigrations);
 
@@ -109,7 +112,10 @@ public class MigrationService implements MigrationContract {
      */
     public Boolean runMigration(String key, String direction)
     {
-        Logger.info(direction + " --> " + key);
+
+        if( !this.databaseContract.isConnected() ){
+            return false;
+        }
 
         this.databaseContract.execute(this.upMigrations.get("01-up_create_migrations_table"));
 
