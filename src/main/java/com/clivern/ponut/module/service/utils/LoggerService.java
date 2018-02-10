@@ -45,6 +45,10 @@ public class LoggerService implements LoggerContract {
 
     protected Map<String, Level> logLevels = new HashMap<String, Level>();
 
+    protected String append;
+
+    protected String buffered;
+
 
     /**
      * Class Constructor
@@ -66,6 +70,9 @@ public class LoggerService implements LoggerContract {
         this.logFileFormat = this.config.getString("logging.file_format");
         this.logType = this.config.getString("logging.log_type");
         this.currentDateFormat = this.config.getString("logging.current_date_format");
+        this.append = this.config.getString("logging.append");
+        this.buffered = this.config.getString("logging.buffered");
+
         this.logLevels.put("trace", Level.TRACE);
         this.logLevels.put("debug", Level.DEBUG);
         this.logLevels.put("info", Level.INFO);
@@ -78,7 +85,7 @@ public class LoggerService implements LoggerContract {
             Date date = new Date();
             String logFileName = (this.logFileFormat.equals("current_date")) ? dateFormat.format(date) + ".log" : this.logFileFormat + ".log";
             Configurator.defaultConfig()
-                .writer(new FileWriter(this.logFilePath + logFileName))
+                .writer(new FileWriter(this.logFilePath + logFileName, (this.buffered.equals("true")) ? true : false, (this.append.equals("true")) ? true : false))
                 .level((this.logLevels.containsKey(this.logLevel)) ? this.logLevels.get(this.logLevel) : Level.INFO)
                 .activate();
 
