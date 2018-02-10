@@ -18,6 +18,7 @@ import java.util.Map;
 import java.io.IOException;
 import spark.Request;
 import spark.Response;
+import org.pmw.tinylog.Logger;
 import com.clivern.racter.BotPlatform;
 import com.clivern.ponut.bot.boilerplate.messenger.service.SettingsService;
 

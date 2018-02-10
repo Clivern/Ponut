@@ -60,10 +60,6 @@ public class SettingsService {
      */
     public Map<String, String> getOptions()
     {
-        if( this.options != null ){
-            return this.options;
-        }
-
         List<BotMetaModel> botMetas = Ebean.find(BotMetaModel.class)
             .fetch("key", "value")
             .where()
