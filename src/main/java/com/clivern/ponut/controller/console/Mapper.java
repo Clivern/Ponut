@@ -13,6 +13,7 @@
  */
 package com.clivern.ponut.controller.console;
 
+import org.pmw.tinylog.Logger;
 import picocli.CommandLine.Command;
 import picocli.CommandLine;
 import picocli.CommandLine.Option;
@@ -96,21 +97,25 @@ public class Mapper implements Runnable {
     {
         //Migrate Command
         if( this.migrate != null ){
+            Logger.info("Calling Command [ $.. migrate " + this.migrate + " ]");
             new Migrate(this.migrate).run();
         }
 
         //Seed Command
         if( this.seed != null ){
+            Logger.info("Calling Command [ $.. seed " + this.seed + " ]");
             new Seed(this.seed).run();
         }
 
         //Version Command
         if( this.version ){
+            Logger.info("Calling Command [ $.. --version ]");
             new Version().run();
         }
 
         //Help Command
         if( this.help != null ){
+            Logger.info("Calling Command [ $.. help " + this.help + " ]");
             new Help(this.help).run();
         }
     }
