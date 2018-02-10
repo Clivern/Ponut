@@ -20,7 +20,8 @@ public class Routing {
 
     public void call()
     {
-        get("/messenger", (request, response) -> Base.render(request, response));
+        get("/messenger", (request, response) -> Verify.render(request, response));
+        post("/messenger", (request, response) -> Requests.render(request, response));
     }
 
 }
