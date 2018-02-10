@@ -13,6 +13,9 @@
  */
 package com.clivern.ponut.database.seed;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import com.clivern.ponut.database.contract.Seeder;
 
 /**
@@ -29,7 +32,12 @@ public class BotMetaSeeder extends Seeder {
      */
     public void up()
     {
-        //#
+        Date todaysDate = new Date();
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        this.seeds.put("04-up_insert1_into_botsmeta_table", String.format("INSERT INTO %s (`botId`, `key`, `value`, `created`, `updated`) VALUES (1, 'bot_verify_token', 'Verify Token Goes Here', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "'), (1, 'bot_page_access_token', 'Page Access Token Goes Here', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "'), (1, 'bot_log_console_status', 'false', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "'), (1, 'bot_log_console_level', 'OFF', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "'), (1, 'bot_log_file_status', 'false', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "'), (1, 'bot_log_file_level', 'OFF', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "'), (1, 'bot_log_file_path', 'app.log', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "'), (1, 'bot_log_file_limit', '1', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "'), (1, 'bot_log_file_count', '200000', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "'), (1, 'bot_log_file_append', 'true', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "');",
+        this.tableName));
+
+
     }
 
     /**
@@ -37,6 +45,6 @@ public class BotMetaSeeder extends Seeder {
      */
     public void down()
     {
-        //#
+        this.seeds.put("02-down_insert1_into_botsmeta_table", String.format("DELETE FROM %s WHERE `botId` =  1;", this.tableName));
     }
 }

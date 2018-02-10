@@ -114,13 +114,9 @@ public class SeederService implements SeederContract {
         }
 
         if( this.upSeeders.containsKey(key) && direction.equals("up") ){
-
             return this.databaseContract.execute(this.upSeeders.get(key));
-
         }else if( this.downSeeders.containsKey(key) && direction.equals("down") ){
-
             return this.databaseContract.execute(this.downSeeders.get(key));
-
         }
 
         return false;
@@ -176,10 +172,8 @@ public class SeederService implements SeederContract {
             public int compare(String item1, String item2) {
                 String[] itemArr1 = item1.split("-");
                 String[] itemArr2 = item2.split("-");
-
                 Integer itemInt1 = Integer.parseInt(itemArr1[0]);
                 Integer itemInt2 = Integer.parseInt(itemArr2[0]);
-
                 return itemInt1.compareTo(itemInt2);
             }
         });

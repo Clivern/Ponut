@@ -33,9 +33,9 @@ public class BotTable extends Migration {
             "`id` int NOT NULL AUTO_INCREMENT,\n" +
             "`name` varchar(50) NOT NULL,\n" +
             "`slug` varchar(80) NOT NULL,\n" +
-            "`status` varchar(5) NOT NULL,\n" +
-            "`type` varchar(10) NOT NULL,\n" +
-            "`isDefault` varchar(5) NOT NULL,\n" +
+            "`status` varchar(20) NOT NULL,\n" +
+            "`type` varchar(20) NOT NULL,\n" +
+            "`isDefault` varchar(20) NOT NULL,\n" +
             "`created` datetime NOT NULL,\n" +
             "`updated` datetime NOT NULL,\n" +
             "PRIMARY KEY (`id`),\n" +

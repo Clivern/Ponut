@@ -100,6 +100,7 @@ public class DatabaseService implements DatabaseContract {
 
         try {
             CallableSql callableSQL = Ebean.createCallableSql(sql);
+            Ebean.execute(callableSQL);
         }catch ( Exception e) {
             Logger.error("Error While Running Database Query. Reason [ " + e.getMessage() + " ]");
         }
