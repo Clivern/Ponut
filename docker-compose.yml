@@ -1,13 +1,6 @@
 version: '2'
 services:
 
-  data:
-    container_name: ponut_data
-    build: ./docker/data
-    volumes:
-      - .:/opt/apps/ponut
-    command: /var/local/entrypoint.sh
-
   db:
     container_name: ponut_mysql
     build: ./docker/mysql
@@ -27,12 +20,13 @@ services:
     build: ./docker/java
     ports:
       - "4567:4567"
-    volumes_from:
-      - data
     links:
       - db
+    volumes:
+      - .:/opt/apps/ponut
     environment:
       MYSQL_PASSWORD: root
       MYSQL_DATABASE: ponut
       MYSQL_USER: root
       MYSQL_HOST: localhost
+    tty: true
