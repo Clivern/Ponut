@@ -49,7 +49,7 @@ public class BotSeeder extends Seeder {
      */
     public void down()
     {
-        this.seeds.put("03-down_insert1_into_bots_table", String.format("DELETE FROM %s WHERE `slug` =  'messenger';", this.tableName));
-        this.seeds.put("04-down_insert2_into_bots_table", String.format("DELETE FROM %s WHERE `slug` =  'slack';", this.tableName));
+        this.seeds.put("04-down_insert1_into_bots_table", String.format("DELETE FROM %s WHERE `slug` =  'messenger';", this.tableName));
+        this.seeds.put("05-down_insert2_into_bots_table", String.format("DELETE FROM %s WHERE `slug` =  'slack';", this.tableName));
     }
 }

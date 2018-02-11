@@ -49,7 +49,7 @@ public class BotMetaSeeder extends Seeder {
             "(1, 'bot_log_file_append', 'true', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "');",
         this.tableName));
 
-        this.seeds.put("04-up_insert1_into_botsmeta_table", String.format("INSERT INTO %s " +
+        this.seeds.put("05-up_insert2_into_botsmeta_table", String.format("INSERT INTO %s " +
             "(`botId`, `key`, `value`, `created`, `updated`) VALUES " +
             "(2, 'bot_client_id', '', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
             "(2, 'bot_client_secret', '', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
@@ -77,5 +77,6 @@ public class BotMetaSeeder extends Seeder {
     public void down()
     {
         this.seeds.put("02-down_insert1_into_botsmeta_table", String.format("DELETE FROM %s WHERE `botId` =  1;", this.tableName));
+        this.seeds.put("03-down_insert2_into_botsmeta_table", String.format("DELETE FROM %s WHERE `botId` =  2;", this.tableName));
     }
 }
