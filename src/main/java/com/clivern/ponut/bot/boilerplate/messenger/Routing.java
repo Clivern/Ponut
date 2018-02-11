@@ -16,8 +16,16 @@ package com.clivern.ponut.bot.boilerplate.messenger;
 import static spark.Spark.*;
 import com.clivern.ponut.bot.boilerplate.messenger.controller.*;
 
+/**
+ * Routing Class
+ *
+ * @since 1.0.0
+ */
 public class Routing {
 
+	/**
+	 * Define Routes for Messenger Bot
+	 */
     public void call()
     {
         get("/messenger", (request, response) -> Verify.render(request, response));

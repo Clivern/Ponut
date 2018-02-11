@@ -16,11 +16,20 @@ package com.clivern.ponut.bot.boilerplate.slack;
 import static spark.Spark.*;
 import com.clivern.ponut.bot.boilerplate.slack.controller.*;
 
+/**
+ * Routing Class
+ *
+ * @since 1.0.0
+ */
 public class Routing {
 
+	/**
+	 * Define Bot Routes
+	 */
     public void call()
     {
-        get("/slack", (request, response) -> Base.render(request, response));
+        get("/slack", (request, response) -> Oauth.renderRedirectURL(request, response));
+        post("/slack/oauth", (request, response) -> Oauth.renderOauth(request, response));
+        post("/slack/commands", (request, response) -> Commands.renderCommands(request, response));
     }
-
 }
