@@ -23,30 +23,52 @@ import com.clivern.ponut.bot.boilerplate.slack.service.SettingsService;
 import com.clivern.fred.exception.CommandNotFound;
 import java.io.IOException;
 
-public class Oauth {
+/**
+ * Oauth Controller
+ *
+ * @since 1.0.0
+ */
+public class OauthController {
 
-    public static String renderRedirectURL(Request request, Response response) throws UnirestException, CommandNotFound, IOException
+    /**
+     * Render Redirect URL
+     *
+     * @param  request
+     * @param  response
+     * @return
+     * @throws UnirestException
+     * @throws IOException
+     */
+    public static String renderRedirectURL(Request request, Response response) throws UnirestException, IOException
     {
         Config config = new Config();
-		Map<String, String> options = SettingsService.instance().getOptions();
-		for (Map.Entry<String, String> option : options.entrySet()) {
-		    config.set(option.getKey(), option.getValue());
-	    }
+        Map<String, String> options = SettingsService.instance().getOptions();
+        for (Map.Entry<String, String> option : options.entrySet()) {
+            config.set(option.getKey(), option.getValue());
+        }
         Log log = new Log(config);
         Oauth oauth = new Oauth(config, log);
         return "<a href='" + oauth.getRedirectURL() + "'>Auth</a>";
     }
 
-    public static String renderOauth(Request request, Response response) throws UnirestException, CommandNotFound, IOException
+    /**
+     * Oauth Action
+     *
+     * @param  request
+     * @param  response
+     * @return
+     * @throws UnirestException
+     * @throws IOException
+     */
+    public static String renderOauth(Request request, Response response) throws UnirestException, IOException
     {
         Config config = new Config();
         Map<String, String> options = SettingsService.instance().getOptions();
-		for (Map.Entry<String, String> option : options.entrySet()) {
-		    config.set(option.getKey(), option.getValue());
-		}
+        for (Map.Entry<String, String> option : options.entrySet()) {
+            config.set(option.getKey(), option.getValue());
+        }
         Log log = new Log(config);
         Oauth oauth = new Oauth(config, log);
-
         Boolean status = oauth.issueToken(
             ( request.queryParams("code") != null ) ? request.queryParams("code") : "",
             ( request.queryParams("state") != null ) ? request.queryParams("state") : "",
@@ -54,9 +76,7 @@ public class Oauth {
         );
 
         Boolean fetch = oauth.fetchAccessToken();
-
         if( status && fetch ){
-
             return  "State: " +  oauth.getState() + "<br/>" +
                     "Client ID: " +  oauth.getClientId() + "<br/>" +
                     "Client Secret: " +  oauth.getClientSecret() + "<br/>" +
@@ -82,5 +102,4 @@ public class Oauth {
             return "Error";
         }
     }
-
 }

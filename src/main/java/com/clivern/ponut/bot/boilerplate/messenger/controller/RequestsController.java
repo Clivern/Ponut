@@ -31,7 +31,7 @@ import org.pmw.tinylog.Logger;
  *
  * @since 1.0.0
  */
-public class Requests {
+public class RequestsController {
 
     /**
      * Render Method

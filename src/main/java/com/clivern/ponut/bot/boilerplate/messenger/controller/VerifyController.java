@@ -27,7 +27,7 @@ import com.clivern.ponut.bot.boilerplate.messenger.service.SettingsService;
  *
  * @since 1.0.0
  */
-public class Verify {
+public class VerifyController {
 
     /**
      * Render Method

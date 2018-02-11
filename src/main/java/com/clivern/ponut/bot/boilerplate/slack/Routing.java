@@ -28,8 +28,8 @@ public class Routing {
 	 */
     public void call()
     {
-        get("/slack", (request, response) -> Oauth.renderRedirectURL(request, response));
-        post("/slack/oauth", (request, response) -> Oauth.renderOauth(request, response));
-        post("/slack/commands", (request, response) -> Commands.renderCommands(request, response));
+        get("/slack", (request, response) -> OauthController.renderRedirectURL(request, response));
+        post("/slack/oauth", (request, response) -> OauthController.renderOauth(request, response));
+        post("/slack/commands", (request, response) -> CommandsController.renderCommands(request, response));
     }
 }

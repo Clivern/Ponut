@@ -26,8 +26,23 @@ import com.clivern.ponut.bot.boilerplate.slack.service.SettingsService;
 import com.clivern.fred.exception.CommandNotFound;
 import java.io.IOException;
 
-public class Commands {
+/**
+ * Commands Controller
+ *
+ * @since 1.0.0
+ */
+public class CommandsController {
 
+	/**
+	 * Respond To Commands
+	 *
+	 * @param  request
+	 * @param  response
+	 * @return
+	 * @throws UnirestException
+	 * @throws CommandNotFound
+	 * @throws IOException
+	 */
     public static String renderCommands(Request request, Response response) throws UnirestException, CommandNotFound, IOException
     {
         Config config = new Config();
