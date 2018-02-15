@@ -24,3 +24,7 @@ db-create-all.sql
 
 Ponut.iml
 .idea
+.classpath
+.project
+.settings
+bin
