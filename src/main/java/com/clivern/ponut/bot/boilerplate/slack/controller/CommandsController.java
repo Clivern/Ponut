@@ -50,8 +50,8 @@ public class CommandsController {
 		for (Map.Entry<String, String> option : options.entrySet()) {
 		    config.set(option.getKey(), option.getValue());
 		}
-        Log log = new Log(config);
-        BaseReceiver baseReceiver = new BaseReceiver(config, log);
+        config.configLogger();
+        BaseReceiver baseReceiver = new BaseReceiver(config);
 
         // Build Our First Command (/fred Command)
         Command fredCommand = new Command("/fred", false, (ct) -> "You Typed -> " + ct.getText() + " To /fred");

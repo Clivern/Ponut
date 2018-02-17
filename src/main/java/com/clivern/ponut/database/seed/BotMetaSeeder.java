@@ -39,14 +39,13 @@ public class BotMetaSeeder extends Seeder {
             "(`botId`, `key`, `value`, `created`, `updated`) VALUES" +
             "(1, 'bot_verify_token', 'Verify Token Goes Here', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
             "(1, 'bot_page_access_token', 'Page Access Token Goes Here', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
-            "(1, 'bot_log_console_status', 'false', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
-            "(1, 'bot_log_console_level', 'OFF', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
-            "(1, 'bot_log_file_status', 'false', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
-            "(1, 'bot_log_file_level', 'OFF', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
-            "(1, 'bot_log_file_path', 'app.log', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
-            "(1, 'bot_log_file_limit', '1', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
-            "(1, 'bot_log_file_count', '200000', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
-            "(1, 'bot_log_file_append', 'true', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "');",
+            "(1, 'bot_logging_level', 'debug', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
+            "(1, 'bot_logging_file_path', 'src/main/java/resources/', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
+            "(1, 'bot_logging_file_format', 'current_date', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
+            "(1, 'bot_logging_log_type', 'file', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
+            "(1, 'bot_logging_current_date_format', 'yyyy-MM-dd', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
+            "(1, 'bot_logging_append', 'true', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
+            "(1, 'bot_logging_buffered', 'false', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "');",
         this.tableName));
 
         this.seeds.put("05-up_insert2_into_botsmeta_table", String.format("INSERT INTO %s " +
@@ -59,14 +58,13 @@ public class BotMetaSeeder extends Seeder {
             "(2, 'bot_state', 'Yuiw625372ndhjdbsse', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
             "(2, 'bot_team', '', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
             "(2, 'bot_verification_token', '', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
-            "(2, 'bot_log_console_status', 'false', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
-            "(2, 'bot_log_console_level', 'OFF', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
-            "(2, 'bot_log_file_status', 'false', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
-            "(2, 'bot_log_file_level', 'OFF', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
-            "(2, 'bot_log_file_path', 'app.log', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
-            "(2, 'bot_log_file_limit', '1', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
-            "(2, 'bot_log_file_count', '200000', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
-            "(2, 'bot_log_file_append', 'false', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "');",
+            "(2, 'bot_logging_level', 'debug', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
+            "(2, 'bot_logging_file_path', 'src/main/java/resources/', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
+            "(2, 'bot_logging_file_format', 'current_date', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
+            "(2, 'bot_logging_log_type', 'file', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
+            "(2, 'bot_logging_current_date_format', 'yyyy-MM-dd', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
+            "(2, 'bot_logging_append', 'true', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
+            "(2, 'bot_logging_buffered', 'false', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "');",
         this.tableName));
 
     }

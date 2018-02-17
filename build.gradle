@@ -46,10 +46,10 @@ dependencies {
     compile 'redis.clients:jedis:2.9.0'
 
     //Messenger Bot Package
-    compile 'com.clivern:racter:1.0.2'
+    compile 'com.clivern:racter:1.0.4'
 
     //Slack Bot Package
-    compile 'com.clivern:fred:1.0.1'
+    compile 'com.clivern:fred:1.0.2'
 
     //Command Line Package
     compile 'info.picocli:picocli:2.2.1'

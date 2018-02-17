@@ -46,8 +46,8 @@ public class OauthController {
         for (Map.Entry<String, String> option : options.entrySet()) {
             config.set(option.getKey(), option.getValue());
         }
-        Log log = new Log(config);
-        Oauth oauth = new Oauth(config, log);
+        config.configLogger();
+        Oauth oauth = new Oauth(config);
         return "<a href='" + oauth.getRedirectURL() + "'>Auth</a>";
     }
 
@@ -67,8 +67,8 @@ public class OauthController {
         for (Map.Entry<String, String> option : options.entrySet()) {
             config.set(option.getKey(), option.getValue());
         }
-        Log log = new Log(config);
-        Oauth oauth = new Oauth(config, log);
+        config.configLogger();
+        Oauth oauth = new Oauth(config);
         Boolean status = oauth.issueToken(
             ( request.queryParams("code") != null ) ? request.queryParams("code") : "",
             ( request.queryParams("state") != null ) ? request.queryParams("state") : "",
