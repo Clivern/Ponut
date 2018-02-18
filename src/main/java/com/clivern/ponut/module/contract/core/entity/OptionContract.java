@@ -24,14 +24,14 @@ import com.clivern.ponut.model.OptionModel;
  */
 public interface OptionContract {
 
-    //public OptionModel getOne(Map<String, String> where);
+    //public OptionModel getOne(Map<String, String> where) throws IllegalArgumentException;
 
-    //public List<OptionModel> getMany(Map<String, String> where);
+    //public List<OptionModel> getMany(Map<String, String> where) throws IllegalArgumentException;
 
     /**
      * Create a new option
      *
-     * @param Map a list of option data
+     * @param item a list of option data
      * @return Boolean whether option saved or not
      * @throws IllegalArgumentException in case invalid arguments provided
      */
@@ -40,22 +40,34 @@ public interface OptionContract {
     /**
      * Create many options
      *
-     * @param List a list of options data
+     * @param items a list of options data
      * @return Boolean whether option saved or not
      * @throws IllegalArgumentException in case invalid arguments provided
      */
     public Boolean createMany(List<Map<String, String>> items) throws IllegalArgumentException;
 
-    //public Boolean updateOne(Map<String, String> where, Map<String, String> data);
+    //public Boolean updateOne(Map<String, String> where, Map<String, String> data) throws IllegalArgumentException;
 
-    //public Boolean updateOne(OptionModel item, Map<String, String> data);
+    //public Boolean updateOne(OptionModel item, Map<String, String> data) throws IllegalArgumentException;
 
-    //public Boolean deleteOne(Map<String, String> where);
+    //public Boolean deleteOne(Map<String, String> where) throws IllegalArgumentException;
 
-    //public Boolean deleteMany(Map<String, String> where);
+    //public Boolean deleteMany(Map<String, String> where) throws IllegalArgumentException;
 
-    //public Boolean deleteOne(OptionModel item);
+    /**
+     * Delete an Option
+     *
+     * @param item an option to delete
+     * @return Boolean whether option deleted or not
+     */
+    public Boolean deleteOne(OptionModel item);
 
-    //public Boolean deleteMany(List<OptionModel> items);
+    /**
+     * Delete Many Options
+     *
+     * @param items a list of options to delete
+     * @return Boolean whether options deleted or not
+     */
+    public Boolean deleteMany(List<OptionModel> items);
 
 }

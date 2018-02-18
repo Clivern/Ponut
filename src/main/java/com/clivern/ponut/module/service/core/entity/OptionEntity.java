@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.List;
 import java.lang.IllegalArgumentException;
 import org.pmw.tinylog.Logger;
+import io.ebean.Ebean;
 import com.clivern.ponut.model.OptionModel;
 import com.clivern.ponut.module.contract.core.entity.OptionContract;
 
@@ -39,7 +40,7 @@ public class OptionEntity implements OptionContract {
      * Boolean status = optionEntity.createOne(item);
      * </pre>
      *
-     * @param Map a list of option data
+     * @param item a list of option data
      * @return Boolean whether option saved or not
      * @throws IllegalArgumentException in case invalid arguments provided
      */
@@ -90,8 +91,8 @@ public class OptionEntity implements OptionContract {
      * Boolean status = optionEntity.createMany(items);
      * </pre>
      *
-     * @param List a list of options data
-     * @return Boolean whether option saved or not
+     * @param items a list of options data
+     * @return Boolean whether options saved or not
      * @throws IllegalArgumentException in case invalid arguments provided
      */
     public Boolean createMany(List<Map<String, String>> items) throws IllegalArgumentException
@@ -99,21 +100,35 @@ public class OptionEntity implements OptionContract {
         Boolean status = true;
 
         for(Map<String, String> item : items){
-            if( !item.containsKey("key") || !item.containsKey("value") ){
-                Logger.error("Error! Option key and value are required.");
-                throw new IllegalArgumentException("Error! Option key and value are required.");
-            }
-            if( item.get("key").trim().equals("") ){
-                Logger.error("Error! Option key must not equal empty.");
-                throw new IllegalArgumentException("Error! Option key must not equal empty.");
-            }
-            OptionModel optionModel = new OptionModel(
-                item.get("key").trim(),
-                item.get("value").trim(),
-                (item.containsKey("autoload") && (item.get("key").trim().equals("on") || item.get("key").trim().equals("off")) ) ? item.get("autoload").trim() : "off"
-            );
-            optionModel.save();
-            status &= (optionModel.getId() > 0) ? true : false;
+            status &= this.createOne(item);
+        }
+
+        return status;
+    }
+
+    /**
+     * Delete an Option
+     *
+     * @param item an option to delete
+     * @return Boolean whether option deleted or not
+     */
+    public Boolean deleteOne(OptionModel item)
+    {
+        return Ebean.deletePermanent(item);
+    }
+
+    /**
+     * Delete Many Options
+     *
+     * @param items a list of options to delete
+     * @return Boolean whether options deleted or not
+     */
+    public Boolean deleteMany(List<OptionModel> items)
+    {
+        Boolean status = true;
+
+        for(OptionModel item : items){
+            status &= this.deleteOne(item);
         }
 
         return status;
