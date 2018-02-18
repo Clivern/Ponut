@@ -67,6 +67,33 @@ public class OptionEntity implements OptionContract {
         return status;
     }
 
+    /**
+     * Create many options
+     *
+     * <pre>
+     * OptionEntity optionEntity = new OptionEntity();
+     * List<Map<String, String>> items = new ArrayList<Map<String, String>>();
+     *
+     * Map<String, String> item1 = new HashMap<String, String>();
+     * item1.put("key", "item1_key");
+     * item1.put("value", "item1_value");
+     * item1.put("autoload", "off");
+     *
+     * Map<String, String> item2 = new HashMap<String, String>();
+     * item2.put("key", "item2_key");
+     * item2.put("value", "item2_value");
+     * item2.put("autoload", "off");
+     *
+     * items.add(item1);
+     * items.add(item2);
+     *
+     * Boolean status = optionEntity.createMany(items);
+     * </pre>
+     *
+     * @param List a list of options data
+     * @return Boolean whether option saved or not
+     * @throws IllegalArgumentException in case invalid arguments provided
+     */
     public Boolean createMany(List<Map<String, String>> items) throws IllegalArgumentException
     {
         Boolean status = true;

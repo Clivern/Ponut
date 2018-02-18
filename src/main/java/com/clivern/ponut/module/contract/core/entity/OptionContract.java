@@ -37,6 +37,13 @@ public interface OptionContract {
      */
     public Boolean createOne(Map<String, String> item) throws IllegalArgumentException;
 
+    /**
+     * Create many options
+     *
+     * @param List a list of options data
+     * @return Boolean whether option saved or not
+     * @throws IllegalArgumentException in case invalid arguments provided
+     */
     public Boolean createMany(List<Map<String, String>> items) throws IllegalArgumentException;
 
     //public Boolean updateOne(Map<String, String> where, Map<String, String> data);
