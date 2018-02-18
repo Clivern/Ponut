@@ -30,13 +30,14 @@ public class OptionEntity implements OptionContract {
     /**
      * Create a new option
      *
-     * <pre>{@code
+     * <pre>
      * OptionEntity optionEntity = new OptionEntity();
      * Map<String, String> item = new HashMap<String, String>();
      * item.put("key", "_new_key");
      * item.put("value", "_new_value");
      * item.put("autoload", "off");
-     * Boolean status = optionEntity.createOne(item);</pre>
+     * Boolean status = optionEntity.createOne(item);
+     * </pre>
      *
      * @param Map a list of option data
      * @return Boolean whether option saved or not
