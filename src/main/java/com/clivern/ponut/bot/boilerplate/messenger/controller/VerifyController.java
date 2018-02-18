@@ -35,6 +35,7 @@ public class VerifyController {
      * @param  request
      * @param  response
      * @return String
+     * @throws IOException
      */
     public static String render(Request request, Response response) throws IOException
     {

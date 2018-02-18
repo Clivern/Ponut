@@ -39,6 +39,8 @@ public class RequestsController {
      * @param  request
      * @param  response
      * @return String
+     * @throws IOException
+     * @throws UnirestException
      */
     public static String render(Request request, Response response) throws IOException, UnirestException
     {

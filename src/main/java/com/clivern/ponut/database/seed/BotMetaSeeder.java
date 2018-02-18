@@ -40,7 +40,7 @@ public class BotMetaSeeder extends Seeder {
             "(1, 'bot_verify_token', 'Verify Token Goes Here', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
             "(1, 'bot_page_access_token', 'Page Access Token Goes Here', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
             "(1, 'bot_logging_level', 'debug', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
-            "(1, 'bot_logging_file_path', 'src/main/java/resources/', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
+            "(1, 'bot_logging_file_path', 'storage/logs/', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
             "(1, 'bot_logging_file_format', 'current_date', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
             "(1, 'bot_logging_log_type', 'file', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
             "(1, 'bot_logging_current_date_format', 'yyyy-MM-dd', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
@@ -59,7 +59,7 @@ public class BotMetaSeeder extends Seeder {
             "(2, 'bot_team', '', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
             "(2, 'bot_verification_token', '', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
             "(2, 'bot_logging_level', 'debug', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
-            "(2, 'bot_logging_file_path', 'src/main/java/resources/', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
+            "(2, 'bot_logging_file_path', 'storage/logs/', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
             "(2, 'bot_logging_file_format', 'current_date', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
             "(2, 'bot_logging_log_type', 'file', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +
             "(2, 'bot_logging_current_date_format', 'yyyy-MM-dd', '" + df.format(todaysDate) + "', '" + df.format(todaysDate) + "')," +

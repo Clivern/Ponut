@@ -38,7 +38,7 @@ public class CommandsController {
 	 *
 	 * @param  request
 	 * @param  response
-	 * @return
+	 * @return String
 	 * @throws UnirestException
 	 * @throws CommandNotFound
 	 * @throws IOException

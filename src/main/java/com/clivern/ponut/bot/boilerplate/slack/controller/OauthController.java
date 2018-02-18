@@ -35,7 +35,7 @@ public class OauthController {
      *
      * @param  request
      * @param  response
-     * @return
+     * @return String
      * @throws UnirestException
      * @throws IOException
      */
@@ -56,7 +56,7 @@ public class OauthController {
      *
      * @param  request
      * @param  response
-     * @return
+     * @return String
      * @throws UnirestException
      * @throws IOException
      */
