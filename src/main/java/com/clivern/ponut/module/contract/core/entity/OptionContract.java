@@ -13,11 +13,42 @@
  */
 package com.clivern.ponut.module.contract.core.entity;
 
+import java.util.Map;
+import java.util.List;
+import com.clivern.ponut.model.OptionModel;
+
 /**
  * Option Entity Contract Interface
  *
  * @since 1.0.0
  */
 public interface OptionContract {
+
+    //public OptionModel getOne(Map<String, String> where);
+
+    //public List<OptionModel> getMany(Map<String, String> where);
+
+    /**
+     * Create a new option
+     *
+     * @param Map a list of option data
+     * @return Boolean whether option saved or not
+     * @throws IllegalArgumentException in case invalid arguments provided
+     */
+    public Boolean createOne(Map<String, String> item) throws IllegalArgumentException;
+
+    public Boolean createMany(List<Map<String, String>> items) throws IllegalArgumentException;
+
+    //public Boolean updateOne(Map<String, String> where, Map<String, String> data);
+
+    //public Boolean updateOne(OptionModel item, Map<String, String> data);
+
+    //public Boolean deleteOne(Map<String, String> where);
+
+    //public Boolean deleteMany(Map<String, String> where);
+
+    //public Boolean deleteOne(OptionModel item);
+
+    //public Boolean deleteMany(List<OptionModel> items);
 
 }

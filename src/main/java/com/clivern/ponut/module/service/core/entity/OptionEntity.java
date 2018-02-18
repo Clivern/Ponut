@@ -13,7 +13,11 @@
  */
 package com.clivern.ponut.module.service.core.entity;
 
-import com.clivern.ponut.model.*;
+import java.util.Map;
+import java.util.List;
+import java.lang.IllegalArgumentException;
+import org.pmw.tinylog.Logger;
+import com.clivern.ponut.model.OptionModel;
 import com.clivern.ponut.module.contract.core.entity.OptionContract;
 
 /**
@@ -23,4 +27,67 @@ import com.clivern.ponut.module.contract.core.entity.OptionContract;
  */
 public class OptionEntity implements OptionContract {
 
+    /**
+     * Create a new option
+     *
+     * <pre>{@code
+     * OptionEntity optionEntity = new OptionEntity();
+     * Map<String, String> item = new HashMap<String, String>();
+     * item.put("key", "_new_key");
+     * item.put("value", "_new_value");
+     * item.put("autoload", "off");
+     * Boolean status = optionEntity.createOne(item);</pre>
+     *
+     * @param Map a list of option data
+     * @return Boolean whether option saved or not
+     * @throws IllegalArgumentException in case invalid arguments provided
+     */
+    public Boolean createOne(Map<String, String> item) throws IllegalArgumentException
+    {
+        Boolean status = true;
+
+        if( !item.containsKey("key") || !item.containsKey("value") ){
+            Logger.error("Error! Option key and value are required.");
+            throw new IllegalArgumentException("Error! Option key and value are required.");
+        }
+        if( item.get("key").trim().equals("") ){
+            Logger.error("Error! Option key must not equal empty.");
+            throw new IllegalArgumentException("Error! Option key must not equal empty.");
+        }
+
+        OptionModel optionModel = new OptionModel(
+            item.get("key").trim(),
+            item.get("value").trim(),
+            (item.containsKey("autoload") && (item.get("key").trim().equals("on") || item.get("key").trim().equals("off")) ) ? item.get("autoload").trim() : "off"
+        );
+        optionModel.save();
+        status &= (optionModel.getId() > 0) ? true : false;
+
+        return status;
+    }
+
+    public Boolean createMany(List<Map<String, String>> items) throws IllegalArgumentException
+    {
+        Boolean status = true;
+
+        for(Map<String, String> item : items){
+            if( !item.containsKey("key") || !item.containsKey("value") ){
+                Logger.error("Error! Option key and value are required.");
+                throw new IllegalArgumentException("Error! Option key and value are required.");
+            }
+            if( item.get("key").trim().equals("") ){
+                Logger.error("Error! Option key must not equal empty.");
+                throw new IllegalArgumentException("Error! Option key must not equal empty.");
+            }
+            OptionModel optionModel = new OptionModel(
+                item.get("key").trim(),
+                item.get("value").trim(),
+                (item.containsKey("autoload") && (item.get("key").trim().equals("on") || item.get("key").trim().equals("off")) ) ? item.get("autoload").trim() : "off"
+            );
+            optionModel.save();
+            status &= (optionModel.getId() > 0) ? true : false;
+        }
+
+        return status;
+    }
 }
