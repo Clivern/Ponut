@@ -24,9 +24,41 @@ import com.clivern.ponut.model.OptionModel;
  */
 public interface OptionContract {
 
-    //public OptionModel getOne(Map<String, String> where) throws IllegalArgumentException;
+    /**
+     * Get Option By ID
+     *
+     * @param id the option id
+     * @return OptionModel an instance of option model
+     * @throws IllegalArgumentException in case invalid parameters passed
+     */
+    public OptionModel getOneById(Integer id) throws IllegalArgumentException;
 
-    //public List<OptionModel> getMany(Map<String, String> where) throws IllegalArgumentException;
+    /**
+     * Get Option By Key
+     *
+     * @param key the option key
+     * @return OptionModel an instance of option model
+     * @throws IllegalArgumentException in case invalid parameters passed
+     */
+    public OptionModel getOneByKey(String key) throws IllegalArgumentException;
+
+    /**
+     * Get Many Options By Key
+     *
+     * @param key the option key
+     * @return List a list of options
+     * @throws IllegalArgumentException in case invalid parameters passed
+     */
+    public List<OptionModel> getManyByKey(String key) throws IllegalArgumentException;
+
+    /**
+     * Get Many Options By Autoload
+     *
+     * @param autoload the option autoload value
+     * @return List a list of options
+     * @throws IllegalArgumentException in case invalid parameters passed
+     */
+    public List<OptionModel> getManyByAutoload(String autoload) throws IllegalArgumentException;
 
     /**
      * Create a new option

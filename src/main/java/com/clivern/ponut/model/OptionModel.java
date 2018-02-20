@@ -41,6 +41,10 @@ public class OptionModel extends BaseModel {
     @Column(name="`autoload`")
     String autoload;
 
+    final static String AUTOLOAD_ON = "on";
+
+    final static String AUTOLOAD_OFF = "off";
+
     /**
      * Class Constructor
      *

@@ -29,6 +29,132 @@ import com.clivern.ponut.module.contract.core.entity.OptionContract;
 public class OptionEntity implements OptionContract {
 
     /**
+     * Get Option By ID
+     *
+     * <pre>
+     * OptionEntity optionEntity = new OptionEntity();
+     * OptionModel option = optionEntity.getOneById(4);
+     * if( option != null ){
+     *   Logger.info(option.getId());
+     *   Logger.info(option.getKey());
+     *   Logger.info(option.getValue());
+     *   Logger.info(option.getAutoload());
+     *   Logger.info(optionEntity.deleteOne(option));
+     * }
+     * </pre>
+     *
+     * @param id the option id
+     * @return OptionModel an instance of option model
+     * @throws IllegalArgumentException in case invalid parameters passed
+     */
+    public OptionModel getOneById(Integer id) throws IllegalArgumentException
+    {
+        if (id.equals("")) {
+            Logger.error("Error! Option id is required.");
+            throw new IllegalArgumentException("Error! Option id is required.");
+        }
+
+        OptionModel item = Ebean.find(OptionModel.class)
+            .select("*")
+            .where()
+            .eq("id", id)
+            .findOne();
+
+        return item;
+    }
+
+    /**
+     * Get Option By Key
+     *
+     * <pre>
+     * OptionEntity optionEntity = new OptionEntity();
+     * OptionModel option = optionEntity.getOneByKey("op_key");
+     * if( option != null ){
+     *   Logger.info(option.getId());
+     *   Logger.info(option.getKey());
+     *   Logger.info(option.getValue());
+     *   Logger.info(option.getAutoload());
+     *   Logger.info(optionEntity.deleteOne(option));
+     * }
+     * </pre>
+     *
+     * @param key the option key
+     * @return OptionModel an instance of option model
+     * @throws IllegalArgumentException in case invalid parameters passed
+     */
+    public OptionModel getOneByKey(String key) throws IllegalArgumentException
+    {
+        if (key.equals("")) {
+            Logger.error("Error! Option key is required.");
+            throw new IllegalArgumentException("Error! Option key is required.");
+        }
+
+        OptionModel item = Ebean.find(OptionModel.class)
+            .select("*")
+            .where()
+            .eq("key", key)
+            .findOne();
+
+        return item;
+    }
+
+    /**
+     * Get Many Options By Key
+     *
+     * <pre>
+     * OptionEntity optionEntity = new OptionEntity();
+     * List<OptionModel> options =  optionEntity.getManyByKey("op_duplicate_key");
+     * </pre>
+     *
+     * @param key the option key
+     * @return List a list of options
+     * @throws IllegalArgumentException in case invalid parameters passed
+     */
+    public List<OptionModel> getManyByKey(String key) throws IllegalArgumentException
+    {
+        if (key.equals("")) {
+            Logger.error("Error! Option key is required.");
+            throw new IllegalArgumentException("Error! Option key is required.");
+        }
+
+        List<OptionModel> items = Ebean.find(OptionModel.class)
+            .select("*")
+            .where()
+            .eq("key", key)
+            .findList();
+
+        return items;
+    }
+
+    /**
+     * Get Many Options By Autoload
+     *
+     * <pre>
+     * OptionEntity optionEntity = new OptionEntity();
+     * List<OptionModel> options =  optionEntity.getManyByAutoload("on");
+     * </pre>
+     *
+     * @param autoload the option autoload value
+     * @return List a list of options
+     * @throws IllegalArgumentException in case invalid parameters passed
+     */
+    public List<OptionModel> getManyByAutoload(String autoload) throws IllegalArgumentException
+    {
+        if (autoload.equals("")) {
+            Logger.error("Error! Option autoload is required.");
+            throw new IllegalArgumentException("Error! Option autoload is required.");
+        }
+
+        List<OptionModel> items = Ebean.find(OptionModel.class)
+            .select("*")
+            .where()
+            .eq("autoload", autoload)
+            .findList();
+
+        return items;
+    }
+
+    /**
      * Create a new option
      *
      * <pre>
@@ -109,6 +235,13 @@ public class OptionEntity implements OptionContract {
     /**
      * Delete an Option
      *
+     * <pre>
+     * OptionEntity optionEntity = new OptionEntity();
+     * OptionModel option = optionEntity.getOneById(4);
+     * if( option != null ){
+     *   Logger.info(optionEntity.deleteOne(option));
+     * }
+     * </pre>
      * @param item an option to delete
      * @return Boolean whether option deleted or not
      */
@@ -119,6 +252,12 @@ public class OptionEntity implements OptionContract {
 
     /**
      * Delete Many Options
+     *
+     * <pre>
+     * OptionEntity optionEntity = new OptionEntity();
+     * List<OptionModel> options =  optionEntity.getManyByAutoload("off");
+     * Logger.info(optionEntity.deleteMany(options));
+     * </pre>
      *
      * @param items a list of options to delete
      * @return Boolean whether options deleted or not
