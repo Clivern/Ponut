@@ -61,6 +61,24 @@ public interface OptionContract {
     public List<OptionModel> getManyByAutoload(String autoload) throws IllegalArgumentException;
 
     /**
+     * Update Option Value By ID
+     *
+     * @param value Option Value
+     * @param id Option Id
+     * @return Boolean whether option updated or not
+     */
+    public Boolean updateOneValueById(String value, Integer id);
+
+    /**
+     * Update Option Value By Key
+     *
+     * @param value Option Value
+     * @param key Option Key
+     * @return Boolean whether option updated or not
+     */
+    public Boolean updateOneValueByKey(String value, String key);
+
+    /**
      * Create a new option
      *
      * @param item a list of option data
@@ -77,14 +95,6 @@ public interface OptionContract {
      * @throws IllegalArgumentException in case invalid arguments provided
      */
     public Boolean createMany(List<Map<String, String>> items) throws IllegalArgumentException;
-
-    //public Boolean updateOne(Map<String, String> where, Map<String, String> data) throws IllegalArgumentException;
-
-    //public Boolean updateOne(OptionModel item, Map<String, String> data) throws IllegalArgumentException;
-
-    //public Boolean deleteOne(Map<String, String> where) throws IllegalArgumentException;
-
-    //public Boolean deleteMany(Map<String, String> where) throws IllegalArgumentException;
 
     /**
      * Delete an Option

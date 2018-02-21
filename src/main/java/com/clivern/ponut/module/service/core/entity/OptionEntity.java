@@ -155,6 +155,40 @@ public class OptionEntity implements OptionContract {
     }
 
     /**
+     * Update Option Value By ID
+     *
+     * @param value Option Value
+     * @param id Option Id
+     * @return Boolean whether option updated or not
+     */
+    public Boolean updateOneValueById(String value, Integer id)
+    {
+        Integer optionsUpdated = Ebean.update(OptionModel.class)
+                .set("value", value)
+                .where().eq("id", id)
+                .update();
+
+        return (optionsUpdated > 0) ? true : false;
+    }
+
+    /**
+     * Update Option Value By Key
+     *
+     * @param value Option Value
+     * @param key Option Key
+     * @return Boolean whether option updated or not
+     */
+    public Boolean updateOneValueByKey(String value, String key)
+    {
+        Integer optionsUpdated = Ebean.update(OptionModel.class)
+                .set("value", value)
+                .where().eq("key", key)
+                .update();
+
+        return (optionsUpdated > 0) ? true : false;
+    }
+
+    /**
      * Create a new option
      *
      * <pre>
