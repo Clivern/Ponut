@@ -157,6 +157,11 @@ public class OptionEntity implements OptionContract {
     /**
      * Update Option Value By ID
      *
+     * <pre>
+     * OptionEntity optionEntity = new OptionEntity();
+     * optionEntity.updateOneValueById("value", 1);
+     * </pre>
+     *
      * @param value Option Value
      * @param id Option Id
      * @return Boolean whether option updated or not
@@ -173,6 +178,11 @@ public class OptionEntity implements OptionContract {
 
     /**
      * Update Option Value By Key
+     *
+     * <pre>
+     * OptionEntity optionEntity = new OptionEntity();
+     * optionEntity.updateOneValueByKey("final value", "_op_key");
+     * </pre>
      *
      * @param value Option Value
      * @param key Option Key
