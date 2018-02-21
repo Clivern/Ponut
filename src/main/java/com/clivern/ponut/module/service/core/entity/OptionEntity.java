@@ -35,11 +35,10 @@ public class OptionEntity implements OptionContract {
      * OptionEntity optionEntity = new OptionEntity();
      * OptionModel option = optionEntity.getOneById(4);
      * if( option != null ){
-     *   Logger.info(option.getId());
-     *   Logger.info(option.getKey());
-     *   Logger.info(option.getValue());
-     *   Logger.info(option.getAutoload());
-     *   Logger.info(optionEntity.deleteOne(option));
+     *   option.getId();
+     *   option.getKey();
+     *   option.getValue();
+     *   option.getAutoload();
      * }
      * </pre>
      *
@@ -70,11 +69,10 @@ public class OptionEntity implements OptionContract {
      * OptionEntity optionEntity = new OptionEntity();
      * OptionModel option = optionEntity.getOneByKey("op_key");
      * if( option != null ){
-     *   Logger.info(option.getId());
-     *   Logger.info(option.getKey());
-     *   Logger.info(option.getValue());
-     *   Logger.info(option.getAutoload());
-     *   Logger.info(optionEntity.deleteOne(option));
+     *   option.getId();
+     *   option.getKey();
+     *   option.getValue();
+     *   option.getAutoload();
      * }
      * </pre>
      *
@@ -283,7 +281,7 @@ public class OptionEntity implements OptionContract {
      * OptionEntity optionEntity = new OptionEntity();
      * OptionModel option = optionEntity.getOneById(4);
      * if( option != null ){
-     *   Logger.info(optionEntity.deleteOne(option));
+     *   optionEntity.deleteOne(option);
      * }
      * </pre>
      * @param item an option to delete
@@ -300,7 +298,7 @@ public class OptionEntity implements OptionContract {
      * <pre>
      * OptionEntity optionEntity = new OptionEntity();
      * List<OptionModel> options =  optionEntity.getManyByAutoload("off");
-     * Logger.info(optionEntity.deleteMany(options));
+     * optionEntity.deleteMany(options);
      * </pre>
      *
      * @param items a list of options to delete
