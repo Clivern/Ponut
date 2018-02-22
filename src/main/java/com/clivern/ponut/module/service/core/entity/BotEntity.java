@@ -230,7 +230,7 @@ public class BotEntity implements BotContract {
         List<BotModel> items = Ebean.find(BotModel.class)
             .select("*")
             .where()
-            .eq("status", status)
+            .eq("type", type)
             .findList();
 
         return items;
