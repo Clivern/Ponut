@@ -18,8 +18,12 @@ import java.util.List;
 import java.lang.IllegalArgumentException;
 import org.pmw.tinylog.Logger;
 import io.ebean.Ebean;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import com.clivern.ponut.model.BotModel;
 import com.clivern.ponut.module.contract.core.entity.BotContract;
+import com.clivern.ponut.module.service.utils.SlugService;
 
 /**
  * Bot Entity Class
@@ -90,7 +94,7 @@ public class BotEntity implements BotContract {
      */
     public BotModel getOneBySlug(String slug) throws IllegalArgumentException
     {
-        if (slug.equals("")) {
+        if (slug.trim().equals("")) {
             Logger.error("Error! Bot slug is required.");
             throw new IllegalArgumentException("Error! Bot slug is required.");
         }
@@ -98,7 +102,7 @@ public class BotEntity implements BotContract {
         BotModel item = Ebean.find(BotModel.class)
             .select("*")
             .where()
-            .eq("slug", slug)
+            .eq("slug", slug.trim())
             .findOne();
 
         return item;
@@ -128,7 +132,7 @@ public class BotEntity implements BotContract {
      */
     public BotModel getOneByName(String name) throws IllegalArgumentException
     {
-        if (name.equals("")) {
+        if (name.trim().equals("")) {
             Logger.error("Error! Bot name is required.");
             throw new IllegalArgumentException("Error! Bot name is required.");
         }
@@ -136,7 +140,7 @@ public class BotEntity implements BotContract {
         BotModel item = Ebean.find(BotModel.class)
             .select("*")
             .where()
-            .eq("name", name)
+            .eq("name", name.trim())
             .findOne();
 
         return item;
@@ -166,7 +170,7 @@ public class BotEntity implements BotContract {
      */
     public BotModel getOneByIsDefault(String isDefault) throws IllegalArgumentException
     {
-        if (isDefault.equals("")) {
+        if (isDefault.trim().equals("")) {
             Logger.error("Error! Bot is default is required.");
             throw new IllegalArgumentException("Error! Bot is default is required.");
         }
@@ -174,7 +178,7 @@ public class BotEntity implements BotContract {
         BotModel item = Ebean.find(BotModel.class)
             .select("*")
             .where()
-            .eq("isDefault", isDefault)
+            .eq("isDefault", isDefault.trim())
             .findOne();
 
         return item;
@@ -194,7 +198,7 @@ public class BotEntity implements BotContract {
      */
     public List<BotModel> getManyByStatus(String status) throws IllegalArgumentException
     {
-        if (status.equals("")) {
+        if (status.trim().equals("")) {
             Logger.error("Error! Bot status is required.");
             throw new IllegalArgumentException("Error! Bot status is required.");
         }
@@ -202,7 +206,7 @@ public class BotEntity implements BotContract {
         List<BotModel> items = Ebean.find(BotModel.class)
             .select("*")
             .where()
-            .eq("status", status)
+            .eq("status", status.trim())
             .findList();
 
         return items;
@@ -222,7 +226,7 @@ public class BotEntity implements BotContract {
      */
     public List<BotModel> getManyByType(String type) throws IllegalArgumentException
     {
-        if (type.equals("")) {
+        if (type.trim().equals("")) {
             Logger.error("Error! Bot type is required.");
             throw new IllegalArgumentException("Error! Bot type is required.");
         }
@@ -230,10 +234,95 @@ public class BotEntity implements BotContract {
         List<BotModel> items = Ebean.find(BotModel.class)
             .select("*")
             .where()
-            .eq("type", type)
+            .eq("type", type.trim())
             .findList();
 
         return items;
+    }
+
+    /**
+     * Create a New Bot
+     *
+     * <pre>
+     * BotEntity botEntity = new BotEntity();
+     * Map<String, String> item = new HashMap<String, String>();
+     * item.put("name", "_value");
+     * item.put("slug", "_value");
+     * item.put("status", "_value");
+     * item.put("type", "_value");
+     * item.put("isDefault", "_value");
+     * item.put("created", "_value");
+     * item.put("updated", "_value");
+     * Boolean status = botEntity.createOne(item);
+     * </pre>
+     *
+     * @param item a list of bot data
+     * @return Boolean whether bot saved or not
+     * @throws IllegalArgumentException in case invalid arguments provided
+     */
+    public Boolean createOne(Map<String, String> item) throws IllegalArgumentException
+    {
+        Boolean status = true;
+        Date todaysDate = new Date();
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        if( !item.containsKey("name") || !item.containsKey("status") || !item.containsKey("type") ){
+            Logger.error("Error! Bot name, status and type are required.");
+            throw new IllegalArgumentException("Error! Bot name, status and type are required.");
+        }
+
+        BotModel botModel = new BotModel(
+            item.get("name").trim(),
+            SlugService.makeSlug(item.get("name").trim()),
+            item.get("status").trim(),
+            item.get("type").trim(),
+            (item.containsKey("isDefault")) ? item.get("isDefault") : "no",
+            (item.containsKey("created") && !item.get("created").trim().equals("")) ? item.get("created").trim() : df.format(todaysDate),
+            (item.containsKey("updated") && !item.get("updated").trim().equals("")) ? item.get("updated").trim() : df.format(todaysDate)
+        );
+
+        botModel.save();
+        status &= (botModel.getId() > 0) ? true : false;
+
+        return status;
+    }
+
+    /**
+     * Create many options
+     *
+     * <pre>
+     * OptionEntity optionEntity = new OptionEntity();
+     * List<Map<String, String>> items = new ArrayList<Map<String, String>>();
+     *
+     * Map<String, String> item1 = new HashMap<String, String>();
+     * item1.put("key", "item1_key");
+     * item1.put("value", "item1_value");
+     * item1.put("autoload", "off");
+     *
+     * Map<String, String> item2 = new HashMap<String, String>();
+     * item2.put("key", "item2_key");
+     * item2.put("value", "item2_value");
+     * item2.put("autoload", "off");
+     *
+     * items.add(item1);
+     * items.add(item2);
+     *
+     * Boolean status = optionEntity.createMany(items);
+     * </pre>
+     *
+     * @param items a list of options data
+     * @return Boolean whether options saved or not
+     * @throws IllegalArgumentException in case invalid arguments provided
+     */
+    public Boolean createMany(List<Map<String, String>> items) throws IllegalArgumentException
+    {
+        Boolean status = true;
+
+        for(Map<String, String> item : items){
+            status &= this.createOne(item);
+        }
+
+        return status;
     }
 
     /**
