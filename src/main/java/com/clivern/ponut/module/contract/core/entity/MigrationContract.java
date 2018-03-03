@@ -13,11 +13,60 @@
  */
 package com.clivern.ponut.module.contract.core.entity;
 
+import java.util.Map;
+import java.util.List;
+import java.lang.IllegalArgumentException;
+import com.clivern.ponut.model.MigrationModel;
+
 /**
  * Migration Entity Contract Interface
  *
  * @since 1.0.0
  */
 public interface MigrationContract {
+
+    /**
+     * Get Migration By ID
+     *
+     * @param id the migration id
+     * @return MigrationModel an instance of migration model
+     * @throws IllegalArgumentException in case invalid parameters passed
+     */
+    public MigrationModel getOneById(Integer id) throws IllegalArgumentException;
+
+    /**
+     * Get Migration By Key
+     *
+     * @param key the migration key
+     * @return MigrationModel an instance of migration model
+     * @throws IllegalArgumentException in case invalid parameters passed
+     */
+    public MigrationModel getOneByKey(String key) throws IllegalArgumentException;
+
+    /**
+     * Create a New Migration
+     *
+     * @param item a list of migration data
+     * @return Boolean whether migration saved or not
+     * @throws IllegalArgumentException in case invalid arguments provided
+     */
+    public Boolean createOne(Map<String, String> item) throws IllegalArgumentException;
+
+    /**
+     * Create Many Migrations
+     *
+     * @param items a list of migrations data
+     * @return Boolean whether migrations saved or not
+     * @throws IllegalArgumentException in case invalid arguments provided
+     */
+    public Boolean createMany(List<Map<String, String>> items) throws IllegalArgumentException;
+
+    /**
+     * Delete a Migration
+     *
+     * @param item a migration to delete
+     * @return Boolean whether migration deleted or not
+     */
+    public Boolean deleteOne(MigrationModel item);
 
 }

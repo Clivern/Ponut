@@ -18,14 +18,18 @@ import java.util.Map;
 import java.util.Comparator;
 import java.util.TreeMap;
 import io.ebean.Ebean;
+
+import com.clivern.ponut.model.MigrationModel;
 import com.clivern.ponut.database.contract.Migration;
 import com.clivern.ponut.module.contract.database.MigrationContract;
 import com.clivern.ponut.exception.MigrationNotFound;
 import com.clivern.ponut.module.contract.database.DatabaseContract;
+import com.clivern.ponut.module.service.core.entity.MigrationEntity;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import com.clivern.ponut.model.MigrationModel;
+
 import org.pmw.tinylog.Logger;
 
 /**
@@ -112,27 +116,25 @@ public class MigrationService implements MigrationContract {
      */
     public Boolean runMigration(String key, String direction)
     {
-
         if( !this.databaseContract.isConnected() ){
             return false;
         }
 
         this.databaseContract.execute(this.upMigrations.get("01-up_create_migrations_table"));
 
-        Date todaysDate = new Date();
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
         if( this.upMigrations.containsKey(key) && direction.equals("up") ){
             // Check if Already run before
             String[] keyArry = key.split("-");
             String upKey = keyArry[1];
 
-            MigrationModel migration = Ebean.find(MigrationModel.class).select("key").where().eq("key", upKey).findOne();
+            MigrationEntity migrationEntity = new MigrationEntity();
+            MigrationModel migration = migrationEntity.getOneByKey(upKey);
             if( migration != null ){
                 return true;
             }
-            MigrationModel migrationRun = new MigrationModel(upKey, df.format(todaysDate), df.format(todaysDate));
-            migrationRun.save();
+            Map<String, String> item = new HashMap<String, String>();
+            item.put("key", upKey);
+            migrationEntity.createOne(item);
 
             return this.databaseContract.execute(this.upMigrations.get(key));
 
