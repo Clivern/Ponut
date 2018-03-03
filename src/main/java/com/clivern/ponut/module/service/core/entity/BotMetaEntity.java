@@ -125,7 +125,7 @@ public class BotMetaEntity implements BotMetaContract {
      */
     public BotMetaModel getOneByBotId(Integer botId) throws IllegalArgumentException
     {
-        if (botId.equals("")) {
+        if (botId == null || botId <= 0) {
             Logger.error("Error! Meta Bot Id is required.");
             throw new IllegalArgumentException("Error! Meta Bot Id is required.");
         }
@@ -198,7 +198,7 @@ public class BotMetaEntity implements BotMetaContract {
      */
     public BotMetaModel getOneByKeyAndBotId(Integer botId, String key) throws IllegalArgumentException
     {
-        if (key.trim().equals("") || botId.trim().equals("")) {
+        if (key.trim().equals("") || botId == null || botId <= 0) {
             Logger.error("Error! Meta key and bot id are required.");
             throw new IllegalArgumentException("Error! Meta key and bot id are required.");
         }
@@ -232,7 +232,7 @@ public class BotMetaEntity implements BotMetaContract {
             throw new IllegalArgumentException("Error! Meta key is required.");
         }
 
-        List<BotMetaModel> items = Ebean.find(BotModel.class)
+        List<BotMetaModel> items = Ebean.find(BotMetaModel.class)
             .select("*")
             .where()
             .eq("key", key.trim())
@@ -256,12 +256,12 @@ public class BotMetaEntity implements BotMetaContract {
      */
     public List<BotMetaModel> getManyByBotIdAndKey(Integer botId, String key) throws IllegalArgumentException
     {
-        if (key.trim().equals("") || botId.trim().equals("")) {
+        if (key.trim().equals("") || botId == null || botId <= 0) {
             Logger.error("Error! Meta key and bot id are required.");
             throw new IllegalArgumentException("Error! Meta key and bot id are required.");
         }
 
-        List<BotMetaModel> items = Ebean.find(BotModel.class)
+        List<BotMetaModel> items = Ebean.find(BotMetaModel.class)
             .select("*")
             .where()
             .eq("botId", botId)
@@ -285,12 +285,12 @@ public class BotMetaEntity implements BotMetaContract {
      */
     public List<BotMetaModel> getManyByBotId(Integer botId) throws IllegalArgumentException
     {
-        if (botId.trim().equals("")) {
+        if (botId == null || botId <= 0) {
             Logger.error("Error! Meta bot id is required.");
             throw new IllegalArgumentException("Error! Meta bot id is required.");
         }
 
-        List<BotMetaModel> items = Ebean.find(BotModel.class)
+        List<BotMetaModel> items = Ebean.find(BotMetaModel.class)
             .select("*")
             .where()
             .eq("botId", botId)
@@ -329,7 +329,7 @@ public class BotMetaEntity implements BotMetaContract {
         }
 
         BotMetaModel botMetaModel = new BotMetaModel(
-            item.get("botId"),
+            Integer.parseInt(item.get("botId")),
             item.get("key").trim(),
             item.get("value").trim(),
             (item.containsKey("created") && !item.get("created").trim().equals("")) ? item.get("created").trim() : df.format(todaysDate),

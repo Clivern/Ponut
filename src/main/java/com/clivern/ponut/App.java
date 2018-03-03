@@ -22,6 +22,16 @@ import com.clivern.ponut.module.service.utils.ConfigService;
 import com.clivern.ponut.module.service.utils.LoggerService;
 import com.clivern.ponut.module.service.database.DatabaseService;
 
+
+import java.util.Map;
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
+import com.clivern.ponut.module.service.core.entity.OptionEntity;
+import com.clivern.ponut.model.OptionModel;
+
+import com.clivern.ponut.module.service.utils.SlugService;
+
 /**
  * App Class
  *
@@ -42,6 +52,7 @@ public class App {
         }else{
             Web.call();
             Api.call();
+            new App().testEntity();
         }
     }
 
@@ -53,5 +64,13 @@ public class App {
         Config config = ConfigService.instance().load();
         new LoggerService(config).config();
         DatabaseService.instance().config(config);
+    }
+
+    public void testEntity()
+    {
+        Logger.info(SlugService.makeSlug("Slack"));
+        Logger.info(SlugService.makeSlug("MeSSenger"));
+        Logger.info(SlugService.makeSlug("Slack Bot"));
+        Logger.info(SlugService.makeSlug("Messenger éphémère"));
     }
 }
