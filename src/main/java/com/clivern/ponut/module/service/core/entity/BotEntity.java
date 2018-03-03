@@ -288,30 +288,38 @@ public class BotEntity implements BotContract {
     }
 
     /**
-     * Create many options
+     * Create Many Bots
      *
      * <pre>
-     * OptionEntity optionEntity = new OptionEntity();
+     * BotEntity botEntity = new BotEntity();
      * List<Map<String, String>> items = new ArrayList<Map<String, String>>();
      *
      * Map<String, String> item1 = new HashMap<String, String>();
-     * item1.put("key", "item1_key");
-     * item1.put("value", "item1_value");
-     * item1.put("autoload", "off");
+     * item1.put("name", "_value");
+     * item1.put("slug", "_value");
+     * item1.put("status", "_value");
+     * item1.put("type", "_value");
+     * item1.put("isDefault", "_value");
+     * item1.put("created", "_value");
+     * item1.put("updated", "_value");
      *
      * Map<String, String> item2 = new HashMap<String, String>();
-     * item2.put("key", "item2_key");
-     * item2.put("value", "item2_value");
-     * item2.put("autoload", "off");
+     * item2.put("name", "_value");
+     * item2.put("slug", "_value");
+     * item2.put("status", "_value");
+     * item2.put("type", "_value");
+     * item2.put("isDefault", "_value");
+     * item2.put("created", "_value");
+     * item2.put("updated", "_value");
      *
      * items.add(item1);
      * items.add(item2);
      *
-     * Boolean status = optionEntity.createMany(items);
+     * Boolean status = botEntity.createMany(items);
      * </pre>
      *
-     * @param items a list of options data
-     * @return Boolean whether options saved or not
+     * @param items a list of bots data
+     * @return Boolean whether bots saved or not
      * @throws IllegalArgumentException in case invalid arguments provided
      */
     public Boolean createMany(List<Map<String, String>> items) throws IllegalArgumentException
